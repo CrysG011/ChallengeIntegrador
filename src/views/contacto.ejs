@@ -9,30 +9,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <picture class="navbar__logo">
-                <a href="#">
-                    <img src="../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./contacto.html">CONTACTO</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./admin/login/login.html">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__carro" href="./carro/carro.html"><img src="../img/icons/cart-icon.svg"
-                            alt="CARRITO" /></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("./partials/header-shop") %>
     <main class="container mainlogin">
         <section class="contact">
             <h1 class="mainlogin__title">Contacto</h1>
@@ -54,19 +31,7 @@
             </form>
         </section>
     </main>
-    <footer class="footer">
-        <nav class="navbar">
-            <ul lass="navbar__items">
-                <li class="navbar__item"><a class="navbar__link" href="./shop/shop.html">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="./admin/login/login.html">INGRESAR</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="./contacto.html">CONTACTO</a></li>
-            </ul>
-            <picture class="footer__isotype">
-                <img src="../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" />
-            </picture>
-        </nav>
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
+    <%- include("./partials/footer-shop") %>
 </body>
 
 </html>
