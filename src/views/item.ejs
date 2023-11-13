@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITEM</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <picture class="navbar__logo">
+                <a href="../../index.html">
+                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
+                </a>
+            </picture>
+            <div class="navbar__main">
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="../../pages/shop/shop.html">SHOP <iconify-icon
+                                icon="mdi:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">LLaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="../../pages/contacto.html">CONTACTO</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="../../pages/admin/login/login.html">LOGIN</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__carro" href="../../pages/carro/carro.html"><img
+                                src="../../img/icons/cart-icon.svg" alt="CARRITO" /></a>
+                    </li>
+                </ul>
+                <button id="toggleButton" class="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="destacado">
+            <article>
+                <h3 class="destacado__h3">BABY YODA BLUEBALL</h3>
+                <p class="destacado__desc">
+                    Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga, edición limitada..
+                </p>
+                <p class="destacado__precio">$ 1799,99</p>
+                <div class="destacado__controls">
+                    <button class="destacado__quantity-button" data-action="decrease">-</button>
+                    <input class="destacado__quantity-input" type="number" value="1">
+                    <button class="destacado__quantity-button" data-action="increase">+</button>
+                    <button class="destacado__add-to-cart">Agregar al carrito</button>
+                </div>
+                <a href="#" class="destacado__payment-link">Ver método de pago </a>
+                <p>- 3 CUOTAS SIN INTERÉS</p>
+            </article>
+            <picture>
+                <img src="../../img/star-wars/baby-yoda-1.webp"
+                    alt="Figura coleccionable Funko de Grogu de la serie The Mandalorian" />
+            </picture>
+        </section>
+        <h4>PRODUCTOS RELACIONADOS</h4>
+        <section class="news">
+            <article class="news__card">
+                <a href="#">
+                    <picture>
+                        <img src="../../img/star-wars/trooper-1.webp" alt="STAR WARS STORMTROOPER" />
+                    </picture>
+                    <div>
+                        <p>STAR WARS</p>
+                        <h4>STORMTROOPER LIGHTSABER</h4>
+                        <p>$1799,99</p>
+                        <p>3 CUOTAS SIN INTERÉS</p>
+                    </div>
+                </a>
+            </article>
+            <article class="news__card">
+                <a href="#">
+                    <picture>
+                        <img src="../../img/pokemon/pidgeotto-1.webp" alt="Pokemon PIDGEOTTO" />
+                    </picture>
+                    <div>
+                        <p>POKEMON</p>
+                        <h4>PIDGEOTTO</h4>
+                        <p>$1799,99</p>
+                        <p>3 CUOTAS SIN INTERÉS</p>
+                    </div>
+                </a>
+            </article>
+            <article class="news__card">
+                <a href="#">
+                    <picture>
+                        <img src="../../img/harry-potter/luna-1.webp" alt="HARRY POTTER LUNA LOVEGOOD" />
+                    </picture>
+                    <div>
+                        <p>HARRY POTTER</p>
+                        <h4>LUNA LOVEGOOD LION MASK</h4>
+                        <p>$1799,99</p>
+                        <p>3 CUOTAS SIN INTERÉS</p>
+                    </div>
+                </a>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <section class="footer">
+            <nav class="navbar container">
+                <ul class="navbar__items">
+                    <li class="navbar__item"><a class="navbar__link" href="../shop/shop.html">SHOP</a></li>
+                    <li class="navbar__item"><a class="navbar__link" href="../admin/login/login.html">INGRESAR</a></li>
+                    <li class="navbar__item"><a class="navbar__link" href="../contacto.html">CONTACTO</a></li>
+                </ul>
+                <picture class="footer__isotype">
+                    <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" />
+                </picture>
+            </nav>
+        </section>
+        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+</body>
+
+</html>

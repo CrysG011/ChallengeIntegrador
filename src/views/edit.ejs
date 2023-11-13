@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <picture class="navbar__logo">
+                <a href="../../../index.html">
+                    <img src="../../../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
+                </a>
+            </picture>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../index.html">VER TIENDA</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../pages/admin/admin.html">ADMIN</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../index.html">SALIR</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <form class="container">
+        <div class="create-grid">
+            <div class="create-row">
+                <h1 class="create-title">EDITAR ITEM</h1>
+            </div>
+            <div class="create-row">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="opcion1">Seleccionar</option>
+                    <option value="opcion2">Opción 1</option>
+                    <option value="opcion3">Opción 2</option>
+                </select>
+                <label for="licencia">Licencia:</label>
+                <select id="licencia" name="licencia">
+                    <option value="opcion1">Seleccionar</option>
+                    <option value="opcion2">Opción 1</option>
+                    <option value="opcion3">Opción 2</option>
+                </select>
+            </div>
+            <div class="create-row">
+                <label for="nombre">Nombre del producto:</label>
+                <input class="log-input" type="text" id="nombre" name="nombre">
+            </div>
+            <div class="create-row">
+                <input class="desc-input" type="text" id="descripcion" name="descripcion"
+                    placeholder="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori.">
+            </div>
+            <div class="create-row">
+                <label for="sku">SKU:</label>
+                <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="NAR001012">
+                <label for="precio">Precio:</label>
+                <input class="create-input log-input" type="text" id="precio" name="precio" placeholder="$ 1.799,00">
+                <label for="stock">Stock:</label>
+                <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 10 ">
+            </div>
+            <div class="create-row">
+                <label for="descuento">Descuento:</label>
+                <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="10%">
+                <label for="cuotas">Cuotas:</label>
+                <select id="cuotas" name="cuotas">
+                    <option value="opcion1">3 Cuotas sin interés</option>
+                    <option value="opcion2">6 Cuotas</option>
+                    <option value="opcion3">12 Cuotas</option>
+                </select>
+            </div>
+            <div class="create-row">
+                <label for="imagenes">Imágenes:</label>
+                <input type="file" id="imagenes" name="imagenes">
+            </div>
+            <picture class="create-row">
+                <figure class="img-edit">
+                    <img src="/img/naruto/kakashi-hatake.png"
+                        alt="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden">
+                    <figcaption>Frente</figcaption>
+                </figure>
+                <figure class="img-edit">
+                    <img src="/img/naruto/kakashi-hatake-dorso.webp" alt="Dorso de Kakashi Hatake">
+                    <figcaption>Dorso</figcaption>
+                </figure>
+            </picture>
+            <div class="create-row">
+                <button class="btn-ingresar" type="submit" id="agregar">Modificar Producto</button>
+            </div>
+        </div>
+    </form>
+    <footer class="footer">
+        <nav class="navbar">
+            <ul class="navbar__items">
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../pages/shop/shop.html">SHOP</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../pages/register/register.html">REGISTRARSE</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../pages/login/login.html">INGRESAR</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../../../pages/contacto.html">CONTACTO</a>
+                </li>
+            </ul>
+            <picture class="footer__isotype">
+                <img src="../../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" />
+            </picture>
+        </nav>
+        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+</body>
+
+</html>
