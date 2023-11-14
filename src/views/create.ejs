@@ -9,103 +9,64 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <picture class="navbar__logo">
-                <a href="../../../index.html">
-                    <img src="../../../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../index.html">VER TIENDA</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/admin/admin.html">ADMIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../index.html">SALIR</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <form class="container">
-        <div class="create-grid">
-            <div class="create-row">
-                <h1 class="create-title">CREAR NUEVO ITEM</h1>
+    <%- include("./partials/header-admin") %>
+        <form class="container">
+            <div class="create-grid">
+                <div class="create-row">
+                    <h1 class="create-title">CREAR NUEVO ITEM</h1>
+                </div>
+                <div class="create-row">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria">
+                        <option value="opcion1">Seleccionar</option>
+                        <option value="opcion2">Opción 1</option>
+                        <option value="opcion3">Opción 2</option>
+                    </select>
+                    <label for="licencia">Licencia:</label>
+                    <select id="licencia" name="licencia">
+                        <option value="opcion1">Seleccionar</option>
+                        <option value="opcion2">Opción 1</option>
+                        <option value="opcion3">Opción 2</option>
+                    </select>
+                </div>
+                <div class="create-row">
+                    <label for="nombre">Nombre del producto:</label>
+                    <input class="log-input" type="text" id="nombre" name="nombre">
+                </div>
+                <div class="create-row">
+                    <input class="desc-input" type="text" id="descripcion" name="descripcion"
+                        placeholder="Descripción del producto">
+                </div>
+                <div class="create-row">
+                    <label for="sku">SKU:</label>
+                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="SSK111AB001">
+                    <label for="precio">Precio:</label>
+                    <input class="create-input log-input" type="text" id="precio" name="precio"
+                        placeholder="$ 0.000,00">
+                    <label for="stock">Stock:</label>
+                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 0 ">
+                </div>
+                <div class="create-row">
+                    <label for="descuento">Descuento:</label>
+                    <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="0%">
+                    <label for="cuotas">Cuotas:</label>
+                    <select id="cuotas" name="cuotas">
+                        <option value="opcion1">3 Cuotas sin interés</option>
+                        <option value="opcion2">6 Cuotas</option>
+                        <option value="opcion3">12 Cuotas</option>
+                    </select>
+                </div>
+                <div class="create-row">
+                    <label for="imagenes">Imágenes:</label>
+                    <input type="file" id="imagenes" name="imagenes">
+                </div>
+                <div class="create-row">
+                    <button class="btn-ingresar" type="submit" id="agregar">Agregar Producto</button>
+                    <button class="btn-ingresar" type="reset" id="limpiar">Limpiar</button>
+                </div>
             </div>
-            <div class="create-row">
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" name="categoria">
-                    <option value="opcion1">Seleccionar</option>
-                    <option value="opcion2">Opción 1</option>
-                    <option value="opcion3">Opción 2</option>
-                </select>
-                <label for="licencia">Licencia:</label>
-                <select id="licencia" name="licencia">
-                    <option value="opcion1">Seleccionar</option>
-                    <option value="opcion2">Opción 1</option>
-                    <option value="opcion3">Opción 2</option>
-                </select>
-            </div>
-            <div class="create-row">
-                <label for="nombre">Nombre del producto:</label>
-                <input class="log-input" type="text" id="nombre" name="nombre">
-            </div>
-            <div class="create-row">
-                <input class="desc-input" type="text" id="descripcion" name="descripcion"
-                    placeholder="Descripción del producto">
-            </div>
-            <div class="create-row">
-                <label for="sku">SKU:</label>
-                <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="SSK111AB001">
-                <label for="precio">Precio:</label>
-                <input class="create-input log-input" type="text" id="precio" name="precio" placeholder="$ 0.000,00">
-                <label for="stock">Stock:</label>
-                <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 0 ">
-            </div>
-            <div class="create-row">
-                <label for="descuento">Descuento:</label>
-                <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="0%">
-                <label for="cuotas">Cuotas:</label>
-                <select id="cuotas" name="cuotas">
-                    <option value="opcion1">3 Cuotas sin interés</option>
-                    <option value="opcion2">6 Cuotas</option>
-                    <option value="opcion3">12 Cuotas</option>
-                </select>
-            </div>
-            <div class="create-row">
-                <label for="imagenes">Imágenes:</label>
-                <input type="file" id="imagenes" name="imagenes">
-            </div>
-            <div class="create-row">
-                <button class="btn-ingresar" type="submit" id="agregar">Agregar Producto</button>
-                <button class="btn-ingresar" type="reset" id="limpiar">Limpiar</button>
-            </div>
-        </div>
-    </form>
-    <footer class="footer">
-        <nav class="navbar">
-            <ul class="navbar__items">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/register/register.html">REGISTRARSE</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/login/login.html">INGRESAR</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/contacto.html">CONTACTO</a>
-                </li>
-            </ul>
-            <picture class="footer__isotype">
-                <img src="../../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" />
-            </picture>
-        </nav>
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
+        </form>
+        <%- include("./partials/footer-admin") %>
 </body>
 
 </html>

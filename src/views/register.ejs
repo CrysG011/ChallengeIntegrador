@@ -9,86 +9,46 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <picture class="navbar__logo">
-                <a href="../../../index.html">
-                    <img src="../../../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../index.html">VER TIENDA</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/admin/admin.html">ADMIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../index.html">SALIR</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="mainlogin">
-        <div class="login-container">
-            <h2 class="mainlogin__title">CREA TU CUENTA</h2>
-            <h3 class="mainlogin__subtitle">Completa el formulario para ser parte del mundo de los Funkos</h3>
-            <form class="mainlogin__form">
-                <div class="form-register">
-                    <label for="name">Nombre:</label>
-                    <input class="log-input" type="name" id="name" name="name" placeholder="John" required>
-                </div>
-                <div class="form-register">
-                    <label for="name">Apellido:</label>
-                    <input class="log-input" type="name" id="name" name="name" placeholder="Doe" required>
-                </div>
-                <div class="form-email">
-                    <label for="email">E-mail:</label>
-                    <input class="log-input" type="email" id="email" name="email" placeholder="johndoe@correo.com"
-                        required>
-                </div>
-                <div class="form-passcreate">
-                    <label for="password">Contraseña:</label>
-                    <input class="log-input" type="password" id="password" name="password" placeholder="********"
-                        required>
-                </div>
-                <div class="form-passrepeat">
-                    <label for="password">Repita Contraseña:</label>
-                    <input class="log-input" type="password" id="password" name="password" placeholder="********"
-                        required>
-                </div>
-                <div class="form-ingresar">
-                    <button class="btn-ingresar" type="submit">Registrarar</button>
-                    <label for="remember">
-                        <input class="check-remember" type="checkbox" id="remember" name="remember">
-                        Acepto <span>Términos y Condiciones</span>
-                    </label>
-                </div>
-            </form>
-        </div>
-    </main>
-    <footer class="footer">
-        <nav class="navbar">
-            <ul class="navbar__items">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/register/register.html">REGISTRARSE</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/admin/login/login.html">INGRESAR</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../../pages/contacto.html">CONTACTO</a>
-                </li>
-            </ul>
-            <picture class="footer__isotype">
-                <img src="../../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" />
-            </picture>
-        </nav>
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
+    <%- include("./partials/header-admin") %>
+        <main class="mainlogin">
+            <div class="login-container">
+                <h2 class="mainlogin__title">CREA TU CUENTA</h2>
+                <h3 class="mainlogin__subtitle">Completa el formulario para ser parte del mundo de los Funkos</h3>
+                <form class="mainlogin__form">
+                    <div class="form-register">
+                        <label for="name">Nombre:</label>
+                        <input class="log-input" type="name" id="name" name="name" placeholder="John" required>
+                    </div>
+                    <div class="form-register">
+                        <label for="name">Apellido:</label>
+                        <input class="log-input" type="name" id="name" name="name" placeholder="Doe" required>
+                    </div>
+                    <div class="form-email">
+                        <label for="email">E-mail:</label>
+                        <input class="log-input" type="email" id="email" name="email" placeholder="johndoe@correo.com"
+                            required>
+                    </div>
+                    <div class="form-passcreate">
+                        <label for="password">Contraseña:</label>
+                        <input class="log-input" type="password" id="password" name="password" placeholder="********"
+                            required>
+                    </div>
+                    <div class="form-passrepeat">
+                        <label for="password">Repita Contraseña:</label>
+                        <input class="log-input" type="password" id="password" name="password" placeholder="********"
+                            required>
+                    </div>
+                    <div class="form-ingresar">
+                        <button class="btn-ingresar" type="submit">Registrarar</button>
+                        <label for="remember">
+                            <input class="check-remember" type="checkbox" id="remember" name="remember">
+                            Acepto <span>Términos y Condiciones</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <%- include("./partials/footer-admin") %>
 </body>
 
 </html>
