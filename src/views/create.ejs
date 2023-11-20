@@ -10,11 +10,19 @@
 
 <body>
     <%- include("./partials/header-admin") %>
-        <form class="container">
+  
+        <form class="container" action="/admin/create" method="post" enctype="multipart/form-data">
             <div class="create-grid">
                 <div class="create-row">
                     <h1 class="create-title">CREAR NUEVO ITEM</h1>
                 </div>
+                <% if (typeof errors != "undefined") { %>
+                    <ul>
+                      <%errors.forEach(error => { %>
+                      <li> <%= error.msg %></li>
+                      <% }) %>
+                    </ul>
+                    <% } %>
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
                     <select id="categoria" name="categoria">
@@ -31,20 +39,20 @@
                 </div>
                 <div class="create-row">
                     <label for="nombre">Nombre del producto:</label>
-                    <input class="log-input" type="text" id="nombre" name="nombre">
+                    <input class="log-input" type="text" id="nombre" name="nombre" value="<%= typeof values != 'undefined' ? values.nombre : '' %>"/>
                 </div>
                 <div class="create-row">
                     <input class="desc-input" type="text" id="descripcion" name="descripcion"
-                        placeholder="Descripción del producto">
+                        placeholder="Descripción del producto" value="<%= typeof values != 'undefined' ? values.descripcion : '' %>" >
                 </div>
                 <div class="create-row">
                     <label for="sku">SKU:</label>
-                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="SSK111AB001">
+                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="SSK111AB001" value="<%= typeof values != 'undefined' ? values.sku : '' %>">
                     <label for="precio">Precio:</label>
                     <input class="create-input log-input" type="text" id="precio" name="precio"
-                        placeholder="$ 0.000,00">
+                        placeholder="$ 0.000,00" value="<%= typeof values != 'undefined' ? values.precio : '' %>">
                     <label for="stock">Stock:</label>
-                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 0 ">
+                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 0 " value="<%= typeof values != 'undefined' ? values.stock : '' %>">
                 </div>
                 <div class="create-row">
                     <label for="descuento">Descuento:</label>
@@ -57,8 +65,10 @@
                     </select>
                 </div>
                 <div class="create-row">
-                    <label for="imagenes">Imágenes:</label>
-                    <input type="file" id="imagenes" name="imagenes">
+                    <label for="imagenes">Imagen de frente:</label>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*" required>
+                    <label for="imagenes">Imagen de dorso:</label>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*" required>
                 </div>
                 <div class="create-row">
                     <button class="btn-ingresar" type="submit" id="agregar">Agregar Producto</button>
