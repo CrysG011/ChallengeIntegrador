@@ -1,7 +1,7 @@
 const index = (req, res) => {
-    res.render("index")
-}
+  res.render("layouts/layout");
+};
 
 module.exports = {
-    index,
+  index,
 };

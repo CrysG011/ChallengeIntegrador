@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
-const methodOverride = require("method-override");
 const path = require("path");
+const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
-
-app.use(express.static(path.join(__dirname, "/public")));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/src/views"));
@@ -14,6 +12,7 @@ app.set("layout", "layouts/layout");
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(require("./src/routes/mainRoutes.js"));
 
