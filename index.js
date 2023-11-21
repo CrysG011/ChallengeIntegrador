@@ -3,12 +3,10 @@ const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
+const { body } = require("express-validator");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/src/views"));
-
-app.use(expressLayouts);
-app.set("layout", "layouts/layout");
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
