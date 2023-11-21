@@ -4,7 +4,7 @@
 
 ![Portada del sitio](./FunkosPortada.png)
 
-[Link al sitio](https://challenge-integrador-beige.vercel.app/shop/cart)
+[Link al sitio](https://challenge-integrador-beige.vercel.app)
 
 #### Tecnologías a utilizar
 
