@@ -15,30 +15,29 @@ const validations = [
     .bail()
     .isLength({ min: 3 })
     .withMessage("El nombre del producto tiene que tener al menos 3 caracteres")
-    .bail(),
+    .bail({ level: 'request' }),
+    body("descripcion")
+    .not()
+    .isEmpty()
+    .withMessage("La descripción del producto no puede estar vacía")
+    .bail({ level: 'request' }),
+    body("sku")
+    .isLength({min: 9, max: 9})
+    .withMessage("La longitud del SKU debe ser de 9 caracteres"),
     body("precio")
     .not()
     .isEmpty()
     .withMessage("El precio no puede estar vacío")
     .bail()
     .isNumeric()
-    .withMessage("El precio debe ser numérico")
-    .bail(),
+    .withMessage("El precio debe ser numérico"),
     body("stock")
+    .not()
+    .isEmpty()
+    .withMessage("El stock no puede estar vacío")
+    .bail()
     .isNumeric()
     .withMessage("El stock debe ser numérico")
-    .bail(),
-    body("descripcion")
-    .not()
-    .isEmpty()
-    .withMessage("La descripción del producto no puede estar vacía")
-    .bail(),
-    body("sku")
-    .not()
-    .isEmpty()
-    .withMessage("El SKU no puede estar vacío")
-    .isLength({min: 9, max: 9})
-    .withMessage("La longitud del SKU debe ser de 9 caracteres")
 ]
 
 const sharp = require("sharp");
