@@ -5,13 +5,17 @@ const { validationResult } = require("express-validator");
 const model = require("../../models/Producto");
 
 const getAdminView = async (get, res) => {
-    const productos = await model.findAll();
-    const idProductos = productos.map(producto => producto.id);
-    const nombresProductos = productos.map(producto => producto.product_name);
-    const skuProductos = productos.map(producto => producto.sku);
-    res.render("admin", { nombresProductos, skuProductos, idProductos });
-}
+    try {
+        const productos = await model.findAll();
+        const idProductos = productos.map(producto => producto.id);
+        const nombresProductos = productos.map(producto => producto.product_name);
+        const skuProductos = productos.map(producto => producto.sku);
+        res.render("admin", { nombresProductos, skuProductos, idProductos });   
+    } catch (error) {
+        console.log(error)
+    }
 
+}
 
 const getCreateProductView = (req, res) => {
     res.render("create");
