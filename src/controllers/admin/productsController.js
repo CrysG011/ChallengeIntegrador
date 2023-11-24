@@ -2,9 +2,16 @@ const sharp = require("sharp");
 const path = require("path");
 const { validationResult } = require("express-validator");
 
-const getAdminView = (get, res) => {
-    res.render("admin")
+const model = require("../../models/Producto");
+
+const getAdminView = async (get, res) => {
+    const productos = await model.findAll();
+    const idProductos = productos.map(producto => producto.id);
+    const nombresProductos = productos.map(producto => producto.product_name);
+    const skuProductos = productos.map(producto => producto.sku);
+    res.render("admin", { nombresProductos, skuProductos, idProductos });
 }
+
 
 const getCreateProductView = (req, res) => {
     res.render("create");

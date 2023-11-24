@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
-const expressLayouts = require("express-ejs-layouts");
-const { body } = require("express-validator");
+const sequelize = require("./src/models/db.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/src/views"));
@@ -25,4 +24,11 @@ app.use((req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen (PORT, async () => {
+try {
+  await sequelize.authenticate();
+} catch (error) {
+  console.log(error)
+}
+console.log(`http://localhost:${PORT}`);
+} );
