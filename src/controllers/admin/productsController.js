@@ -49,9 +49,15 @@ const createProduct = (req, res) => {
     }
 }
 
-const getEditProductView = (req, res) => {
-    res.render("edit");
-}
+const getEditProductView = async (req, res) => {
+    try {
+        const producto = await model.findByPk(req.params.id);
+        res.render("edit", {
+          producto});   
+      } catch (error) {
+        console.log(error)
+    }
+    };
 
 const editProduct = (req, res) => {
     res.send(`Buscar y modificar el producto ${req.params.id}`);

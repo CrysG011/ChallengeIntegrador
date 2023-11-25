@@ -1,11 +1,11 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-    "lautarom_funkoshop",
-    "lautarom_2",
-    "lautarom2@",
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
      {
-        host: "mysql-lautarom.alwaysdata.net",
+        host: process.env.DB_HOST,
         dialect: "mysql",
      } 
 );

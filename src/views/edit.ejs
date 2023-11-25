@@ -31,22 +31,23 @@
                 </div>
                 <div class="create-row">
                     <label for="nombre">Nombre del producto:</label>
-                    <input class="log-input" type="text" id="nombre" name="nombre">
+                    <input class="log-input" type="text" id="nombre" name="nombre" placeholder="Inserta el nombre del producto" value="<%- producto.product_name%>">
                 </div>
                 <div class="create-row">
                     <input class="desc-input" type="text" id="descripcion" name="descripcion"
-                        placeholder="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori.">
+                        placeholder="Inserta la descripción del producto." value="<%- producto.product_description%>">
                 </div>
                 <div class="create-row">
                     <label for="sku">SKU:</label>
-                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="NAR001012">
+                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="Insertar SKU" value="<%- producto.sku%>">
                     <label for="precio">Precio:</label>
                     <input class="create-input log-input" type="text" id="precio" name="precio"
-                        placeholder="$ 1.799,00">
+                        placeholder="Insertar precio" value="<%- (producto.price)%>">
                     <label for="stock">Stock:</label>
-                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 10 ">
+                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder="Insertar stock" value="<%- producto.stock%>">
                 </div>
                 <div class="create-row">
+                    <!-- ToDo: añadir descuento, cuotas e imgs desde la db-->
                     <label for="descuento">Descuento:</label>
                     <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="10%">
                     <label for="cuotas">Cuotas:</label>
@@ -57,8 +58,10 @@
                     </select>
                 </div>
                 <div class="create-row">
-                    <label for="imagenes">Imágenes:</label>
-                    <input type="file" id="imagenes" name="imagenes">
+                    <label for="imagenes">Imagen de frente:</label>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
+                    <label for="imagenes">Imagen de dorso:</label>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
                 </div>
                 <picture class="create-row">
                     <figure class="img-edit">
