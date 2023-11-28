@@ -5,7 +5,7 @@ const Producto = sequelize.define("products",
 {
     product_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     product_description: {
         type: DataTypes.STRING(1000),
@@ -33,11 +33,11 @@ const Producto = sequelize.define("products",
     },
     image_front: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     image_back: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 });
 

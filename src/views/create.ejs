@@ -39,18 +39,18 @@
                 </div>
                 <div class="create-row">
                     <label for="nombre">Nombre del producto:</label>
-                    <input class="log-input" type="text" id="nombre" name="nombre" value="<%= typeof values != 'undefined' ? values.nombre : '' %>"/>
+                    <input class="log-input" type="text" id="nombre" name="product_name" value="<%= typeof values != 'undefined' ? values.product_name : '' %>"/>
                 </div>
                 <div class="create-row">
-                    <input class="desc-input" type="text" id="descripcion" name="descripcion"
-                        placeholder="Descripción del producto" value="<%= typeof values != 'undefined' ? values.descripcion : '' %>" >
+                    <input class="desc-input" type="text" id="descripcion" name="product_description"
+                        placeholder="Descripción del producto" value="<%= typeof values != 'undefined' ? values.product_description : '' %>" >
                 </div>
                 <div class="create-row">
                     <label for="sku">SKU:</label>
                     <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="SSK111AB001" value="<%= typeof values != 'undefined' ? values.sku : '' %>">
                     <label for="precio">Precio:</label>
-                    <input class="create-input log-input" type="text" id="precio" name="precio"
-                        placeholder="$ 0.000,00" value="<%= typeof values != 'undefined' ? values.precio : '' %>">
+                    <input class="create-input log-input" type="text" id="precio" name="price"
+                        placeholder="$ 0.000,00" value="<%= typeof values != 'undefined' ? values.price : '' %>">
                     <label for="stock">Stock:</label>
                     <input class="create-input log-input" type="text" id="stock" name="stock" placeholder=" 0 " value="<%= typeof values != 'undefined' ? values.stock : '' %>">
                 </div>
@@ -66,9 +66,9 @@
                 </div>
                 <div class="create-row">
                     <label for="imagenes">Imagen de frente:</label>
-                    <input type="file" id="imagenes" name="imagenes" accept="image/*" required>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
                     <label for="imagenes">Imagen de dorso:</label>
-                    <input type="file" id="imagenes" name="imagenes" accept="image/*" required>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
                 </div>
                 <div class="create-row">
                     <button class="btn-ingresar" type="submit" id="agregar">Agregar Producto</button>

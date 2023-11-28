@@ -10,11 +10,18 @@
 
 <body>
     <%- include("./partials/header-admin") %>
-        <form class="container">
+        <form class="container" action="/admin/edit/<%- producto.id%>?_method=PUT" method="post" enctype="multipart/form-data">
             <div class="create-grid">
                 <div class="create-row">
                     <h1 class="create-title">EDITAR ITEM</h1>
                 </div>
+                <% if (typeof errors != "undefined") { %>
+                    <ul>
+                      <%errors.forEach(error => { %>
+                      <li> <%= error.msg %></li>
+                      <% }) %>
+                    </ul>
+                    <% } %>
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
                     <select id="categoria" name="categoria">
@@ -31,18 +38,18 @@
                 </div>
                 <div class="create-row">
                     <label for="nombre">Nombre del producto:</label>
-                    <input class="log-input" type="text" id="nombre" name="nombre" placeholder="Inserta el nombre del producto" value="<%- producto.product_name%>">
+                    <input class="log-input" type="text" id="nombre" name="product_name" placeholder="Inserta el nombre del producto" value="<%- producto.product_name%>">
                 </div>
                 <div class="create-row">
-                    <input class="desc-input" type="text" id="descripcion" name="descripcion"
+                    <input class="desc-input" type="text" id="descripcion" name="product_description"
                         placeholder="Inserta la descripción del producto." value="<%- producto.product_description%>">
                 </div>
                 <div class="create-row">
                     <label for="sku">SKU:</label>
                     <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="Insertar SKU" value="<%- producto.sku%>">
                     <label for="precio">Precio:</label>
-                    <input class="create-input log-input" type="text" id="precio" name="precio"
-                        placeholder="Insertar precio" value="<%- (producto.price)%>">
+                    <input class="create-input log-input" type="text" id="precio" name="price"
+                        placeholder="Insertar precio" value="<%- producto.price%>">
                     <label for="stock">Stock:</label>
                     <input class="create-input log-input" type="text" id="stock" name="stock" placeholder="Insertar stock" value="<%- producto.stock%>">
                 </div>

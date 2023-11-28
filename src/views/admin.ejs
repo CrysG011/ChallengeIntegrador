@@ -17,10 +17,12 @@
                 <input type="text" id="searchInput" placeholder="código, nombre o categoría" />
             </div>
             <div class="product-list">
+                <a href="/admin/create">
                 <div class="product-list__add">
                     <h2 class="product-list__title">LISTADO DE PRODUCTOS</h2>
                     <button class="product-list__add-button">AGREGAR<span class="plus-sign">+</span></button>
                 </div>
+                </a>
                 <table class="product-list__table">
                     <thead>
                         <tr class="product-list__tr">
@@ -37,7 +39,7 @@
                                 <td class="product-list__code"><%= skuProductos[i] %></td>
                                 <td><%= nombresProductos[i] %></td>
                                 <td>STARS WARS</td>
-                                <td><img src="../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></td>
+                                <td><a href="./edit/<%= idProductos[i] %>"> <img src="../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></td></a>
                                 <td><img src="../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></td>
                             </tr>
                         <% } %>
