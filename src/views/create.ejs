@@ -10,19 +10,12 @@
 
 <body>
     <%- include("./partials/header-admin") %>
-  
         <form class="container" action="/admin/create" method="post" enctype="multipart/form-data">
             <div class="create-grid">
                 <div class="create-row">
                     <h1 class="create-title">CREAR NUEVO ITEM</h1>
                 </div>
-                <% if (typeof errors != "undefined") { %>
-                    <ul>
-                      <%errors.forEach(error => { %>
-                      <li> <%= error.msg %></li>
-                      <% }) %>
-                    </ul>
-                    <% } %>
+                <%- include("./partials/errors") %>
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
                     <select id="categoria" name="categoria">

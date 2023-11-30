@@ -79,7 +79,9 @@ const editProduct = async (req, res) => {
     console.log(errors)
 
     if (!errors.isEmpty()) {
-        return res.render("edit/" + req.params, {
+        const producto = await model.findByPk(req.params.id)
+        return res.render("./edit", {
+            producto: producto,
             values: req.body,
             errors: errors.array(),
         });
