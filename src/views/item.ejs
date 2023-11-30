@@ -13,11 +13,11 @@
         <main class="main">
             <section class="destacado">
                 <article>
-                    <h3 class="destacado__h3">BABY YODA BLUEBALL</h3>
+                    <h3 class="destacado__h3"><%- (producto.product_name).toUpperCase() %></h3>
                     <p class="destacado__desc">
-                        Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga, edición limitada..
+                        <%- producto.product_description %>
                     </p>
-                    <p class="destacado__precio">$ 1799,99</p>
+                    <p class="destacado__precio">$ <%- producto.price %></p>
                     <div class="destacado__controls">
                         <button class="destacado__quantity-button" data-action="decrease">-</button>
                         <input class="destacado__quantity-input" type="number" value="1">

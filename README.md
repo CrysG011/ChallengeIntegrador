@@ -4,6 +4,8 @@
 
 ![Portada del sitio](./FunkosPortada.png)
 
+[Link al sitio](https://challenge-integrador-beige.vercel.app)
+
 #### Tecnologías a utilizar
 
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat-square)

@@ -1,4 +1,6 @@
- const getLoginView = (req, res) => {
+const { validationResult } = require("express-validator");
+
+const getLoginView = (req, res) => {
     res.render("login");
 }
 
@@ -11,7 +13,14 @@
 }
 
  const verifyRegister =  (req, res) => {
-    res.send("Comprobar registro");
+   const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render("register", {
+            values: req.body,
+            errors: errors.array(),
+        });
+    }
 }
 
  const verifyLogout = (req, res) => {
