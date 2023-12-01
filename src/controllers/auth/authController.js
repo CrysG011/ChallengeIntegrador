@@ -1,5 +1,7 @@
 const { validationResult } = require("express-validator");
 
+const model = require("../../models/User")
+
 const getLoginView = (req, res) => {
     res.render("login");
 }
@@ -12,7 +14,7 @@ const getLoginView = (req, res) => {
     res.render("register");
 }
 
- const verifyRegister =  (req, res) => {
+ const verifyRegister = async (req, res) => {
    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -20,6 +22,14 @@ const getLoginView = (req, res) => {
             values: req.body,
             errors: errors.array(),
         });
+    }
+   
+    try {
+       const user = await model.create(req.body);
+       res.redirect("/")
+    } catch (error) {
+      res.send(error)
+      console.log(error)
     }
 }
 
