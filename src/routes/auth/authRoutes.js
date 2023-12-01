@@ -6,7 +6,6 @@ const model = require("../../models/User")
 
 const { body } = require("express-validator")
 
-//estoy trabajando la parte de registro
 const registerValidations = [
     body("name")
     .not()
@@ -85,8 +84,26 @@ const registerValidations = [
     .withMessage("Las contraseñas no coinciden")
 ];
 
+const loginValidations = [
+    body("email")
+    .isEmail()
+    .withMessage("Ingrese un email válido"),
+    body("password")
+    .isLength({min: 6, max: 30})
+    .withMessage("La contraseña debe tener entre 6 y 30 caracteres")
+    .bail()
+    .isStrongPassword({
+        minLength: 6,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+    })
+    .withMessage("La contraseña debe tener al menos una minúscula, una mayúscula, un número y un símbolo(@,!,#...)")
+];
+
 router.get("/login", controller.getLoginView);
-router.post("/login", controller.verifyLogin);
+router.post("/login", loginValidations, controller.verifyLogin);
 
 router.get("/register", controller.getRegisterView);
 
