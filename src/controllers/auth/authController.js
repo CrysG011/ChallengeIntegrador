@@ -34,19 +34,19 @@ const verifyLogin = async (req, res) => {
                errors: [{msg: "El correo y/o la contraseña son incorrectos"}],
          });
          } else {
-            //estoy trabajando la parte de login y sesion
-            res.send("login")
+            req.session.userId = user.id;
+            res.redirect("/");
          }
       }
        catch (error) {
          res.send(error)
          console.log(error)
       }
-   };
+};
 
  const getRegisterView = (req, res) => {
     res.render("register");
-}
+};
  const verifyRegister = async (req, res) => {
    const errors = validationResult(req);
 
@@ -64,11 +64,12 @@ const verifyLogin = async (req, res) => {
       res.send(error)
       console.log(error)
     }
-}
+};
 
  const verifyLogout = (req, res) => {
-    res.send("Logout")
-}
+   req.session.destroy()
+    res.redirect("/");
+};
 
 
  module.exports = {

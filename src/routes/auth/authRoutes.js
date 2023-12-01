@@ -106,7 +106,6 @@ router.get("/login", controller.getLoginView);
 router.post("/login", loginValidations, controller.verifyLogin);
 
 router.get("/register", controller.getRegisterView);
-
 router.post("/register", registerValidations, controller.verifyRegister);
 
 router.get("/logout", controller.verifyLogout);

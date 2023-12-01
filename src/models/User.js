@@ -25,15 +25,16 @@ const User = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+    },
+    //si da tiempo podemos agregar sistema de roles desde la db
+    admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     }
 });
 
-User.beforeSave(async (user, options) => {
-    const { password } = user;
-
-    const hash = await bcryptjs.hash(password, 10);
-
-    user.password = hash;
+User.beforeSave(async (user) => {
+    user.password = await bcryptjs.hash(user.password, 10);
 });
 
 (async() => {await sequelize.sync()})();
