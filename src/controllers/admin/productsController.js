@@ -1,8 +1,9 @@
+const fs = require("fs/promises");
 const sharp = require("sharp");
 const path = require("path");
 const { validationResult } = require("express-validator");
 
-const model = require("../../models/Producto");
+const model = require("../../models/Product");
 
 const getAdminView = async (get, res) => {
     try {
@@ -121,9 +122,34 @@ const editProduct = async (req, res) => {
     }
 }
 
-const deleteProduct = (req, res) => {
-    res.send(`Buscar y eliminar el producto ${req.params.id}`);
-    console.log(req.params);
+const deleteProduct = async (req, res) => {
+    try {
+        const deleted = await model.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        if (deleted == 1){
+            console.log("Eliminando producto");
+
+
+            await fs.unlink(
+                path.resolve(
+                    __dirname,`../../../public/uploads/${req.params.id}-1.webp`
+                )
+            );
+            await fs.unlink(
+                path.resolve(
+                    __dirname,`../../../public/uploads/${req.params.id}-box.webp`
+                )
+            );
+        }
+        
+        res.redirect("/admin/");
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = {

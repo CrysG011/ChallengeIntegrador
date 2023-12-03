@@ -39,8 +39,13 @@
                                 <td class="product-list__code"><%= skuProductos[i] %></td>
                                 <td><%= nombresProductos[i] %></td>
                                 <td>STARS WARS</td>
-                                <td><a href="/admin/edit/<%= idProductos[i] %>"> <img src="../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></td></a>
-                                <td><img src="../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></td>
+                                <td><a href="/admin/edit/<%= idProductos[i] %>"> <img src="../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
+                                <td>
+                                    <!-- es hacer esto o dejar como estaba pero disparar el evento con js -->
+                                    <form class="form-delete" action="/admin/delete/<%= idProductos[i] %>?_method=DELETE" method="post">
+                                        <button type="submit"><img src="../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
+                                    </form>
+                                </td> 
                             </tr>
                         <% } %>
                     </tbody>
@@ -48,6 +53,18 @@
             </div>
         </main>
         <%- include("./partials/footer-admin") %>
+
+        <script>
+            document.addEventListener("submit", (event) => {
+                if (event.target.classList.contains("form-delete")) {
+                  event.preventDefault();
+
+                  if (confirm("¿Eliminar elemento?")) {
+                    event.target.submit();
+                  }
+                }
+            });
+        </script>
 </body>
 
 </html>

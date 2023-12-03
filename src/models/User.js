@@ -37,6 +37,6 @@ User.beforeSave(async (user) => {
     user.password = await bcryptjs.hash(user.password, 10);
 });
 
-(async() => {await sequelize.sync()})();
+// (async() => {await sequelize.sync()})();
 
 module.exports = User;

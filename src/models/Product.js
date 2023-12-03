@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("./db.js");
 
-const Producto = sequelize.define("products",
+const Product = sequelize.define("Product",
 {
     product_name: {
         type: DataTypes.STRING,
@@ -41,7 +41,7 @@ const Producto = sequelize.define("products",
     },
 });
 
-module.exports = Producto;
+module.exports = Product;
 
 //dev
-(async() => {await sequelize.sync()})();
+// (async() => {await sequelize.sync()})();

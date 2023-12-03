@@ -67,7 +67,7 @@ app.use((req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen (PORT, async () => {
 try {
-  await sequelize.authenticate();
+  await sequelize.sync({ alter: true });
 } catch (error) {
   console.log(error)
 }
