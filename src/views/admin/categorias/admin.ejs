@@ -17,7 +17,7 @@
                 <input type="text" id="searchInput" placeholder="código, nombre o categoría" />
             </div>
             <div class="product-list">
-                <a href="/admin/create">
+                <a href="/admin/categories/create">
                 <div class="product-list__add">
                     <h2 class="product-list__title">LISTADO DE CATEGORÍAS</h2>
                     <button class="product-list__add-button">AGREGAR<span class="plus-sign">+</span></button>
@@ -27,9 +27,8 @@
                     <thead>
                         <tr class="product-list__tr">
                             <th>ID</th>
-                            <th>Código</th>
                             <th class="product-list__name">Nombre de la categoría</th>
-                            <th class="product-list__category">Categoría</th>
+                            <th class="product-list__category">Descripción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,11 +36,11 @@
                             <tr class="product-list__tbody">
                                 <td class="product-list__id"><%= idCategorias[i] %></td>
                                 <td><%= nombresCategorias[i] %></td>
-                                <td>STARS WARS</td>
-                                <td><a href="/admin/edit/<%= idCategorias[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
+                                <td><%= descripcionCategorias[i] %></td>
+                                <td><a href="/admin/categories/edit/<%= idCategorias[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
                                 <td>
                                     <!-- es hacer esto o dejar como estaba pero disparar el evento con js -->
-                                    <form class="form-delete" action="/admin/delete/<%= idCategorias[i] %>?_method=DELETE" method="post">
+                                    <form class="form-delete" action="/admin/categories/delete/<%= idCategorias[i] %>?_method=DELETE" method="post">
                                         <button type="submit"><img src="../../../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
                                     </form>
                                 </td> 

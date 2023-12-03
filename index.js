@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(require("./src/routes/mainRoutes.js"));
 
-app.use("/admin", isLogin, isAdmin, require("./src/routes/admin/productsRoutes.js"));
+app.use("/admin/", isLogin, isAdmin, require("./src/routes/admin/productsRoutes.js"));
 
 app.use("/shop", require("./src/routes/shop/shopRoutes.js"));
 

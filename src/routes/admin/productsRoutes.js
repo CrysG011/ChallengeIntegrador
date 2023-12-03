@@ -7,7 +7,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 const { body } = require("express-validator");
 
-const validations = [
+const productValidations = [
     body("product_name")
     .not()
     .isEmpty()
@@ -41,13 +41,16 @@ const validations = [
 ]
 
 const controller = require("../../controllers/admin/productsController.js");
+
 router.get("/", controller.getAdminView)
 
+router.use("/categories/", require("./categoriesRoutes.js"));
+
 router.get("/create", controller.getCreateProductView);
-router.post("/create", upload.array("imagenes"), validations, controller.createProduct); 
+router.post("/create", upload.array("imagenes"), productValidations, controller.createProduct); 
 
 router.get("/edit/:id", controller.getEditProductView);
-router.put("/edit/:id", upload.array("imagenes"), validations, controller.editProduct);
+router.put("/edit/:id", upload.array("imagenes"), productValidations, controller.editProduct);
 
 router.delete("/delete/:id", controller.deleteProduct);
 
