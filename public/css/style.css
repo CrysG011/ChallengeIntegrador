@@ -435,101 +435,92 @@ footer {
   }
 }
 
-main {
+.main-shop {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* Definir 4 columnas, donde la primera es 1fr y la segunda es 3fr */
-  grid-template-rows: repeat(4, 1fr);
-  /* Definir 4 filas, cada una con una fracción igual de altura */
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-template-columns: 25% 75%;
   padding-top: 20rem;
 }
 
-aside {
-  grid-column: 1;
-  /* Ocupar la primera columna */
-  grid-row: 1;
+.aside {
   display: flex;
   flex-flow: column wrap;
-  width: 100%;
+  gap: var(--spacing-16);
+  max-width: fit-content;
 }
 
 .search-form,
 .sort-form,
-.price-form {
+.price-form, 
+.filter-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: fit-content;
+  gap: var(--spacing-8);
 }
-
-.search-form__input,
-.sort-form__select {
-  max-width: 80%;
-}
-
-.price-form__input {
-  max-width: 4rem;
-}
-
-.price-form__input-group-container {
-  display: flex;
-  gap: 1rem;
-}
-
-.price-form__input-group {
-  gap: 1rem;
+.search-form__label, 
+.sort-form__label, 
+.price-form__label, 
+.filter-form__label {
+  font-size: var(--font-medium);
 }
 
 .search-form__input,
 .sort-form__select,
 .price-form__input {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  line-height: 1.5rem;
-  font-size: 2rem;
-  color: var(--dark-bg-solid);
-}
-
-.sort-form__select {
-
-  border-radius: 6px;
-  border: 2px solid var(--black-2);
-}
-
-.search-form__input {
-
+  padding: var(--spacing-8);
   border-radius: 6px;
   border: 2px solid var(--dark-solid);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: var(--font-medium);
+  color: var(--dark-bg-solid);
+  max-width: fit-content;
+}
+
+.price-form__input-group-container {
+  display: flex;
+  gap: var(--spacing-12);
+}
+
+.price-form__input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
 }
 
 .price-form__input {
-
-  border-radius: 6px;
+  max-width: 5em;
+  border-radius: var(--spacing-8);
   border: 2px solid var(--dark-solid);
   text-align: center;
+  -webkit-border-radius: var(--spacing-8);
+  -moz-border-radius: var(--spacing-8);
+  -ms-border-radius: var(--spacing-8);
+  -o-border-radius: var(--spacing-8);
 }
 
 .filter-form__checkbox-group {
+  display: flex;
+  gap: var(--spacing-8);
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 1.8rem;
-
+  font-size: var(--font-small);
   white-space: nowrap;
 }
 
 .filter-form__checkbox {
-  display: none;
+  display: block;
+}
+.filter-form__checkbox-label {
+  list-style: none;
+  padding: .3rem;
 }
 
 .filter-form__checkbox+.filter-form__checkbox-label::before {
   content: "";
   display: inline-block;
-
   border: 2px solid #30343F;
   border-radius: 6px;
-
   background-color: var(--ligth-font-solid);
   vertical-align: middle;
 }
@@ -538,67 +529,24 @@ aside {
   background-color: var(--dark-bg-solid);
 }
 
-.search-form__label,
-.sort-form__label,
-.price-form__label,
-.filter-form__label {
-  font-size: medium;
-}
-
-.price-form__sublabel {
-  font-size: small;
-}
-
-.price-form__input {
-  font-size: small;
-}
-
-.search-form__input,
-.sort-form__select {
-  font-size: 1.4rem;
-}
-
-.filter-form__checkbox-group {
-  font-size: small;
-}
-
-.filter-form__checkbox+.filter-form__checkbox-label::before {
-  content: "";
-  display: inline-block;
-  border: 2px solid #30343F;
-  border-radius: 6px;
-  margin-right: var(--ligth-font-solid);
-  vertical-align: middle;
-}
-
 .news {
-  grid-column: 2 / span 3;
-  grid-row: 1 / span 4;
-  max-width: 100%;
+  display: flex;
+  flex-flow: column wrap;
 }
 
-.news__fila1 {
-  grid-column: 2 / span 3;
-  grid-row: 1;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.news__fila2 {
-  grid-column: 2 / span 3;
-  grid-row: 2;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.news__fila3 {
-  grid-column: 2 / span 3;
-  grid-row: 3;
-  grid-template-columns: repeat(3, 1fr);
-}
-
+.news__fila1, 
+.news__fila2, 
+.news__fila3, 
 .news__fila4 {
-  grid-column: 2 / span 3;
-  grid-row: 4;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider__item, 
+.card-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination {
