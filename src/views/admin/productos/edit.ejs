@@ -19,7 +19,7 @@
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
                     <select id="categoria" name="CategoryId">
-                        <option value="opcion1">Seleccionar</option>
+                        <option value="opcion1"> - Seleccionar - </option>
                         <%categoriasDb.forEach(category => { %>
                         <option value="<%=category.id %>" <%=category.id == producto.CategoryId ? "selected" : ""%>> <%= category.category_name %></option>
                         <% }) %>
