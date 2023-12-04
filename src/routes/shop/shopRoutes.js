@@ -4,7 +4,7 @@ const shopController = require("../../controllers/shop/shopController");
 
 const isLogin = (req, res, next) => {
     if (!req.session.userId) {
-      return res.redirect("auth/login");
+      return res.redirect("../auth/login");
     }
   
     next();

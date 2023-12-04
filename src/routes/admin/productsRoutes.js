@@ -8,6 +8,14 @@ const upload = multer({ storage: multer.memoryStorage() });
 const { body } = require("express-validator");
 
 const productValidations = [
+    body("CategoryId")
+    .custom(value => {
+        if (value === "opcion1") {
+            throw new Error;
+        }
+        return true;
+    })
+    .withMessage("Debes seleccionar una categoría"),
     body("product_name")
     .not()
     .isEmpty()
