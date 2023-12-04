@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("./db.js");
 
-const Producto = sequelize.define("products",
+const Category = require("./Category");
+
+const Product = sequelize.define("Product",
 {
     product_name: {
         type: DataTypes.STRING,
@@ -41,7 +43,6 @@ const Producto = sequelize.define("products",
     },
 });
 
-module.exports = Producto;
+Product.belongsTo(Category)
 
-//dev
-(async() => {await sequelize.sync()})();
+module.exports = Product;

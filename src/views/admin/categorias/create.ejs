@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+    <%- include("../../partials/header-admin") %>
+        <form class="container" action="/admin/categories/create" method="post" enctype="multipart/form-data">
+            <div class="create-grid">
+                <div class="create-row">
+                    <h1 class="create-title">CREAR NUEVA CATEGORÍA</h1>
+                </div>
+                <%- include("../../partials/errors") %>
+                <div class="create-row">
+                    <label for="nombre">Nombre de la categoría:</label>
+                    <input class="log-input" type="text" id="nombre" name="category_name" value="<%= typeof values != 'undefined' ? values.category_name : '' %>"/>
+                </div>
+                <div class="create-row">
+                    <input class="desc-input" type="text" id="descripcion" name="category_description"
+                        placeholder="Descripción de la categoría" value="<%= typeof values != 'undefined' ? values.category_description : '' %>" >
+                </div>
+                <div class="create-row">
+                    <label for="imagenes">Imagen de la categoría:</label>
+                    <input type="file" id="imagenes" name="imagen" accept="image/*">
+                </div>
+                <div class="create-row">
+                    <button class="btn-ingresar" type="submit" id="agregar">Agregar Categoría</button>
+                    <button class="btn-ingresar" type="reset" id="limpiar">Limpiar</button>
+                </div>
+            </div>
+        </form>
+        <%- include("../../partials/footer-admin") %>
+</body>
+
+</html>
