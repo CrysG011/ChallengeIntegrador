@@ -18,11 +18,13 @@
                 <%- include("../../partials/errors") %>
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria">
-                        <option value="opcion1">Seleccionar</option>
-                        <option value="opcion2">Opción 1</option>
-                        <option value="opcion3">Opción 2</option>
+                    <select id="categoria" name="CategoryId">
+                        <option value="opcion1">Seleccionar</option> 
+                        <%categoriasDb.forEach(category => { %>
+                        <option value="<%=category.id %>"> <%= category.category_name %></option>
+                        <% }) %>
                     </select>
+                    
                     <label for="licencia">Licencia:</label>
                     <select id="licencia" name="licencia">
                         <option value="opcion1">Seleccionar</option>
@@ -69,7 +71,7 @@
                 </div>
             </div>
         </form>
-        <%- include("../../partials/footer-admin") %>
+    <%- include("../../partials/footer-admin") %>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ const path = require("path");
 const { validationResult } = require("express-validator");
 
 const model = require("../../models/Product");
+const modelCategory = require("../../models/Category");
 
 const getAdminView = async (get, res) => {
     try {
@@ -13,22 +14,26 @@ const getAdminView = async (get, res) => {
         const idProductos = productos.map(producto => producto.id);
         const nombresProductos = productos.map(producto => producto.product_name);
         const skuProductos = productos.map(producto => producto.sku);
-        res.render("./admin/productos/admin", { nombresProductos, skuProductos, idProductos });   
+        res.render("./admin/productos/admin", { nombresProductos, skuProductos, idProductos,});
     } catch (error) {
         console.log(error)
     }
 }
 
-const getCreateProductView = (req, res) => {
-    res.render("./admin/productos/create");
+const getCreateProductView = async (req, res) => {
+    const categoriasDb = await modelCategory.findAll();
+    res.render("./admin/productos/create", {categoriasDb});
 }
 
 const createProduct = async (req, res) => {
 
     const errors = validationResult(req)
 
+    const categoriasDb = await modelCategory.findAll();
+
     if (!errors.isEmpty()) {
         return res.render("./admin/productos/create", {
+            categoriasDb,
             values: req.body,
             errors: errors.array(),
         });
@@ -62,9 +67,10 @@ const createProduct = async (req, res) => {
 
 const getEditProductView = async (req, res) => {
     try {
+        const categoriasDb = await modelCategory.findAll();
         const producto = await model.findByPk(req.params.id);
         if (producto) {
-            res.render("./admin/productos/edit", {producto});  
+            res.render("./admin/productos/edit", {producto, categoriasDb});  
         } else {
             res.status(404).send("El producto solicitado no existe");
         }
@@ -78,12 +84,15 @@ const getEditProductView = async (req, res) => {
 const editProduct = async (req, res) => {
 
     const errors = validationResult(req)
+    const categoriasDb = await modelCategory.findAll();
 
     console.log(errors)
 
     if (!errors.isEmpty()) {
         const producto = await model.findByPk(req.params.id)
+        console.log("este es el values req body", req.body)
         return res.render("./admin/productos/edit", {
+            categoriasDb,
             producto: producto,
             values: req.body,
             errors: errors.array(),

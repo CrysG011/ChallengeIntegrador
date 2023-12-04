@@ -18,10 +18,11 @@
                 <%- include("../../partials/errors") %>
                 <div class="create-row">
                     <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria">
+                    <select id="categoria" name="CategoryId">
                         <option value="opcion1">Seleccionar</option>
-                        <option value="opcion2">Opción 1</option>
-                        <option value="opcion3">Opción 2</option>
+                        <%categoriasDb.forEach(category => { %>
+                        <option value="<%=category.id %>" <%=category.id == producto.CategoryId ? "selected" : ""%>> <%= category.category_name %></option>
+                        <% }) %>
                     </select>
                     <label for="licencia">Licencia:</label>
                     <select id="licencia" name="licencia">
@@ -48,7 +49,7 @@
                     <input class="create-input log-input" type="text" id="stock" name="stock" placeholder="Insertar stock" value="<%- producto.stock%>">
                 </div>
                 <div class="create-row">
-                    <!-- ToDo: añadir descuento, cuotas e imgs desde la db-->
+                    <!-- ToDo: añadir descuento y cuotas desde la db-->
                     <label for="descuento">Descuento:</label>
                     <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="10%">
                     <label for="cuotas">Cuotas:</label>
@@ -66,12 +67,12 @@
                 </div>
                 <picture class="create-row">
                     <figure class="img-edit">
-                        <img src="/img/naruto/kakashi-hatake.png"
-                            alt="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden">
+                        <img src="/uploads/<%=producto.id%>-1.webp"
+                            alt="Imagen del frente del producto">
                         <figcaption>Frente</figcaption>
                     </figure>
                     <figure class="img-edit">
-                        <img src="/img/naruto/kakashi-hatake-dorso.webp" alt="Dorso de Kakashi Hatake">
+                        <img src="/uploads/<%=producto.id%>-box.webp" alt="Imagen del dorso del producto">
                         <figcaption>Dorso</figcaption>
                     </figure>
                 </picture>
