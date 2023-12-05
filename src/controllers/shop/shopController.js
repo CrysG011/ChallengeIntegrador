@@ -19,7 +19,6 @@ const getShopView = async (req, res) => {
 };
 
 const getItemView = async (req, res) => {
-
   
   try {
     
@@ -51,34 +50,81 @@ const getItemView = async (req, res) => {
     // const imgBackProductos = productos.map(producto => producto.image_back);
     // const duesProductos = productos.map(producto => producto.dues);
   } catch (error) {
-    console.log(error)
+    console.log(error);
 }
 };
 
 const addToCart = async (req, res) => {
+  try {
+      console.log("este es el req body: ", req.body)
+        const user = await modelUser.findByPk(req.session.userId);
+        
+        if (!user) {
+          return res.status(400).send('Tu usuario no se encuentra registrado');    
+        } else {
+          const existingCartEntry = await modelCart.findOne({
+            where: {
+              userId: user.id,
+              productId: req.params.id,
+            },
+          });
+      
+          if (existingCartEntry) {
+            existingCartEntry.quantity += +req.body.quantity;
+            await existingCartEntry.save();
+          } else {
+          const cart = await modelCart.create(
+            {
+              quantity: req.body.quantity,
+              UserId: user.id,
+              ProductId: req.params.id,
+            }
+            );
+           }
+    }
+    
+    res.send("producto añadido al carrito")
 
-  const user = await modelUser.findByPk(req.session.userId);
-
-  if (!user) {
-    return res.status(400).send('El usuario no existe');
-  } else {
-    const userId = user.id;
-    const quantity = req.body.quantity;
-    const productId = req.params.id;
-
-    const cart = await modelCart.create(
-      {
-        quantity: req.body.quantity,
-        UserId: userId,
-        ProductId: productId
-      }
-    );
+  } catch (error) {
+    console.log(error);
+    res.send(error);
   }
 
 };
 
-const getCartView = (req, res) => {
-  res.render("carro");
+const getCartView = async (req, res) => {
+
+try {
+    const user = await modelUser.findByPk(req.session.userId);
+  
+    if (!user) {
+      return res.status(400).send('El usuario no existe');
+    } 
+  
+    const productsInCart = await modelCart.findAll({
+      where: {
+        UserId: user.id,
+      }});
+  
+    const productsId = []
+  
+    productsInCart.forEach(product => {
+      productsId.push(product.ProductId)
+      })
+  
+    const productos = []
+  
+    for (i=0; i<productsId.length; i++){
+      const producto = await model.findByPk(productsId[i]);
+      productos.push(producto)
+    }
+    res.render("carro", {productsInCart, productos});
+  
+} catch (error) {
+  res.send(error)
+}
+
+  
 };
 
 const CreatePurchase = (req, res) => {

@@ -18,45 +18,50 @@
                 <li>CANTIDAD</li>
                 <li>TOTAL</li>
             </ul>
-            <article class="carro__card">
-                <div class="carro__card-content">
-                    <picture class="carro__card-img">
-                        <img src="../../img/star-wars/baby-yoda-1.webp" alt="BABY YODA BLUEBALL" />
-                    </picture>
-                    <div class="carro__card-desc">
-                        <h4 class="card-item__title">BABY YODA BLUEBALL</h4>
-                        <p class="card-item__category">STAR WARS</p>
-                        <p class="card-item__price">precio: $1799,99</p>
+
+            <% for (let i = 0; i < productsInCart.length; i++) { %>
+                <!-- le pongo el style nada mas para visualizar rapido -->
+                <article style="display: block" class="carro__card">
+                    <div class="carro__card-content">
+                        <picture class="carro__card-img">
+                            <img src="../../img/star-wars/baby-yoda-1.webp" alt="BABY YODA BLUEBALL" />
+                        </picture>
+                        <div class="carro__card-desc">
+                            <h4 class="card-item__title"><%= productos[i].product_name %></h4>
+                            <p class="card-item__category">STAR WARS</p>
+                            <p class="card-item__price">precio: <%= productos[i].price %></p>
+                        </div>
                     </div>
-                </div>
-                <div class="carro__card-quantity">
-                    <input type="number" class="quantity" value="1" min="1">
-                    <button class="increment">+</button>
-                    <button class="decrement">-</button>
-                </div>
-                <p class="carro__card-total">$ 3599,98</p>
-                <button class="carro__card-cancel">x</button>
-            </article>
-            <section class="carro__resumen">
-                <h2 class="carro__resumen-title">RESUMEN</h2>
-                <div class="carro__resumen-items">
-                    <div class="carro__resumen-item">
-                        <p>CANTIDAD DE ELEMENTOS</p>
-                        <p>1</p>
+                    <div class="carro__card-quantity">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
                     </div>
-                    <div class="carro__resumen-item">
-                        <p>SUBTOTAL</p>
-                        <p>$ 5399,97</p>
+                    <p class="carro__card-total">$ <%= productos.find(producto => producto.id === productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
+                    <button class="carro__card-cancel">x</button>
+                </article>
+                <% } %>
+
+                <section class="carro__resumen">
+                    <h2 class="carro__resumen-title">RESUMEN</h2>
+                    <div class="carro__resumen-items">
+                        <div class="carro__resumen-item">
+                            <p>CANTIDAD DE ELEMENTOS</p>
+                            <p>1</p>
+                        </div>
+                        <div class="carro__resumen-item">
+                            <p>SUBTOTAL</p>
+                            <p>$ 5399,97</p>
+                        </div>
+                        <div class="carro__resumen-item">
+                            <p>ENVIO</p>
+                            <p>$ 0,00</p>
+                        </div>
+                        <div class="carro__resumen-item carro__resumen-total">
+                            <p>TOTAL</p>
+                            <p>$ 5399,97</p>
+                        </div>
                     </div>
-                    <div class="carro__resumen-item">
-                        <p>ENVIO</p>
-                        <p>$ 0,00</p>
-                    </div>
-                    <div class="carro__resumen-item carro__resumen-total">
-                        <p>TOTAL</p>
-                        <p>$ 5399,97</p>
-                    </div>
-                </div>
 
                 <button class="ir-a-pagar">IR A PAGAR</button>
             </section>
