@@ -1,180 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHOP | Funkoshop</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="./shop.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./shop.css" />
+  </head>
 
-<body>
+  <body>
     <%- include("./partials/header-shop") %>
-        <main class="main-shop container">
-            <aside class="aside">
-                <form class="search-form">
-                    <label class="search-form__label" for="search">BUSCAR</label>
-                    <input class="search-form__input" type="text" id="search" name="search"
-                        placeholder="Item o categoría" />
-                </form>
-                <form class="sort-form">
-                    <label class="sort-form__label" for="sort">ORDENAR POR</label>
-                    <select class="sort-form__select" id="sort" name="sort">
-                        <option value="asc">Menor a mayor</option>
-                        <option value="desc">Mayor a menor</option>
-                    </select>
-                </form>
-                <form class="price-form">
-                    <label class="price-form__label">PRECIO</label>
-                    <div class="price-form__input-group-container">
-                        <div class="price-form__input-group">
-                            <label class="price-form__sublabel" for="min-price">MIN</label>
-                            <input class="price-form__input" type="number" id="min-price" name="min-price"
-                                placeholder="0" />
-                        </div>
-                        <div class="price-form__input-group">
-                            <label class="price-form__sublabel" for="max-price">MAX</label>
-                            <input class="price-form__input" type="number" id="max-price" name="max-price"
-                                placeholder="0" />
-                        </div>
-                    </div>
-                </form>
-                <form class="filter-form">
-                    <label class="filter-form__label">FILTRAR</label>
-                    <div class="filter-form__checkbox-list">
-                        <div class="filter-form__checkbox-group">
-                            <input class="filter-form__checkbox" type="checkbox" id="new" name="new" />
-                            <label class="filter-form__checkbox-label" for="new">NUEVOS</label>
-                        </div>
-                        <div class="filter-form__checkbox-group">
-                            <input class="filter-form__checkbox" type="checkbox" id="offers" name="offers" />
-                            <label class="filter-form__checkbox-label" for="offers">OFERTAS</label>
-                        </div>
-                        <div class="filter-form__checkbox-group">
-                            <input class="filter-form__checkbox" type="checkbox" id="special-edition"
-                                name="special-edition" />
-                            <label class="filter-form__checkbox-label" for="special-edition">EDICIÓN ESPECIAL</label>
-                        </div>
-                        <div class="filter-form__checkbox-group">
-                            <input class="filter-form__checkbox" type="checkbox" id="favorites" name="favorites" />
-                            <label class="filter-form__checkbox-label" for="favorites">FAVORITOS</label>
-                        </div>
-                    </div>
-                </form>
-            </aside>
-            <section class="news">
-                <div class="news__fila1 slider">
-                    <ul class="slider__items">
-                        <!--los hago manual en el let porque aún no sé inyectar ul>li*3 prolijo con ejs-->
-                        <% for (let i = 0; i < 3; i++) { %>
-                        <li class="slider__item">
-                            <article class="card-item">
-                                <a class="card-item__link" href="#">
-                                    <picture class="card-item__cover">
-                                        <span class="card-item__tag">Nuevo</span>
-                                        <img class="card-item__img--front" src="../../img/pokemon/pidgeotto-1.webp"
-                                            alt="Figura coleccionable Pokemon PIDGEOTTO" />
-                                        <img class="card-item__img--back" src="../../img/pokemon/pidgeotto-box.webp"
-                                            alt="Figura coleccionable Pokemon PIDGEOTTO">
-                                    </picture>
-                                    <div class="card-item__content">
-                                        <p class="card-item__licence">POKEMON</p>
-                                        <h4 class="card-item__name"><%= nombresProductos[i] %></h4>
-                                        <p class="card-item__price"><%= priceProductos[i] %></p>
-                                        <p class="card-item__promo"><%= duesProductos[i] %></p>
-                                    </div>
-                                </a>
-                            </article>
-                        </li>
-                        <% } %>
-                    </ul>
-                </div>
-                <div class="news__fila2 slider">
-                    <ul class="slider__items">
-                        <% for (let i = 3; i < 6; i++) { %>
-                            <li class="slider__item">
-                                <article class="card-item">
-                                    <a class="card-item__link" href="#">
-                                        <picture class="card-item__cover">
-                                            <span class="card-item__tag">Nuevo</span>
-                                            <img class="card-item__img--front" src="../../img/pokemon/pidgeotto-1.webp"
-                                                alt="Figura coleccionable Pokemon PIDGEOTTO" />
-                                            <img class="card-item__img--back" src="../../img/pokemon/pidgeotto-box.webp"
-                                                alt="Figura coleccionable Pokemon PIDGEOTTO">
-                                        </picture>
-                                        <div class="card-item__content">
-                                            <p class="card-item__licence">POKEMON</p>
-                                            <h4 class="card-item__name"><%= nombresProductos[i] %></h4>
-                                            <p class="card-item__price"><%= priceProductos[i] %></p>
-                                            <p class="card-item__promo"><%= duesProductos[i] %></p>
-                                        </div>
-                                    </a>
-                                </article>
-                            </li>
-                            <% } %>
-                    </ul>
-                </div>
-                <div class="news__fila3 slider">
-                    <ul class="slider__items">
-                        <% for (let i = 6; i < 9; i++) { %>
-                            <li class="slider__item">
-                                <article class="card-item">
-                                    <a class="card-item__link" href="#">
-                                        <picture class="card-item__cover">
-                                            <span class="card-item__tag">Nuevo</span>
-                                            <img class="card-item__img--front" src="../../img/pokemon/pidgeotto-1.webp"
-                                                alt="Figura coleccionable Pokemon PIDGEOTTO" />
-                                            <img class="card-item__img--back" src="../../img/pokemon/pidgeotto-box.webp"
-                                                alt="Figura coleccionable Pokemon PIDGEOTTO">
-                                        </picture>
-                                        <div class="card-item__content">
-                                            <p class="card-item__licence">POKEMON</p>
-                                            <h4 class="card-item__name"><%= nombresProductos[i] %></h4>
-                                            <p class="card-item__price"><%= priceProductos[i] %></p>
-                                            <p class="card-item__promo"><%= duesProductos[i] %></p>
-                                        </div>
-                                    </a>
-                                </article>
-                            </li>
-                            <% } %>
-                    </ul>
-                </div>
-                <div class="news__fila4">
-                    <div class="pagination">
-                        <ul class="pagination__ul">
-                            <a href="#">
-                                <li class="pagination__li--back"><img src="../../img/icons/arrow.svg" alt="ANTERIOR">
-                                </li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li--selected">1</li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li">2</li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li">...</li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li">9</li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li">10</li>
-                            </a>
-                            <a href="#">
-                                <li class="pagination__li--next"><img src="../../img/icons/arrow.svg" alt="SIGUIENTE">
-                                </li>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <%- include("./partials/footer-shop") %>
-</body>
-
+    <main class="main-shop container">
+      <aside class="aside">
+        <form class="search-form">
+          <label class="search-form__label" for="search">BUSCAR</label>
+          <input
+            class="search-form__input"
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Item o categoría"
+          />
+        </form>
+        <form class="sort-form">
+          <label class="sort-form__label" for="sort">ORDENAR POR</label>
+          <select class="sort-form__select" id="sort" name="sort">
+            <option value="asc">Menor a mayor</option>
+            <option value="desc">Mayor a menor</option>
+          </select>
+        </form>
+        <form class="price-form">
+          <label class="price-form__label">PRECIO</label>
+          <div class="price-form__input-group-container">
+            <div class="price-form__input-group">
+              <label class="price-form__sublabel" for="min-price">MIN</label>
+              <input
+                class="price-form__input"
+                type="number"
+                id="min-price"
+                name="min-price"
+                placeholder="0"
+              />
+            </div>
+            <div class="price-form__input-group">
+              <label class="price-form__sublabel" for="max-price">MAX</label>
+              <input
+                class="price-form__input"
+                type="number"
+                id="max-price"
+                name="max-price"
+                placeholder="0"
+              />
+            </div>
+          </div>
+        </form>
+        <form class="filter-form">
+          <label class="filter-form__label">FILTRAR</label>
+          <div class="filter-form__checkbox-list">
+            <div class="filter-form__checkbox-group">
+              <input
+                class="filter-form__checkbox"
+                type="checkbox"
+                id="new"
+                name="new"
+              />
+              <label class="filter-form__checkbox-label" for="new"
+                >NUEVOS</label
+              >
+            </div>
+            <div class="filter-form__checkbox-group">
+              <input
+                class="filter-form__checkbox"
+                type="checkbox"
+                id="offers"
+                name="offers"
+              />
+              <label class="filter-form__checkbox-label" for="offers"
+                >OFERTAS</label
+              >
+            </div>
+            <div class="filter-form__checkbox-group">
+              <input
+                class="filter-form__checkbox"
+                type="checkbox"
+                id="special-edition"
+                name="special-edition"
+              />
+              <label class="filter-form__checkbox-label" for="special-edition"
+                >EDICIÓN ESPECIAL</label
+              >
+            </div>
+            <div class="filter-form__checkbox-group">
+              <input
+                class="filter-form__checkbox"
+                type="checkbox"
+                id="favorites"
+                name="favorites"
+              />
+              <label class="filter-form__checkbox-label" for="favorites"
+                >FAVORITOS</label
+              >
+            </div>
+          </div>
+        </form>
+      </aside>
+      <section class="news slider">
+        <div class="slider__item">
+          <% for (let i=0; i < 3; i++) { %>
+          <article class="card__item">
+            <a class="card-item__link" href="#">
+              <picture class="card-item__cover">
+                <span class="card-item__tag">Nuevo</span>
+                <img
+                  class="card-item__img--front"
+                  src="../../img/pokemon/pidgeotto-1.webp"
+                  alt="Figura coleccionable Pokemon PIDGEOTTO"
+                />
+                <img
+                  class="card-item__img--back"
+                  src="../../img/pokemon/pidgeotto-box.webp"
+                  alt="Figura coleccionable Pokemon PIDGEOTTO"
+                />
+              </picture>
+              <div class="card-item__content">
+                <p class="card-item__licence">POKEMON</p>
+                <h4 class="card-item__name"><%= nombresProductos[i] %></h4>
+                <p class="card-item__price"><%= priceProductos[i] %></p>
+                <p class="card-item__promo"><%= duesProductos[i] %></p>
+              </div>
+            </a>
+          </article>
+          <% } %>
+        </div>
+        <div class="pagination">
+          <ul class="pagination__ul">
+            <a href="#">
+              <li class="pagination__li--back">
+                <img src="../../img/icons/arrow.svg" alt="ANTERIOR" />
+              </li>
+            </a>
+            <a href="#">
+              <li class="pagination__li--selected">1</li>
+            </a>
+            <a href="#">
+              <li class="pagination__li">2</li>
+            </a>
+            <a href="#">
+              <li class="pagination__li">...</li>
+            </a>
+            <a href="#">
+              <li class="pagination__li">9</li>
+            </a>
+            <a href="#">
+              <li class="pagination__li">10</li>
+            </a>
+            <a href="#">
+              <li class="pagination__li--next">
+                <img src="../../img/icons/arrow.svg" alt="SIGUIENTE" />
+              </li>
+            </a>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <%- include("./partials/footer-shop") %>
+  </body>
 </html>
