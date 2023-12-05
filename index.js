@@ -9,7 +9,7 @@ const sequelize = require("./src/models/db.js");
 const model = require("./src/models/User")
 
 // Dejo express-session pero si queres usamos cookie-session
-const session = require("express-session");
+const session = require("cookies-session");
 app.use(session({
   secret: process.env.SESSION_HASH,
   resave: false,
