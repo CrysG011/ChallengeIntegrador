@@ -18,12 +18,14 @@
                         <%- producto.product_description %>
                     </p>
                     <p class="destacado__precio">$ <%- producto.price %></p>
-                    <div class="destacado__controls">
-                        <button class="destacado__quantity-button" data-action="decrease">-</button>
-                        <input class="destacado__quantity-input" type="number" value="1">
-                        <button class="destacado__quantity-button" data-action="increase">+</button>
-                        <button class="destacado__add-to-cart">Agregar al carrito</button>
-                    </div>
+                    <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
+                        <div class="destacado__controls">
+                            <button class="destacado__quantity-button" data-action="decrease">-</button>
+                            <input name="quantity" class="destacado__quantity-input" type="number" value="1">
+                            <button class="destacado__quantity-button" data-action="increase">+</button>
+                            <button type="submit" class="destacado__add-to-cart">Agregar al carrito</button>
+                        </div>
+                    </form>
                     <a href="#" class="destacado__payment-link">Ver método de pago </a>
                     <p>- 3 CUOTAS SIN INTERÉS</p>
                 </article>

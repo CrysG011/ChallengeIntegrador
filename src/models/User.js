@@ -26,7 +26,6 @@ const User = sequelize.define("User", {
         allowNull: false,
         unique: true,
     },
-    //si da tiempo podemos agregar sistema de roles desde la db
     admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -36,7 +35,5 @@ const User = sequelize.define("User", {
 User.beforeSave(async (user) => {
     user.password = await bcryptjs.hash(user.password, 10);
 });
-
-// (async() => {await sequelize.sync()})();
 
 module.exports = User;

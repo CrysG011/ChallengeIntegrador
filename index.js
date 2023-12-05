@@ -6,7 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const sequelize = require("./src/models/db.js");
 
-const model = require("./src/models/User")
+const model = require("./src/models/User");
+const modelCart = require("./src/models/Cart");
 
 // Dejo express-session pero si queres usamos cookie-session
 const session = require("express-session");
@@ -26,8 +27,6 @@ const isLogin = (req, res, next) => {
 };
 
 const isAdmin = async (req, res, next) => {
-  //funca bien pero hay algun problemilla que si perdes la session mientras estas en /admin y luego tocas
-  //el lapiz de editar te redirige muchas veces a auth y te salta un error (no creashea) jijiji
   try {
     const user = await model.findOne({
       where: {
