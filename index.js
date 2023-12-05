@@ -8,14 +8,10 @@ const sequelize = require("./src/models/db.js");
 
 const model = require("./src/models/User")
 
-// Dejo express-session pero si queres usamos cookie-session
-const session = require("cookies-session");
-app.use(session({
-  secret: process.env.SESSION_HASH,
-  resave: false,
-  saveUninitialized: false,
-  })
-);
+const session = require("cookie-session");
+app.use(session({ 
+  keys: ["2f63f1edd8b2c3926f52154eb4672e43a0563f0fcc36c98166f829f1c77bac6e", "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"] 
+}));
 
 const isLogin = (req, res, next) => {
   if (!req.session.userId) {
