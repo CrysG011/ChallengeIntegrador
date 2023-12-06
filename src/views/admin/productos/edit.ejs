@@ -51,12 +51,12 @@
                 <div class="create-row">
                     <!-- ToDo: añadir descuento y cuotas desde la db-->
                     <label for="descuento">Descuento:</label>
-                    <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="10%">
+                    <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="0%" value="<%=producto.discount%>">
                     <label for="cuotas">Cuotas:</label>
                     <select id="cuotas" name="cuotas">
-                        <option value="opcion1">3 Cuotas sin interés</option>
-                        <option value="opcion2">6 Cuotas</option>
-                        <option value="opcion3">12 Cuotas</option>
+                        <option value="opcion1" <%="3 Cuotas sin interés" == producto.dues ? "selected" : ""%>>3 Cuotas sin interés</option>
+                        <option value="opcion2" <%="6 Cuotas" == producto.dues ? "selected" : ""%>>6 Cuotas</option>
+                        <option value="opcion3" <%="12 Cuotas" == producto.dues ? "selected" : ""%>>12 Cuotas</option>
                     </select>
                 </div>
                 <div class="create-row">

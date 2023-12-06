@@ -38,7 +38,7 @@
                                 <td class="product-list__id"><%= idProductos[i] %></td>
                                 <td class="product-list__code"><%= skuProductos[i] %></td>
                                 <td><%= nombresProductos[i] %></td>
-                                <td>STARS WARS</td>
+                                <td><%= ((categoriasDb.find(categoria => categoria.id === productos[i].CategoryId)).category_name).toUpperCase() %></td>
                                 <td><a href="/admin/edit/<%= idProductos[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
                                 <td>
                                     <!-- es hacer esto o dejar como estaba pero disparar el evento con js -->
