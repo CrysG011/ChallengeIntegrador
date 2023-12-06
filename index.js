@@ -55,8 +55,8 @@ app.use("/shop", require("./src/routes/shop/shopRoutes.js"));
 
 app.use("/auth", require("./src/routes/auth/authRoutes.js"));
 
-app.use((req, res, next) => {
-  res.status(404).send("La página no existe");
+app.use((req, res) => {
+  res.status(404).render('error');
 });
 
 const PORT = process.env.PORT || 3000;

@@ -1194,3 +1194,80 @@ footer {
   display: flex;
   align-items: start;
 }
+
+/*PAGINA ERROR 404*/
+
+.error-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark-solid);
+  text-align: center;
+}
+#oopss {
+  font-weight: 400;
+  font-size: var(--font-large);
+  width: 100%;
+  height: 100%;
+  line-height: 1.5em;
+}
+
+.error-text {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  gap: var(--spacing-68);
+  font-size: 2.5rem;
+  color: var(--ligth-font-solid);
+  padding-top: 3rem;
+}
+.error-text h1 {
+  background: var(--primary-solid);
+  width: fit-content;
+  color: var(--ligth-font-solid);
+  font-size: var(--font-jumbo);
+  padding: 3rem;
+  border-radius: 10%;
+  font-weight: bolder;
+  transition: all 0.5s;
+}
+
+.error-text p {
+  font-weight: bold;
+  color: var(--secondary-solid);
+}
+
+.error-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: var(--spacing-68);
+}
+
+.back {
+  text-decoration: none;
+  background: var(--dark-bg-solid);
+  color: var(--ligth-font-solid);
+  padding: 0.625rem 1.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+}
+
+.back:hover {
+  background: black;
+  color: var(--primary-solid);
+  transform: scale(1);
+}
+
+.error-iso {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  max-width: 9%;
+  height: auto;
+}
