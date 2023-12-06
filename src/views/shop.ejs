@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHOP | Funkoshop</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="./shop.css" />
-  </head>
 
-  <body>
-    <%- include("./partials/header-shop") %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHOP | Funkoshop</title>
+  <link rel="icon" type="image/svg+xml" href="../../img/branding/isotype.svg">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<body>
+  <%- include("./partials/header-shop") %>
     <main class="main-shop container">
       <aside class="aside">
         <form class="search-form">
           <label class="search-form__label" for="search">BUSCAR</label>
-          <input
-            class="search-form__input"
-            type="text"
-            id="search"
-            name="search"
-            placeholder="Item o categoría"
-          />
+          <input class="search-form__input" type="text" id="search" name="search" placeholder="Item o categoría" />
         </form>
         <form class="sort-form">
           <label class="sort-form__label" for="sort">ORDENAR POR</label>
@@ -38,23 +32,11 @@
           <div class="price-form__input-group-container">
             <div class="price-form__input-group">
               <label class="price-form__sublabel" for="min-price">MIN</label>
-              <input
-                class="price-form__input"
-                type="number"
-                id="min-price"
-                name="min-price"
-                placeholder="0"
-              />
+              <input class="price-form__input" type="number" id="min-price" name="min-price" placeholder="0" />
             </div>
             <div class="price-form__input-group">
               <label class="price-form__sublabel" for="max-price">MAX</label>
-              <input
-                class="price-form__input"
-                type="number"
-                id="max-price"
-                name="max-price"
-                placeholder="0"
-              />
+              <input class="price-form__input" type="number" id="max-price" name="max-price" placeholder="0" />
             </div>
           </div>
         </form>
@@ -62,48 +44,20 @@
           <label class="filter-form__label">FILTRAR</label>
           <div class="filter-form__checkbox-list">
             <div class="filter-form__checkbox-group">
-              <input
-                class="filter-form__checkbox"
-                type="checkbox"
-                id="new"
-                name="new"
-              />
-              <label class="filter-form__checkbox-label" for="new"
-                >NUEVOS</label
-              >
+              <input class="filter-form__checkbox" type="checkbox" id="new" name="new" />
+              <label class="filter-form__checkbox-label" for="new">NUEVOS</label>
             </div>
             <div class="filter-form__checkbox-group">
-              <input
-                class="filter-form__checkbox"
-                type="checkbox"
-                id="offers"
-                name="offers"
-              />
-              <label class="filter-form__checkbox-label" for="offers"
-                >OFERTAS</label
-              >
+              <input class="filter-form__checkbox" type="checkbox" id="offers" name="offers" />
+              <label class="filter-form__checkbox-label" for="offers">OFERTAS</label>
             </div>
             <div class="filter-form__checkbox-group">
-              <input
-                class="filter-form__checkbox"
-                type="checkbox"
-                id="special-edition"
-                name="special-edition"
-              />
-              <label class="filter-form__checkbox-label" for="special-edition"
-                >EDICIÓN ESPECIAL</label
-              >
+              <input class="filter-form__checkbox" type="checkbox" id="special-edition" name="special-edition" />
+              <label class="filter-form__checkbox-label" for="special-edition">EDICIÓN ESPECIAL</label>
             </div>
             <div class="filter-form__checkbox-group">
-              <input
-                class="filter-form__checkbox"
-                type="checkbox"
-                id="favorites"
-                name="favorites"
-              />
-              <label class="filter-form__checkbox-label" for="favorites"
-                >FAVORITOS</label
-              >
+              <input class="filter-form__checkbox" type="checkbox" id="favorites" name="favorites" />
+              <label class="filter-form__checkbox-label" for="favorites">FAVORITOS</label>
             </div>
           </div>
         </form>
@@ -111,30 +65,30 @@
       <section class="news slider">
         <div class="slider__item">
           <% for (let i=0; i < 3; i++) { %>
-          <article class="card__item">
-            <a class="card-item__link" href="#">
-              <picture class="card-item__cover">
-                <span class="card-item__tag">Nuevo</span>
-                <img
-                  class="card-item__img--front"
-                  src="../../img/pokemon/pidgeotto-1.webp"
-                  alt="Figura coleccionable Pokemon PIDGEOTTO"
-                />
-                <img
-                  class="card-item__img--back"
-                  src="../../img/pokemon/pidgeotto-box.webp"
-                  alt="Figura coleccionable Pokemon PIDGEOTTO"
-                />
-              </picture>
-              <div class="card-item__content">
-                <p class="card-item__licence">POKEMON</p>
-                <h4 class="card-item__name"><%= nombresProductos[i] %></h4>
-                <p class="card-item__price"><%= priceProductos[i] %></p>
-                <p class="card-item__promo"><%= duesProductos[i] %></p>
-              </div>
-            </a>
-          </article>
-          <% } %>
+            <article class="card__item">
+              <a class="card-item__link" href="#">
+                <picture class="card-item__cover">
+                  <span class="card-item__tag">Nuevo</span>
+                  <img class="card-item__img--front" src="../../img/pokemon/pidgeotto-1.webp"
+                    alt="Figura coleccionable Pokemon PIDGEOTTO" />
+                  <img class="card-item__img--back" src="../../img/pokemon/pidgeotto-box.webp"
+                    alt="Figura coleccionable Pokemon PIDGEOTTO" />
+                </picture>
+                <div class="card-item__content">
+                  <p class="card-item__licence">POKEMON</p>
+                  <h4 class="card-item__name">
+                    <%= nombresProductos[i] %>
+                  </h4>
+                  <p class="card-item__price">
+                    <%= priceProductos[i] %>
+                  </p>
+                  <p class="card-item__promo">
+                    <%= duesProductos[i] %>
+                  </p>
+                </div>
+              </a>
+            </article>
+            <% } %>
         </div>
         <div class="pagination">
           <ul class="pagination__ul">
@@ -168,5 +122,6 @@
       </section>
     </main>
     <%- include("./partials/footer-shop") %>
-  </body>
+</body>
+
 </html>

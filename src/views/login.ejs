@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
+    <link rel="icon" type="image/svg+xml" href="/img/branding/isotype.svg">
     <link rel="stylesheet" href="../../../css/style.css">
 </head>
 
@@ -16,7 +17,9 @@
                 <form class="mainlogin__form" action="/auth/login" method="post">
                     <div class="form-mail">
                         <label for="email">E-mail:</label>
-                        <input class="log-input" type="email" id="email" name="email" value="<%= typeof values != 'undefined' ? values.email : ''%>" placeholder="johndoe@correo.com">
+                        <input class="log-input" type="email" id="email" name="email"
+                            value="<%= typeof values != 'undefined' ? values.email : ''%>"
+                            placeholder="johndoe@correo.com">
                     </div>
                     <div class="form-pass">
                         <label for="password">Contraseña:</label>
