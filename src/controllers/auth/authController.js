@@ -67,7 +67,7 @@ const verifyLogin = async (req, res) => {
 };
 
  const verifyLogout = (req, res) => {
-   req.session.destroy()
+   res.clearCookie('session');
     res.redirect("/");
 };
 

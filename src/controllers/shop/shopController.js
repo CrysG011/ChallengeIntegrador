@@ -1,6 +1,7 @@
 const model = require("../../models/Product");
 const modelCart = require("../../models/Cart");
 const modelUser = require("../../models/User");
+const modelCategory = require("../../models/Category");
 
 const getShopView = async (req, res) => {
   try {
@@ -23,10 +24,23 @@ const getItemView = async (req, res) => {
   try {
     
     const producto = await model.findByPk(req.params.id);
-
+    
     if(producto){
+
+      const categoria = await modelCategory.findOne({
+         where: {
+          id: producto.CategoryId
+         }
+        });
+
+      const productosRelacionados = await model.findAll({
+        where: {
+          CategoryId: producto.CategoryId
+        }
+      });
+
       res.render("item", {
-        producto,
+        producto, categoria, productosRelacionados
         // productos,
         // idProductos,
         // nombresProductos,
@@ -107,18 +121,20 @@ try {
       }});
   
     const productsId = []
-  
+    let productsTotalQty = 0;
+
     productsInCart.forEach(product => {
       productsId.push(product.ProductId)
+      productsTotalQty += product.quantity
       })
-  
+      
     const productos = []
-  
+
     for (i=0; i<productsId.length; i++){
       const producto = await model.findByPk(productsId[i]);
       productos.push(producto)
     }
-    res.render("carro", {productsInCart, productos});
+    res.render("carro", {productsInCart, productos, productsTotalQty});
   
 } catch (error) {
   res.send(error)

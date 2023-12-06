@@ -23,7 +23,7 @@
                 <article style="display: block" class="carro__card">
                     <div class="carro__card-content">
                         <picture class="carro__card-img">
-                            <img src="../../img/star-wars/baby-yoda-1.webp" alt="BABY YODA BLUEBALL" />
+                            <img src="/uploads/<%=productos[i].id%>-1.webp" alt="BABY YODA BLUEBALL" />
                         </picture>
                         <div class="carro__card-desc">
                             <h4 class="card-item__title"><%= productos[i].product_name %></h4>
@@ -32,7 +32,8 @@
                         </div>
                     </div>
                     <div class="carro__card-quantity">
-                        <input type="number" class="quantity" value="1" min="1">
+                        <input type="number" class="quantity" value="<%=productsInCart[i].quantity%>" min="1">
+                        <!-- hacer que funcionen los increment y decrement -->
                         <button class="increment">+</button>
                         <button class="decrement">-</button>
                     </div>
@@ -46,7 +47,7 @@
                     <div class="carro__resumen-items">
                         <div class="carro__resumen-item">
                             <p>CANTIDAD DE ELEMENTOS</p>
-                            <p>1</p>
+                            <p><%= productsTotalQty %></p>
                         </div>
                         <div class="carro__resumen-item">
                             <p>SUBTOTAL</p>

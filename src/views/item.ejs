@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <%- include("./partials/header-shop") %>
+    <!-- <%- include("./partials/header-shop") %> -->
         <main class="main">
             <section class="destacado">
                 <article>
@@ -30,53 +30,31 @@
                     <p>- 3 CUOTAS SIN INTERÉS</p>
                 </article>
                 <picture>
-                    <img src="../../img/star-wars/baby-yoda-1.webp"
-                        alt="Figura coleccionable Funko de Grogu de la serie The Mandalorian" />
+                    <img src="/uploads/<%=producto.id%>-1.webp"
+                        alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
                 </picture>
             </section>
             <h4>PRODUCTOS RELACIONADOS</h4>
             <section class="news">
-                <article class="news__card">
-                    <a href="#">
-                        <picture>
-                            <img src="../../img/star-wars/trooper-1.webp" alt="STAR WARS STORMTROOPER" />
-                        </picture>
-                        <div>
-                            <p>STAR WARS</p>
-                            <h4>STORMTROOPER LIGHTSABER</h4>
-                            <p>$1799,99</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="news__card">
-                    <a href="#">
-                        <picture>
-                            <img src="../../img/pokemon/pidgeotto-1.webp" alt="Pokemon PIDGEOTTO" />
-                        </picture>
-                        <div>
-                            <p>POKEMON</p>
-                            <h4>PIDGEOTTO</h4>
-                            <p>$1799,99</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="news__card">
-                    <a href="#">
-                        <picture>
-                            <img src="../../img/harry-potter/luna-1.webp" alt="HARRY POTTER LUNA LOVEGOOD" />
-                        </picture>
-                        <div>
-                            <p>HARRY POTTER</p>
-                            <h4>LUNA LOVEGOOD LION MASK</h4>
-                            <p>$1799,99</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-            </section>
-        </main>
+
+                <%productosRelacionados.forEach(producto => { %>
+                    <article class="news__card">
+                        <a href="./<%=producto.id%>">
+                            <picture>
+                                <img src="/uploads/<%=producto.id%>-1.webp" alt="<%= (producto.product_name).toUpperCase() %>" />
+                            </picture>
+                            <div>
+                                <!-- falta insertar categoria dinamica -->
+                                <p>STAR WARS</p>
+                                <h4><%= (producto.product_name).toUpperCase() %></h4>
+                                <p>$ <%= producto.product_price %></p>
+                                <p><%= producto.dues %></p>
+                            </div>
+                        </a>
+                    </article>    
+                    <% }) %>
+
+
         <%- include("./partials/footer-shop") %>
 </body>
 
