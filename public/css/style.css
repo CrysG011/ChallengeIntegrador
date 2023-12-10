@@ -214,6 +214,7 @@ footer {
 }
 
 @media (max-width: 780px) {
+
   .navbar__logo {
     max-width: 50%;
   }
@@ -226,9 +227,11 @@ footer {
   .navbar__menu {
     position: fixed;
     display: flex;
+    justify-content: center;
+    gap: 0;
     background: var(--dark-bg-solid);
-    background: -webkit-linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-solid));
-    background: linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-solid));
+    background: -webkit-linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-500));
+    background: linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-500));
     width: 66%;
     top: 10rem;
     border-radius: 50%;
@@ -255,7 +258,15 @@ footer {
     clip-path: circle(100% at center);
   }
 
-
+  .navbar__item {
+    background-color: var(--dark-bg-solid);
+    padding: var(--spacing-12);
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+  }
 }
 
 .hero {
@@ -605,7 +616,7 @@ footer {
   grid-template-rows: 3, 1fr;
 }
 
-.card-item {
+.card__item {
   display: flex;
   justify-content: center;
   align-items: center;
