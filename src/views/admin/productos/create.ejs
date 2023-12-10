@@ -21,7 +21,8 @@
                     <select id="categoria" name="CategoryId">
                         <option value="opcion1">Seleccionar</option> 
                         <%categoriasDb.forEach(category => { %>
-                        <option value="<%=category.id %>"> <%= category.category_name %></option>
+                      
+                        <option value="<%=category.id %>" <%= values && category.id == values.CategoryId ? "selected" : ""%>> <%= category.category_name %></option>
                         <% }) %>
                     </select>
                     
@@ -51,12 +52,14 @@
                 </div>
                 <div class="create-row">
                     <label for="descuento">Descuento:</label>
-                    <input class="create-input log-input" type="text" id="descuento" name="descuento" placeholder="0%">
+                    <!-- estaría re piola que con estilos le añadas un % fijo a la derecha :) -->
+                    <input class="create-input log-input" type="text" id="descuento" name="discount" placeholder="0%" value="<%= typeof values != 'undefined' ? values.discount : '0' %>">
                     <label for="cuotas">Cuotas:</label>
-                    <select id="cuotas" name="cuotas">
-                        <option value="opcion1">3 Cuotas sin interés</option>
-                        <option value="opcion2">6 Cuotas</option>
-                        <option value="opcion3">12 Cuotas</option>
+                    <select id="cuotas" name="dues">
+                        <option value="Pago Completo">Pago Completo</option>
+                        <option value="3 Cuotas sin interés" <%= values.dues == '3 Cuotas sin interés' ? "selected" : '' %>>3 Cuotas sin interés</option>
+                        <option value="6 Cuotas" <%= values.dues == '6 Cuotas' ? "selected" : '' %>>6 Cuotas</option>
+                        <option value="12 Cuotas" <%= values.dues == '12 Cuotas' ? "selected" : '' %>>12 Cuotas</option>
                     </select>
                 </div>
                 <div class="create-row">
@@ -72,6 +75,14 @@
             </div>
         </form>
     <%- include("../../partials/footer-admin") %>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', (event) => {
+          const btn = document.querySelector('button[type ="submit"]');
+          btn.setAttribute("disabled", true);
+        });
+    </script>
+
 </body>
 
 </html>

@@ -10,59 +10,59 @@
 </head>
 
 <body>
-    <!-- <%- include("./partials/header-shop") %> -->
-    <main class="main">
-        <section class="destacado">
-            <article>
-                <h3 class="destacado__h3"><%- (producto.product_name).toUpperCase() %></h3>
-                <p class="destacado__desc">
-                    <%- producto.product_description %>
-                </p>
-                <p class="destacado__precio">$ <%- producto.price %></p>
-                <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
-                    <div class="destacado__controls">
-                        <button class="destacado__quantity-button" data-action="decrease">-</button>
-                        <input name="quantity" class="destacado__quantity-input" type="number" value="1">
-                        <button class="destacado__quantity-button" data-action="increase">+</button>
-                        <button type="submit" class="destacado__add-to-cart">Agregar al carrito</button>
-                    </div>
-                </form>
-                <a href="#" class="destacado__payment-link">Ver método de pago </a>
-                <p>- 3 CUOTAS SIN INTERÉS</p>
-            </article>
-            <picture>
-                <img src="/uploads/<%=producto.id%>-1.webp"
-                    alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
-            </picture>
-        </section>
-        <h4>PRODUCTOS RELACIONADOS</h4>
-        <section class="news">
-
-            <%productosRelacionados.forEach(producto=> { %>
-                <article class="news__card">
-                    <a href="./<%=producto.id%>">
-                        <picture>
-                            <img src="/uploads/<%=producto.id%>-1.webp"
-                                alt="<%= (producto.product_name).toUpperCase() %>" />
-                        </picture>
-                        <div>
-                            <!-- falta insertar categoria dinamica -->
-                            <p>STAR WARS</p>
-                            <h4>
-                                <%= (producto.product_name).toUpperCase() %>
-                            </h4>
-                            <p>$ <%= producto.product_price %>
-                            </p>
-                            <p>
-                                <%= producto.dues %>
-                            </p>
+    <%- include("./partials/header-shop") %>
+        <main class="main">
+            <section class="destacado">
+                <article>
+                    <h3 class="destacado__h3"><%- (producto.product_name).toUpperCase() %></h3>
+                    <p class="destacado__desc">
+                        <%- producto.product_description %>
+                    </p>
+                    <p class="destacado__precio">$ <%- producto.price %></p>
+                    <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
+                        <div class="destacado__controls">
+                            <button class="destacado__quantity-button" data-action="decrease">-</button>
+                            <input name="quantity" class="destacado__quantity-input" type="number" value="1">
+                            <button class="destacado__quantity-button" data-action="increase">+</button>
+                            <button type="submit" class="destacado__add-to-cart">Agregar al carrito</button>
                         </div>
-                    </a>
+                    </form>
+                    <a href="#" class="destacado__payment-link">Ver método de pago </a>
+                    <p>- 3 CUOTAS SIN INTERÉS</p>
                 </article>
-                <% }) %>
+                <picture>
+                    <img src="/uploads/<%=producto.id%>-1.webp"
+                        alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
+                </picture>
+            </section>
+            <h4>PRODUCTOS RELACIONADOS</h4>
+            <section class="news">
+
+                <%productosRelacionados.forEach(producto=> { %>
+                    <article class="news__card">
+                        <a href="./<%=producto.id%>">
+                            <picture>
+                                <img src="/uploads/<%=producto.id%>-1.webp"
+                                    alt="<%= (producto.product_name).toUpperCase() %>" />
+                            </picture>
+                            <div>
+                                <!-- falta insertar categoria dinamica -->
+                                <p>STAR WARS</p>
+                                <h4>
+                                    <%= (producto.product_name).toUpperCase() %>
+                                </h4>
+                                <p>$ <%= producto.product_price %>
+                                </p>
+                                <p>
+                                    <%= producto.dues %>
+                                </p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
 
 
-                    <%- include("./partials/footer-shop") %>
+                        <%- include("./partials/footer-shop") %>
 </body>
 
 </html>

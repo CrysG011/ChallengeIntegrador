@@ -6,17 +6,11 @@ const modelCategory = require("../../models/Category");
 const getShopView = async (req, res) => {
   try {
     const productos = await model.findAll();
-    const idProductos = productos.map(producto => producto.id);
-    const nombresProductos = productos.map(producto => producto.product_name);
-    const priceProductos = productos.map(producto => producto.price);
-    const skuProductos = productos.map(producto => producto.sku);
-    const imgFrontProductos = productos.map(producto => producto.image_front);
-    const imgBackProductos = productos.map(producto => producto.image_back);
-    const duesProductos = productos.map(producto => producto.dues);
-    res.render("shop", { nombresProductos, skuProductos, idProductos, imgFrontProductos, imgBackProductos, priceProductos, duesProductos});   
-} catch (error) {
+    const categoriasDb = await modelCategory.findAll();
+    res.render("shop", { productos, categoriasDb });   
+  } catch (error) {
     console.log(error)
-}
+  }
 };
 
 const getItemView = async (req, res) => {
@@ -41,40 +35,21 @@ const getItemView = async (req, res) => {
 
       res.render("item", {
         producto, categoria, productosRelacionados
-        // productos,
-        // idProductos,
-        // nombresProductos,
-        // priceProductos,
-        // skuProductos,
-        // imgFrontProductos,
-        // imgBackProductos,
-        // duesProductos
       });   
     } else {
       res.send("El producto no existe")
     }
-
-    // ToDo: llamar a los productos por categoría (productos similares)
-    // const productos = await model.findAll();
-    // const idProductos = productos.map(producto => producto.id);
-    // const nombresProductos = productos.map(producto => producto.product_name);
-    // const priceProductos = productos.map(producto => producto.price);
-    // const skuProductos = productos.map(producto => producto.sku);
-    // const imgFrontProductos = productos.map(producto => producto.image_front);
-    // const imgBackProductos = productos.map(producto => producto.image_back);
-    // const duesProductos = productos.map(producto => producto.dues);
   } catch (error) {
     console.log(error);
-}
+  }
 };
 
 const addToCart = async (req, res) => {
   try {
-      console.log("este es el req body: ", req.body)
         const user = await modelUser.findByPk(req.session.userId);
         
         if (!user) {
-          return res.status(400).send('Tu usuario no se encuentra registrado');    
+          return res.status(400).send('Tu usuario no se encuentra registrado');
         } else {
           const existingCartEntry = await modelCart.findOne({
             where: {
@@ -97,6 +72,8 @@ const addToCart = async (req, res) => {
            }
     }
     
+    // estaría bueno que fuera el carrito desplegable o que aparezca un cartel temporal
+    // que diga "producto añadido al carrito"
     res.send("producto añadido al carrito")
 
   } catch (error) {
@@ -108,39 +85,51 @@ const addToCart = async (req, res) => {
 
 const getCartView = async (req, res) => {
 
-try {
+  try {
     const user = await modelUser.findByPk(req.session.userId);
-  
-    if (!user) {
-      return res.status(400).send('El usuario no existe');
-    } 
-  
-    const productsInCart = await modelCart.findAll({
-      where: {
-        UserId: user.id,
-      }});
-  
-    const productsId = []
+
     let productsTotalQty = 0;
-
-    productsInCart.forEach(product => {
-      productsId.push(product.ProductId)
-      productsTotalQty += product.quantity
-      })
-      
+    let subTotalPrice = 0;
     const productos = []
+    let envioPrice = 0;
+    let productsInCart
+    
+    if (!user) {
+      for (const item of req.session.cart.items) {
 
-    for (i=0; i<productsId.length; i++){
-      const producto = await model.findByPk(productsId[i]);
-      productos.push(producto)
+        productsInCart = req.session.cart.items
+
+        productsTotalQty += item.quantity;
+
+        const producto = await model.findByPk(item.ProductId);    
+
+        if (producto) {
+          productos.push(producto);
+          subTotalPrice += producto.price * item.quantity;
+        }
+      }
+
+    } else {       
+          productsInCart = await modelCart.findAll({
+            where: {
+              UserId: user.id,
+            }});
+    
+          for (i=0; i<productsInCart.length; i++) {
+            const producto = await model.findByPk(productsInCart[i].ProductId);
+            if (producto){
+            productos.push(producto)
+            subTotalPrice += producto.price * productsInCart[i].quantity
+            productsTotalQty += productsInCart[i].quantity
+            }
+          }
+      }
+
+    res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice}); 
+
+    } catch (error) {
+      res.send(error)
     }
-    res.render("carro", {productsInCart, productos, productsTotalQty});
-  
-} catch (error) {
-  res.send(error)
-}
-
-  
 };
 
 const CreatePurchase = (req, res) => {

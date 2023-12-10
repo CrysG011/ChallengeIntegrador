@@ -46,6 +46,10 @@ const productValidations = [
     .bail()
     .isNumeric()
     .withMessage("El stock debe ser numérico"),
+    body("discount")
+    .isInt({ min: 0, max: 100 })
+    .withMessage("El descuento debe ser un número entre 0 y 100"),
+    
 ]
 
 const controller = require("../../controllers/admin/productsController.js");

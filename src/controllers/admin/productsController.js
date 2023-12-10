@@ -14,7 +14,10 @@ const getAdminView = async (get, res) => {
         const idProductos = productos.map(producto => producto.id);
         const nombresProductos = productos.map(producto => producto.product_name);
         const skuProductos = productos.map(producto => producto.sku);
-        res.render("./admin/productos/admin", { nombresProductos, skuProductos, idProductos,});
+        const categoriasDb = await modelCategory.findAll();
+        // hacer que se envien las categorias de cada producto
+        // const categoryProductos = productos.map(producto => producto.categoryId);
+        res.render("./admin/productos/admin", {productos, nombresProductos, skuProductos, idProductos, categoriasDb});
     } catch (error) {
         console.log(error)
     }
@@ -22,7 +25,7 @@ const getAdminView = async (get, res) => {
 
 const getCreateProductView = async (req, res) => {
     const categoriasDb = await modelCategory.findAll();
-    res.render("./admin/productos/create", {categoriasDb});
+    res.render("./admin/productos/create", {categoriasDb, values: req.body,});
 }
 
 const createProduct = async (req, res) => {
@@ -32,13 +35,14 @@ const createProduct = async (req, res) => {
     const categoriasDb = await modelCategory.findAll();
 
     if (!errors.isEmpty()) {
+        console.log("el req body es : ", req.body)
         return res.render("./admin/productos/create", {
             categoriasDb,
             values: req.body,
             errors: errors.array(),
         });
     }
-    
+
     try {
         const product = await model.create(req.body);
         console.log(product)
@@ -70,7 +74,7 @@ const getEditProductView = async (req, res) => {
         const categoriasDb = await modelCategory.findAll();
         const producto = await model.findByPk(req.params.id);
         if (producto) {
-            res.render("./admin/productos/edit", {producto, categoriasDb});  
+            res.render("./admin/productos/edit", {producto, categoriasDb,});  
         } else {
             res.status(404).send("El producto solicitado no existe");
         }

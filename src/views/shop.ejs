@@ -66,26 +66,29 @@
       </aside>
       <section class="news slider">
         <div class="slider__item">
-          <% for (let i=0; i < 3; i++) { %>
+          <% for (let i=0; i < productos.length; i++) { if (i===9) { break; } %>
             <article class="card__item">
-              <a class="card-item__link" href="#">
+              <a class="card-item__link" href="shop/item/<%=productos[i].id%>">
                 <picture class="card-item__cover">
                   <span class="card-item__tag">Nuevo</span>
-                  <img class="card-item__img--front" src="../../img/pokemon/pidgeotto-1.webp"
-                    alt="Figura coleccionable Pokemon PIDGEOTTO" />
-                  <img class="card-item__img--back" src="../../img/pokemon/pidgeotto-box.webp"
-                    alt="Figura coleccionable Pokemon PIDGEOTTO" />
+                  <img class="card-item__img--front" src="/uploads/<%=productos[i].id%>-1.webp"
+                    alt="Figura coleccionable <%=productos[i].product_name%>" />
+                  <img class="card-item__img--back" src="/uploads/<%=productos[i].id%>-box.webp"
+                    alt="Figura coleccionable <%=productos[i].product_name%>" />
                 </picture>
                 <div class="card-item__content">
-                  <p class="card-item__licence">POKEMON</p>
+                  <p class="card-item__licence">
+                    <%= ((categoriasDb.find(categoria=> categoria.id ===
+                      productos[i].CategoryId)).category_name).toUpperCase() %>
+                  </p>
                   <h4 class="card-item__name">
-                    <%= nombresProductos[i] %>
+                    <%= productos[i].product_name %>
                   </h4>
                   <p class="card-item__price">
-                    <%= priceProductos[i] %>
+                    <%= productos[i].price %>
                   </p>
                   <p class="card-item__promo">
-                    <%= duesProductos[i] %>
+                    <%= productos[i].dues %>
                   </p>
                 </div>
               </a>

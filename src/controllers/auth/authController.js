@@ -2,11 +2,13 @@ const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
 const model = require("../../models/User")
+const modelCart = require("../../models/Cart")
 
 const getLoginView = (req, res) => {
-    res.render("login");
+   res.render("login");
 }
 const verifyLogin = async (req, res) => {
+
    const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
@@ -34,8 +36,35 @@ const verifyLogin = async (req, res) => {
                errors: [{msg: "El correo y/o la contraseña son incorrectos"}],
          });
          } else {
+
             req.session.userId = user.id;
-            res.redirect("/");
+            if (req.session.userId) {
+               for (const item of req.session.cart.items) {
+                     const existingCartEntry = await modelCart.findOne({
+                        where: {
+                          userId: user.id,
+                          productId: item.ProductId,
+                        },
+                      });
+                  
+                      if (existingCartEntry) {
+                        existingCartEntry.quantity += +item.quantity;
+                        await existingCartEntry.save();
+                      }
+                        else{
+
+                           const cart = await modelCart.create({
+                             quantity: item.quantity,
+                             UserId: user.id,
+                             ProductId: item.ProductId,
+                           });
+                        }
+               };
+      
+               const returnTo = req.session.returnTo || '/';
+               req.session.returnTo = null;
+               return res.redirect(returnTo);
+             }
          }
       }
        catch (error) {
@@ -44,7 +73,7 @@ const verifyLogin = async (req, res) => {
       }
 };
 
- const getRegisterView = (req, res) => {
+const getRegisterView = (req, res) => {
     res.render("register");
 };
  const verifyRegister = async (req, res) => {
@@ -70,7 +99,6 @@ const verifyLogin = async (req, res) => {
    res.clearCookie('session');
     res.redirect("/");
 };
-
 
  module.exports = {
     getLoginView,

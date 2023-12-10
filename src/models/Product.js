@@ -30,7 +30,7 @@ const Product = sequelize.define("Product",
         allowNull: false,
     },
     dues: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
     },
     image_front: {

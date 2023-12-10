@@ -37,7 +37,8 @@
                         <button class="increment">+</button>
                         <button class="decrement">-</button>
                     </div>
-                    <p class="carro__card-total">$ <%= productos.find(producto => producto.id === productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
+                    <p class="carro__card-total">$ <%= 
+                        productos.find(producto => producto.id == productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
                     <button class="carro__card-cancel">x</button>
                 </article>
                 <% } %>
@@ -51,7 +52,7 @@
                         </div>
                         <div class="carro__resumen-item">
                             <p>SUBTOTAL</p>
-                            <p>$ 5399,97</p>
+                            <p>$ <%= subTotalPrice %></p>
                         </div>
                         <div class="carro__resumen-item">
                             <p>ENVIO</p>
@@ -59,11 +60,13 @@
                         </div>
                         <div class="carro__resumen-item carro__resumen-total">
                             <p>TOTAL</p>
-                            <p>$ 5399,97</p>
+                            <p>$ <%= subTotalPrice + envioPrice %></p>
                         </div>
                     </div>
 
-                <button class="ir-a-pagar">IR A PAGAR</button>
+                    <form action="/shop/cart" method="post">
+                        <button type="submit" class="ir-a-pagar">IR A PAGAR</button>
+                    </form>
             </section>
         </main>
         <%- include("./partials/footer-shop") %>
