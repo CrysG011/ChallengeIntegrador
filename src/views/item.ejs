@@ -28,16 +28,16 @@
                         </div>
                     </form>
                     <a href="#" class="destacado__payment-link">Ver método de pago </a>
-                    <p>- 3 CUOTAS SIN INTERÉS</p>
+                    <p><%- (producto.dues).toUpperCase() %></p>
                 </article>
                 <picture>
                     <img src="/uploads/<%=producto.id%>-1.webp"
                         alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
                 </picture>
             </section>
+
             <h4>PRODUCTOS RELACIONADOS</h4>
             <section class="news">
-
                 <%productosRelacionados.forEach(producto=> { %>
                     <article class="news__card">
                         <a href="./<%=producto.id%>">
@@ -46,8 +46,9 @@
                                     alt="<%= (producto.product_name).toUpperCase() %>" />
                             </picture>
                             <div>
-                                <!-- falta insertar categoria dinamica -->
-                                <p>STAR WARS</p>
+                                <p>
+                                    <%= (categoria.category_name).toUpperCase() %>
+                                </p>
                                 <h4>
                                     <%= (producto.product_name).toUpperCase() %>
                                 </h4>
@@ -60,7 +61,6 @@
                         </a>
                     </article>
                     <% }) %>
-
 
                         <%- include("./partials/footer-shop") %>
 </body>

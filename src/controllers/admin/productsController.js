@@ -15,8 +15,6 @@ const getAdminView = async (get, res) => {
         const nombresProductos = productos.map(producto => producto.product_name);
         const skuProductos = productos.map(producto => producto.sku);
         const categoriasDb = await modelCategory.findAll();
-        // hacer que se envien las categorias de cada producto
-        // const categoryProductos = productos.map(producto => producto.categoryId);
         res.render("./admin/productos/admin", {productos, nombresProductos, skuProductos, idProductos, categoriasDb});
     } catch (error) {
         console.log(error)

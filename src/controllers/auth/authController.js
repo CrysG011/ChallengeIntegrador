@@ -39,32 +39,32 @@ const verifyLogin = async (req, res) => {
 
             req.session.userId = user.id;
             if (req.session.userId) {
-               for (const item of req.session.cart.items) {
-                     const existingCartEntry = await modelCart.findOne({
-                        where: {
-                          userId: user.id,
-                          productId: item.ProductId,
-                        },
-                      });
-                  
-                      if (existingCartEntry) {
-                        existingCartEntry.quantity += +item.quantity;
-                        await existingCartEntry.save();
-                      }
-                        else{
-
-                           const cart = await modelCart.create({
-                             quantity: item.quantity,
-                             UserId: user.id,
-                             ProductId: item.ProductId,
-                           });
-                        }
-               };
+               if (req.session.cart && req.session.cart.items) {
+                  for (const item of req.session.cart.items) {
+                        const existingCartEntry = await modelCart.findOne({
+                           where: {
+                           userId: user.id,
+                           productId: item.ProductId,
+                           },
+                        });
+                     
+                        if (existingCartEntry) {
+                           existingCartEntry.quantity += +item.quantity;
+                           await existingCartEntry.save();
+                        } else{
+                              const cart = await modelCart.create({
+                              quantity: item.quantity,
+                              UserId: user.id,
+                              ProductId: item.ProductId,
+                              });
+                           }
+                  };
       
-               const returnTo = req.session.returnTo || '/';
-               req.session.returnTo = null;
-               return res.redirect(returnTo);
-             }
+               }
+            }
+            const returnTo = req.session.returnTo || '/';
+            req.session.returnTo = null;
+            return res.redirect(returnTo);
          }
       }
        catch (error) {
