@@ -28,7 +28,7 @@
                     <p class="collection__text">
                         Disfruta de una saga que sigue agregando personajes a su colección.
                     </p>
-                    <a class="collection__link" href="pages/shop">VER COLECCIÓN</a>
+                    <a class="collection__link" href="/shop?categoria=1">VER COLECCIÓN</a>
                 </article>
                 <picture class="collection__cover">
                     <img src="/img/star-wars/baby-yoda-1.webp"
@@ -42,7 +42,7 @@
                         Atrapa todos los que puedas y disfruta de una colección llena de
                         amigos.
                     </p>
-                    <a class="collection__link" href="pages/shop">VER COLECCIÓN</a>
+                    <a class="collection__link" href="/shop?categoria=2">VER COLECCIÓN</a>
                 </article>
                 <picture class="collection__cover">
                     <img src="/img/pokemon/vulpix-1.webp"
@@ -53,73 +53,60 @@
                 <article class="collection__content">
                     <h3 class="collection__title">HARRY POTTER</h3>
                     <p class="collection__text">Revive los recuerdos de una saga llena de magia y encanto.</p>
-                    <a class="collection__link" href="pages/shop">VER COLECCIÓN</a>
+                    <a class="collection__link" href="/shop?categoria=3">VER COLECCIÓN</a>
                 </article>
                 <picture class="collection__cover">
                     <img src="/img/harry-potter/snape-patronus-1.webp"
                         alt="Figura coleccionable Funko del Patronus de Snape en la película de Harry Potter" />
                 </picture>
             </section>
+
             <section class="slider container">
                 <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
                 <ul class="slider__items">
-                    <li class="slider__item">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <picture class="card-item__cover">
-                                    <span class="card-item__tag">Nuevo</span>
-                                    <img class="card-item__img--front" src="/img/star-wars/trooper-1.webp"
-                                        alt="Figura coleccionable STAR WARS STORMTROOPER" />
-                                    <img class="card-item__img--back" src="/img/star-wars/trooper-box.webp"
-                                        alt="Figura coleccionable STAR WARS STORMTROOPER">
-                                </picture>
-                                <div class="card-item__content">
-                                    <p class="card-item__licence">STAR WARS</p>
-                                    <h4 class="card-item__name">STORMTROOPER LIGHTSABER</h4>
-                                    <p class="card-item__price">$1799,99</p>
-                                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </article>
-                    </li>
-                    <li class="slider__item">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <picture class="card-item__cover">
-                                    <span class="card-item__tag">Nuevo</span>
-                                    <img class="card-item__img--front" src="/img/pokemon/pidgeotto-1.webp"
-                                        alt="Figura coleccionable Pokemon PIDGEOTTO" />
-                                    <img class="card-item__img--back" src="/img/pokemon/pidgeotto-box.webp"
-                                        alt="Figura coleccionable Pokemon PIDGEOTTO">
-                                </picture>
-                                <div class="card-item__content">
-                                    <p class="card-item__licence">POKEMON</p>
-                                    <h4 class="card-item__name">PIDGEOTTO</h4>
-                                    <p class="card-item__price">$1799,99</p>
-                                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </article>
-                    </li>
-                    <li class="slider__item">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <picture class="card-item__cover">
-                                    <span class="card-item__tag">Nuevo</span>
-                                    <img class="card-item__img--front" src="/img/harry-potter/luna-1.webp"
-                                        alt="Figura coleccionable HARRY POTTER LUNA LOVEGOOD" />
-                                    <img class="card-item__img--back" src="/img/harry-potter/luna-box.webp"
-                                        alt="Figura coleccionable HARRY POTTER LUNA LOVEGOOD">
-                                </picture>
-                                <div class="card-item__content">
-                                    <p class="card-item__licence">HARRY POTTER</p>
-                                    <h4 class="card-item__name">LUNA LOVEGOOD LION MASK</h4>
-                                    <p class="card-item__price">$1799,99</p>
-                                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </article>
-                    </li>
+                    <% for (let i = 0; i < productosRecientes.length; i++) { %>
+                        <li class="slider__item">
+                            <article class="card-item">
+                                <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
+                                    <picture class="card-item__cover">
+                                        <span class="card-item__tag">Nuevo</span>
+                                        <% if (productosRecientes[i] && productosRecientes[i].id) { %>
+                                            <img class="card-item__img--front" src="/uploads/<%= productosRecientes[i].id %>-1.webp"
+                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
+                                            <img class="card-item__img--back" src="/uploads/<%= productosRecientes[i].id %>-box.webp"
+                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
+                                        <% } else { %>
+                                            <!-- item por defecto si no se encuentra productosRecientes[i] o sus atributos por un imprevisto -->
+                                            <img class="card-item__img--front" src="/uploads/default.webp"
+                                                alt="Imagen por defecto" />
+                                        <% } %>
+                                    </picture>
+                                    <div class="card-item__content">
+                                        <% if (productosRecientes[i] && productosRecientes[i].CategoryId) { %>
+                                            <p class="card-item__licence"><%= ((categorias.find(categoria => categoria.id === productosRecientes[i].CategoryId))?.category_name).toUpperCase() %></p>
+                                        <% } else { %>
+                                            <p class="card-item__licence">Sin Categoría</p>
+                                        <% } %>
+                                        <% if (productosRecientes[i] && productosRecientes[i].product_name) { %>
+                                            <h4 class="card-item__name"><%= productosRecientes[i].product_name.toUpperCase() %></h4>
+                                        <% } else { %>
+                                            <h4 class="card-item__name">Sin Nombre</h4>
+                                        <% } %>
+                                        <% if (productosRecientes[i] && productosRecientes[i].price) { %>
+                                            <p class="card-item__price">$<%= productosRecientes[i].price %></p>
+                                        <% } else { %>
+                                            <p class="card-item__price">Precio Desconocido</p>
+                                        <% } %>
+                                        <% if (productosRecientes[i] && productosRecientes[i].dues) { %>
+                                            <p class="card-item__promo"><%= productosRecientes[i].dues.toUpperCase() %></p>
+                                        <% } else { %>
+                                            <p class="card-item__promo">Promoción Desconocida</p>
+                                        <% } %>
+                                    </div>
+                                </a>
+                            </article>
+                        </li>
+                    <% } %>
                 </ul>
             </section>
         </main>

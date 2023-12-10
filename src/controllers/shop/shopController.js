@@ -6,9 +6,26 @@ const modelUser = require("../../models/User");
 const modelCategory = require("../../models/Category");
 
 const getShopView = async (req, res) => {
+
+  console.log("REQ QUERY CATEGORIA ES: ", req.query.categoria)
+  console.log(typeof +req.query.categoria);
+
+  
   try {
-    const productos = await model.findAll();
     const categoriasDb = await modelCategory.findAll();
+    let productos
+    if(req.query.categoria){
+      let categoria = +req.query.categoria
+  
+      productos = await model.findAll({
+        where: {
+          CategoryId: categoria
+        }
+      });
+    } else {
+      productos = await model.findAll();
+    } 
+
     res.render("shop", { productos, categoriasDb });   
   } catch (error) {
     console.log(error)
