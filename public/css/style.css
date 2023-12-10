@@ -118,16 +118,21 @@ footer {
 .navbar {
   display: flex;
   width: 100%;
+  height: 100%;
+  margin: 0 auto;
   justify-content: space-between;
+  align-items: center;
   color: var(--light-bg-solid);
   padding-left: var(--spacing-36);
   padding-right: var(--spacing-36);
+  gap: var(--spacing-20);
 }
 
 .navbar__logo {
   display: flex;
   align-items: center;
-  max-width: 30rem;
+  justify-content: center;
+  max-width: 30%;
 }
 
 .navbar__label,
@@ -137,15 +142,14 @@ footer {
 
 .navbar__menu {
   display: flex;
-  justify-content: center;
-  gap: var(--spacing-20);
+  justify-content: flex-end;
 
+  gap: var(--spacing-20);
+  width: 100%;
 }
 
 .navbar__item {
-  font-size: var(--font-medium);
   font-family: var(--font-raleway-family);
-  padding: var(--spacing-8) var(--spacing-16);
   --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
 }
 
@@ -165,6 +169,10 @@ footer {
 
 .navbar__item:hover {
   --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.navbar__link {
+  font-size: var(--font-small);
 }
 
 .with-icon {
@@ -199,51 +207,36 @@ footer {
   background-color: var(--primary-900);
 }
 
+
 @media (max-width: 780px) {
   .navbar__label {
     display: block;
     cursor: pointer;
   }
 
-  .branding {
-    max-width: 80%;
-  }
-
-  .navbar {}
-
   .navbar__menu {
-    width: 100%;
-    top: 13rem;
+    position: fixed;
     display: flex;
-    justify-content: space-evenly;
+    background: radial-gradient(circle at center, var(--dark-bg-solid) 0%, var(--dark-bg-solid) 60%, var(--primary-solid) 60%, var(--primary-solid) 66%, var(--dark-bg-solid) 66%, var(--dark-bg-solid) 100%);
+    width: 80%;
+    top: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    justify-self: center;
     flex-direction: column;
     align-items: center;
     clip-path: circle(0 at center);
-    transition: clip-path 3s ease-in-out;
-    -webkit-transition: clip-path 3s ease-in-out;
-    -moz-transition: clip-path 3s ease-in-out;
-    -ms-transition: clip-path 3s ease-in-out;
-    -o-transition: clip-path 3s ease-in-out;
+    transition: clip-path 1s ease-in-out;
+    -webkit-transition: clip-path 1s ease-in-out;
+    -moz-transition: clip-path 1s ease-in-out;
+    -ms-transition: clip-path 1s ease-in-out;
+    -o-transition: clip-path 1s ease-in-out;
   }
 
   .navbar__input:checked+.navbar__menu {
-    background-color: var(--primary-solid);
+    display: flex;
+    flex-direction: column;
     clip-path: circle(100% at center);
-    transition: background 0.3s ease-in-out;
-    -webkit-transition: background 0.3s ease-in-out;
-    -moz-transition: background 0.3s ease-in-out;
-    -ms-transition: background 0.3s ease-in-out;
-    -o-transition: background 0.3s ease-in-out;
-  }
-
-  .navbar__item {
-    font-size: var(--font-small);
-  }
-}
-
-@media (max-width: 480px) {
-  .branding {
-    max-width: 60%;
   }
 }
 

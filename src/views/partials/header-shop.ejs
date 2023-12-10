@@ -5,48 +5,43 @@
                 <img src="../../img/branding/logo_light_horizontal.svg" alt="Logo de Funkoshop" />
             </a>
         </picture>
-        <div class="navbar__main">
-            <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                            icon="mdi:chevron-down"></iconify-icon></a>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Funkos</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Remeras</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">LLaveros</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/contact">CONTACTO</a>
-                </li>
+        <label for="menu" class="navbar__label">
+            <img src="../../img/icons/menu.svg" alt="MenuIcon">
+        </label>
+        <input type="checkbox" id="menu" class="navbar__input">
+        <ul class="navbar__menu">
+            <li class="navbar__item with-submenu">
+                <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                        icon="mdi:chevron-down"></iconify-icon></a>
+                <ul class="submenu">
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">Funkos</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">Remeras</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">LLaveros</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="navbar__item">
+                <a class="navbar__link" href="/contact">CONTACTO</a>
+            </li>
 
-             <!-- ToDo: hacer que si el usuario esta logeado aparezca logout y viceversa -->
-               
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/auth/login">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" action="/auth/logout" method="get" href="/auth/logout">LOGOUT</a>
-                </li>
+            <!-- ToDo: hacer que si el usuario esta logeado aparezca logout y viceversa -->
 
-                <li class="navbar__item">
-                    <a class="navbar__carro" href="/carro"><img src="../../img/icons/cart-icon.svg"
-                            alt="CARRITO" /></a>
-                </li>
-            </ul>
-            <button id="toggleButton" class="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
-            </button>
-        </div>
+            <li class="navbar__item">
+                <a class="navbar__link" href="/auth/login">LOGIN</a>
+            </li>
+            <li class="navbar__item">
+                <a class="navbar__link" action="/auth/logout" method="get" href="/auth/logout">LOGOUT</a>
+            </li>
+
+            <li class="navbar__item">
+                <a class="navbar__carro" href="/carro"><img src="../../img/icons/cart-icon.svg" alt="CARRITO" /></a>
+            </li>
+        </ul>
+
     </nav>
 </header>
