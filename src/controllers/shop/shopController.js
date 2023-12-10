@@ -8,9 +8,9 @@ const getShopView = async (req, res) => {
     const productos = await model.findAll();
     const categoriasDb = await modelCategory.findAll();
     res.render("shop", { productos, categoriasDb });   
-} catch (error) {
+  } catch (error) {
     console.log(error)
-}
+  }
 };
 
 const getItemView = async (req, res) => {
@@ -41,16 +41,15 @@ const getItemView = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-}
+  }
 };
 
 const addToCart = async (req, res) => {
   try {
-      console.log("este es el req body: ", req.body)
         const user = await modelUser.findByPk(req.session.userId);
         
         if (!user) {
-          return res.status(400).send('Tu usuario no se encuentra registrado');    
+          return res.status(400).send('Tu usuario no se encuentra registrado');
         } else {
           const existingCartEntry = await modelCart.findOne({
             where: {
@@ -87,34 +86,50 @@ const addToCart = async (req, res) => {
 const getCartView = async (req, res) => {
 
   try {
-      const user = await modelUser.findByPk(req.session.userId);
-    
-      if (!user) {
-        return res.status(400).send('El usuario no existe');
-      } 
-    
-      const productsInCart = await modelCart.findAll({
-        where: {
-          UserId: user.id,
-        }});
-    
-      let productsTotalQty = 0;
-      let subTotalPrice = 0;
-      const productos = []
-      let envioPrice = 0;
+    const user = await modelUser.findByPk(req.session.userId);
 
-      for (i=0; i<productsInCart.length; i++) {
-        const producto = await model.findByPk(productsInCart[i].ProductId);
-        productos.push(producto) 
+    let productsTotalQty = 0;
+    let subTotalPrice = 0;
+    const productos = []
+    let envioPrice = 0;
+    let productsInCart
+    
+    if (!user) {
+      for (const item of req.session.cart.items) {
 
-        subTotalPrice += producto.price * productsInCart[i].quantity
-        productsTotalQty += productsInCart[i].quantity
+        productsInCart = req.session.cart.items
+
+        productsTotalQty += item.quantity;
+
+        const producto = await model.findByPk(item.ProductId);    
+
+        if (producto) {
+          productos.push(producto);
+          subTotalPrice += producto.price * item.quantity;
+        }
       }
-      res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice}); 
-  } catch (error) {
-    res.send(error)
-  }
+
+    } else {       
+          productsInCart = await modelCart.findAll({
+            where: {
+              UserId: user.id,
+            }});
     
+          for (i=0; i<productsInCart.length; i++) {
+            const producto = await model.findByPk(productsInCart[i].ProductId);
+            if (producto){
+            productos.push(producto)
+            subTotalPrice += producto.price * productsInCart[i].quantity
+            productsTotalQty += productsInCart[i].quantity
+            }
+          }
+      }
+
+    res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice}); 
+
+    } catch (error) {
+      res.send(error)
+    }
 };
 
 const CreatePurchase = (req, res) => {
