@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+
 const model = require("../../models/Product");
 const modelCart = require("../../models/Cart");
 const modelUser = require("../../models/User");
@@ -29,7 +31,10 @@ const getItemView = async (req, res) => {
 
       const productosRelacionados = await model.findAll({
         where: {
-          CategoryId: producto.CategoryId
+          CategoryId: producto.CategoryId,
+          id: {
+            [Sequelize.Op.not]: producto.id
+          }
         }
       });
 

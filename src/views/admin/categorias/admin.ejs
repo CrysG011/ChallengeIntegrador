@@ -32,6 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <% for (let i = 0; i < idCategorias.length; i++) { %>
                             <tr class="product-list__tbody">
                                 <td class="product-list__id"><%= idCategorias[i] %></td>
@@ -39,13 +40,13 @@
                                 <td><%= descripcionCategorias[i] %></td>
                                 <td><a href="/admin/categories/edit/<%= idCategorias[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
                                 <td>
-                                    <!-- es hacer esto o dejar como estaba pero disparar el evento con js -->
                                     <form class="form-delete" action="/admin/categories/delete/<%= idCategorias[i] %>?_method=DELETE" method="post">
                                         <button type="submit"><img src="../../../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
                                     </form>
                                 </td> 
                             </tr>
                         <% } %>
+
                     </tbody>
                 </table>
                 <button><a href="/admin/">Listado de Productos -></a></button>

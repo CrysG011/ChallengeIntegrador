@@ -33,21 +33,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (let i = 0; i < idProductos.length; i++) { %>
-                            <tr class="product-list__tbody">
-                                <td class="product-list__id"><%= idProductos[i] %></td>
-                                <td class="product-list__code"><%= skuProductos[i] %></td>
-                                <td><%= nombresProductos[i] %></td>
-                                <td><%= ((categoriasDb.find(categoria => categoria.id === productos[i].CategoryId)).category_name).toUpperCase() %></td>
-                                <td><a href="/admin/edit/<%= idProductos[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
-                                <td>
-                                    <!-- es hacer esto o dejar como estaba pero disparar el evento con js -->
-                                    <form class="form-delete" action="/admin/delete/<%= idProductos[i] %>?_method=DELETE" method="post">
-                                        <button type="submit"><img src="../../../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
-                                    </form>
-                                </td> 
-                            </tr>
-                        <% } %>
+                        <% if (productos && nombresProductos && skuProductos && idProductos && categoriasDb) {
+                            for (let i = 0; i < idProductos.length; i++) { %>
+                                <tr class="product-list__tbody">
+                                    <td class="product-list__id"><%= idProductos[i] %></td>
+                                    <td class="product-list__code"><%= skuProductos[i] %></td>
+                                    <td><%= nombresProductos[i] %></td>
+                                    <td>
+                                        <% if (productos[i] && categoriasDb) {
+                                            const categoriaEncontrada = categoriasDb.find(categoria => categoria.id === productos[i].CategoryId);
+                                            if (categoriaEncontrada) { %>
+                                                <%= categoriaEncontrada.category_name.toUpperCase() %>
+                                            <% } else { %>
+                                                -
+                                            <% }
+                                        } else { %>
+                                            -
+                                        <% } %>
+                                    </td>
+                                    <td><a href="/admin/edit/<%= idProductos[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
+                                    <td>
+                                        <form class="form-delete" action="/admin/delete/<%= idProductos[i] %>?_method=DELETE" method="post">
+                                            <button type="submit"><img src="../../../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
+                                        </form>
+                                    </td> 
+                                </tr>
+                            <% } 
+                        } %>
                     </tbody>
                 </table>
                 <button><a href="/admin/categories">Listado de Categorías -></a></button>
