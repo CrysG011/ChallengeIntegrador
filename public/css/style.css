@@ -253,6 +253,11 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .navbar__logo {
     max-width: 70%;
   }
@@ -552,13 +557,14 @@ footer {
 .aside {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-rows: min-content;
   gap: var(--spacing-16);
 }
 
 .search-sort-price-filter-form {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: var(--spacing-8);
 }
 
@@ -657,7 +663,7 @@ footer {
 .slider__item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 3, 1fr;
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .card__item {
@@ -717,7 +723,7 @@ footer {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 780px) {
   .main-shop {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
