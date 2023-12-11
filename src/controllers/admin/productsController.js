@@ -85,6 +85,8 @@ const getEditProductView = async (req, res) => {
 
 const editProduct = async (req, res) => {
 
+    req.body.descuento = parseInt(req.body.descuento);
+
     const errors = validationResult(req)
     const categoriasDb = await modelCategory.findAll();
 
@@ -92,7 +94,6 @@ const editProduct = async (req, res) => {
 
     if (!errors.isEmpty()) {
         const producto = await model.findByPk(req.params.id)
-        console.log("este es el values req body", req.body)
         return res.render("./admin/productos/edit", {
             categoriasDb,
             producto: producto,
@@ -117,7 +118,6 @@ const editProduct = async (req, res) => {
         res.status(500).send(error);
     }
 
-    //acomodar mas adelante
     if (req.files[0]) {
         const frontImagePromise = sharp(req.files[0].buffer)
             .resize(600)
