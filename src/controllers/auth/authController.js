@@ -51,12 +51,17 @@ const verifyLogin = async (req, res) => {
                         if (existingCartEntry) {
                            existingCartEntry.quantity += +item.quantity;
                            await existingCartEntry.save();
-                        } else{
+                        } else {
+                           try {
                               const cart = await modelCart.create({
                               quantity: item.quantity,
                               UserId: user.id,
                               ProductId: item.ProductId,
                               });
+                           }
+                           catch {
+                              console.log("no se creó un carrito")
+                           }
                            }
                   };
       

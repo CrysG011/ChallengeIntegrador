@@ -53,7 +53,7 @@
                 <div class="create-row">
                     <label for="descuento">Descuento:</label>
                     <!-- estaría re piola que con estilos le añadas un % fijo a la derecha :) -->
-                    <input class="create-input log-input" type="text" id="descuento" name="discount" placeholder="0%" value="<%= typeof values != 'undefined' ? values.discount : '0' %>">
+                    <input class="create-input log-input" type="text" id="descuento" name="discount" placeholder="0%" value="<%= typeof values.discount != 'undefined' ? values.discount : '0' %>">
                     <label for="cuotas">Cuotas:</label>
                     <select id="cuotas" name="dues">
                         <option value="Pago Completo">Pago Completo</option>
