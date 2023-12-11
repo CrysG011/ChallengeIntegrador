@@ -73,8 +73,7 @@
                 <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
                 <div class="slider__item">
                     <% for (let i=0; i < productosRecientes.length; i++) { %>
-
-                        <article class="card-item">
+                        <article class="card__item">
                             <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
                                 <picture class="card-item__cover">
                                     <span class="card-item__tag">Nuevo</span>
@@ -128,7 +127,6 @@
                                 </div>
                             </a>
                         </article>
-
                         <% } %>
                 </div>
             </section>
@@ -136,6 +134,5 @@
         <%- include("../partials/footer-shop.ejs") %>
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
-
 
 </html>
