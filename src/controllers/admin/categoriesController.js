@@ -32,7 +32,8 @@ const createCategory = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.render("./admin/categorias/create", {
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
     
@@ -59,7 +60,7 @@ const getEditCategoryView = async (req, res) => {
     try {
         const category = await model.findByPk(req.params.id);
         if (category) {
-            res.render("./admin/categorias/edit", {category});  
+            res.render("./admin/categorias/edit", {category, req});  
         } else {
             res.status(404).send("El producto solicitado no existe");
         }
@@ -81,7 +82,8 @@ const editCategory = async (req, res) => {
         return res.render("./admin/categorias/edit", {
             categoria: categoria,
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
 

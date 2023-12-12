@@ -7,10 +7,6 @@ const modelCategory = require("../../models/Category");
 
 const getShopView = async (req, res) => {
 
-  console.log("REQ QUERY CATEGORIA ES: ", req.query.categoria)
-  console.log(typeof +req.query.categoria);
-
-  
   try {
     const categoriasDb = await modelCategory.findAll();
     let productos
@@ -26,7 +22,7 @@ const getShopView = async (req, res) => {
       productos = await model.findAll();
     } 
 
-    res.render("shop", { productos, categoriasDb });   
+    res.render("shop", { productos, categoriasDb, req });   
   } catch (error) {
     console.log(error)
   }
@@ -39,7 +35,6 @@ const getItemView = async (req, res) => {
     const producto = await model.findByPk(req.params.id);
     
     if(producto){
-
       const categoria = await modelCategory.findOne({
          where: {
           id: producto.CategoryId
@@ -56,7 +51,7 @@ const getItemView = async (req, res) => {
       });
 
       res.render("item", {
-        producto, categoria, productosRelacionados
+        producto, categoria, productosRelacionados, req
       });   
     } else {
       res.send("El producto no existe")
@@ -122,7 +117,7 @@ const getCartView = async (req, res) => {
           limit: 12
         });
       
-        res.render("emptyCart", {productosRecientes, categorias});
+        res.render("emptyCart", {productosRecientes, categorias, req});
         alreadySentRender = true;
     } else {
       let productsTotalQty = 0;
@@ -156,7 +151,7 @@ const getCartView = async (req, res) => {
                 }
               }
           }
-      res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice}); 
+      res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice, req}); 
       }
   }
   catch (error) {
@@ -168,10 +163,45 @@ const CreatePurchase = (req, res) => {
   res.send("Confirmar compra");
 };
 
+const deleteCart = async (req, res) => {
+
+  let deleteGroup = req.body.deleteType;
+
+  if(deleteGroup == "all"){
+    try {
+      if(!req.session.userId && req.session.cart){
+        const item = (req.session.cart.items.findIndex((item) => (item.ProductId == req.params.id)))
+          if (item != -1){
+            req.session.cart.items.splice(item, 1);
+            res.redirect("/shop/cart")
+          } else {
+            res.send("Ha ocurrido un error")
+          }
+      } else if (req.session.userId) {
+        const cart = await modelCart.destroy({
+            where: {
+                UserId: req.session.userId,
+                ProductId: req.params.id
+            }})
+        res.redirect("/shop/cart")
+      }  
+    } catch (error) {
+      res.send("Ha ocurrido un error: ", error)
+      console.log("Ha ocurrido un error: ", error)
+    }
+  }
+  else {
+    //Manejar cuando eliminan productos individuales y mueven el qty
+    res.send("Manejar cuando eliminan productos individuales")
+    console.log("Manejar cuando eliminan productos individuales")
+  }
+}
+
 module.exports = {
   getShopView,
   getItemView,
   addToCart,
   getCartView,
   CreatePurchase,
+  deleteCart
 };

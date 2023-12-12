@@ -23,7 +23,7 @@ const getAdminView = async (get, res) => {
 
 const getCreateProductView = async (req, res) => {
     const categoriasDb = await modelCategory.findAll();
-    res.render("./admin/productos/create", {categoriasDb, values: req.body,});
+    res.render("./admin/productos/create", {categoriasDb, values: req.body, req});
 }
 
 const createProduct = async (req, res) => {
@@ -37,7 +37,8 @@ const createProduct = async (req, res) => {
         return res.render("./admin/productos/create", {
             categoriasDb,
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
 
@@ -72,7 +73,7 @@ const getEditProductView = async (req, res) => {
         const categoriasDb = await modelCategory.findAll();
         const producto = await model.findByPk(req.params.id);
         if (producto) {
-            res.render("./admin/productos/edit", {producto, categoriasDb,});  
+            res.render("./admin/productos/edit", {producto, categoriasDb, req});  
         } else {
             res.status(404).send("El producto solicitado no existe");
         }
@@ -98,7 +99,8 @@ const editProduct = async (req, res) => {
             categoriasDb,
             producto: producto,
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
 
@@ -136,7 +138,6 @@ const editProduct = async (req, res) => {
 }
 
 const deleteProduct = async (req, res) => {
-    
     try {
         const deleted = await model.destroy({
             where: {
@@ -165,7 +166,7 @@ const deleteProduct = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-};
+}
                     
 module.exports = {
     getCreateProductView,
