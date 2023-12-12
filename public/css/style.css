@@ -1149,6 +1149,8 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 .destacado {
@@ -1156,6 +1158,81 @@ footer {
   align-items: center;
   justify-content: center;
   padding-top: 15em;
+}
+
+.destacado__card-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: var(--spacing-36);
+}
+
+.destacado__img {
+  grid-column: 1;
+}
+
+.destacado__desc {
+  grid-column: 2;
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--spacing-20);
+}
+
+.destacado__title {
+  font-size: var(--font-xlarge);
+  font-weight: 700;
+}
+
+.destacado__p {
+  font-size: var(--font-large);
+}
+
+.destacado__price {
+  font-size: var(--font-xlarge);
+}
+
+.destacado__controls {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.destacado__pagos {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  color: var(--secondary-900);
+  font-weight: 700;
+}
+
+.destacado__payment-link {
+  font-size: var(--font-small);
+  border-bottom: 3px solid var(--secondary-900);
+}
+
+.controls-quantity {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3fr 1fr;
+  gap: var(--spacing-8);
+}
+
+.quantity-input {
+  grid-row: 1 / span 2;
+  text-align: center;
+  max-width: 8em;
+}
+
+.quantity-button {
+  max-width: 1.5em;
+  height: auto;
+  background-color: var(--dark-500);
+  color: var(--ligth-font-solid);
+}
+
+.btn-add {
+  font-size: var(--font-small);
+  font-weight: 500;
 }
 
 @media (max-width: 748px) {
