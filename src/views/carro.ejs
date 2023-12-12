@@ -19,11 +19,12 @@
             </ul>
 
             <% for (let i=0; i < productsInCart.length; i++) { %>
+                <!-- me falta atajar el error en caso de que un usuario no logeado tenga un carrito lleno y lo vacie hasta 0 -->
                 <!-- le pongo el style nada mas para visualizar rapido -->
                 <article class="carro__card">
                     <div class="carro__card-content">
                         <picture class="carro__card-img">
-                            <img src="/uploads/<%=productos[i].id%>-1.webp" alt="BABY YODA BLUEBALL" />
+                            <img src="/uploads/<%=productos[i].id%>-1.webp" alt=" <%= productos[i].product_name %>" />
                         </picture>
                         <div class="carro__card-desc">
                             <h4 class="card-item__title">
@@ -42,10 +43,14 @@
                     </div>
                     <p class="carro__card-total">$ <%= productos.find(producto=> producto.id ==
                             productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
-                    <button class="carro__card-cancel">x</button>
-                </article>
-                <% } %>
 
+                    <form class="form-delete" action="/shop/cart/delete/<%=productos[i].id%>?_method=DELETE" method="post">
+                        <input type="hidden" name="deleteType" value="all" />
+                        <button class="carro__card-cancel" alt="ELIMINAR">x</button>
+                    </form>
+
+                </article>
+            <% } %>
                     <section class="carro__resumen">
                         <h2 class="carro__resumen-title">RESUMEN</h2>
                         <div class="carro__resumen-items">
@@ -77,6 +82,18 @@
                     </section>
         </main>
         <%- include("./partials/footer-shop") %>
+
+        <script>
+            document.addEventListener("submit", (event) => {
+                if (event.target.classList.contains("form-delete")) {
+                  event.preventDefault();
+
+                  if (confirm("¿Eliminar elemento?")) {
+                    event.target.submit();
+                  }
+                }
+            });
+        </script>
 </body>
 
 </html>

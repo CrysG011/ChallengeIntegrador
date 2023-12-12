@@ -13,7 +13,7 @@ const getAdminCategoryView = async (get, res) => {
         const idCategorias = category.map(category => category.id);
         const nombresCategorias = category.map(category => category.category_name);
         const descripcionCategorias = category.map(category => category.category_description);
-        res.render("./admin/categorias/admin", { nombresCategorias, idCategorias, descripcionCategorias, req });   
+        res.render("./admin/categorias/admin", { nombresCategorias, idCategorias, descripcionCategorias });   
     } catch (error) {
         console.log(error)
         res.status(500).send("Error interno del servidor");
@@ -21,7 +21,7 @@ const getAdminCategoryView = async (get, res) => {
 }
 
 const getCreateCategoryView = (req, res) => {
-    res.render("./admin/categorias/create", req);
+    res.render("./admin/categorias/create");
 }
 
 const createCategory = async (req, res) => {
@@ -48,7 +48,7 @@ const createCategory = async (req, res) => {
                 .catch(err => console.log("Error en la imagen: " + err));
         }
 
-        res.redirect("/admin/categories/", {req});
+        res.redirect("/admin/categories/");
 
     } catch (error) {
         console.log("error:" + error);
@@ -94,7 +94,7 @@ const editCategory = async (req, res) => {
             },
         });          
         if (aff[0] == 1){
-            res.redirect("/admin/categories", {req});
+            res.redirect("/admin/categories");
         } else {
             res.send("No se pudo editar el producto")
         }
@@ -122,7 +122,7 @@ const deleteCategory = async (req, res) => {
                     }
         }
 
-        res.redirect("/admin/categories/", {req});
+        res.redirect("/admin/categories/");
     } catch (error) {
         console.log(error);
     }

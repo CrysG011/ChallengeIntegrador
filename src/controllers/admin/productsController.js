@@ -15,7 +15,7 @@ const getAdminView = async (get, res) => {
         const nombresProductos = productos.map(producto => producto.product_name);
         const skuProductos = productos.map(producto => producto.sku);
         const categoriasDb = await modelCategory.findAll();
-        res.render("./admin/productos/admin", {productos, nombresProductos, skuProductos, idProductos, categoriasDb, req});
+        res.render("./admin/productos/admin", {productos, nombresProductos, skuProductos, idProductos, categoriasDb});
     } catch (error) {
         console.log(error)
     }
@@ -60,7 +60,7 @@ const createProduct = async (req, res) => {
             await Promise.all([frontImagePromise, boxImagePromise]);
         }
 
-        res.redirect("/admin/", {req});
+        res.redirect("/admin/");
 
     } catch (error) {
         console.log("error:" + error);
@@ -138,7 +138,6 @@ const editProduct = async (req, res) => {
 }
 
 const deleteProduct = async (req, res) => {
-    
     try {
         const deleted = await model.destroy({
             where: {
@@ -163,11 +162,11 @@ const deleteProduct = async (req, res) => {
                         );
                     }
         }
-        res.redirect("/admin/", {req});
+        res.redirect("/admin/");
     } catch (error) {
         console.log(error);
     }
-};
+}
                     
 module.exports = {
     getCreateProductView,
