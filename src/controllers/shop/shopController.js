@@ -26,7 +26,7 @@ const getShopView = async (req, res) => {
       productos = await model.findAll();
     } 
 
-    res.render("shop", { productos, categoriasDb });   
+    res.render("shop", { productos, categoriasDb, req });   
   } catch (error) {
     console.log(error)
   }
@@ -56,7 +56,7 @@ const getItemView = async (req, res) => {
       });
 
       res.render("item", {
-        producto, categoria, productosRelacionados
+        producto, categoria, productosRelacionados, req
       });   
     } else {
       res.send("El producto no existe")
@@ -122,7 +122,7 @@ const getCartView = async (req, res) => {
           limit: 12
         });
       
-        res.render("emptyCart", {productosRecientes, categorias});
+        res.render("emptyCart", {productosRecientes, categorias, req});
         alreadySentRender = true;
     } else {
       let productsTotalQty = 0;
@@ -156,7 +156,7 @@ const getCartView = async (req, res) => {
                 }
               }
           }
-      res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice}); 
+      res.render("carro", {productsInCart, productos, productsTotalQty, subTotalPrice, envioPrice, req}); 
       }
   }
   catch (error) {

@@ -13,7 +13,7 @@ const getAdminCategoryView = async (get, res) => {
         const idCategorias = category.map(category => category.id);
         const nombresCategorias = category.map(category => category.category_name);
         const descripcionCategorias = category.map(category => category.category_description);
-        res.render("./admin/categorias/admin", { nombresCategorias, idCategorias, descripcionCategorias });   
+        res.render("./admin/categorias/admin", { nombresCategorias, idCategorias, descripcionCategorias, req });   
     } catch (error) {
         console.log(error)
         res.status(500).send("Error interno del servidor");
@@ -21,7 +21,7 @@ const getAdminCategoryView = async (get, res) => {
 }
 
 const getCreateCategoryView = (req, res) => {
-    res.render("./admin/categorias/create");
+    res.render("./admin/categorias/create", req);
 }
 
 const createCategory = async (req, res) => {
@@ -32,7 +32,8 @@ const createCategory = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.render("./admin/categorias/create", {
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
     
@@ -47,7 +48,7 @@ const createCategory = async (req, res) => {
                 .catch(err => console.log("Error en la imagen: " + err));
         }
 
-        res.redirect("/admin/categories/");
+        res.redirect("/admin/categories/", {req});
 
     } catch (error) {
         console.log("error:" + error);
@@ -59,7 +60,7 @@ const getEditCategoryView = async (req, res) => {
     try {
         const category = await model.findByPk(req.params.id);
         if (category) {
-            res.render("./admin/categorias/edit", {category});  
+            res.render("./admin/categorias/edit", {category, req});  
         } else {
             res.status(404).send("El producto solicitado no existe");
         }
@@ -81,7 +82,8 @@ const editCategory = async (req, res) => {
         return res.render("./admin/categorias/edit", {
             categoria: categoria,
             values: req.body,
-            errors: errors.array(),
+            errors: errors.array(), 
+            req
         });
     }
 
@@ -92,7 +94,7 @@ const editCategory = async (req, res) => {
             },
         });          
         if (aff[0] == 1){
-            res.redirect("/admin/categories");
+            res.redirect("/admin/categories", {req});
         } else {
             res.send("No se pudo editar el producto")
         }
@@ -120,7 +122,7 @@ const deleteCategory = async (req, res) => {
                     }
         }
 
-        res.redirect("/admin/categories/");
+        res.redirect("/admin/categories/", {req});
     } catch (error) {
         console.log(error);
     }

@@ -10,15 +10,23 @@ const registerValidations = [
     body("name")
     .not()
     .isEmpty()
-    .withMessage("El nombre no puede estar vacío"),
+    .withMessage("El nombre no puede estar vacío")
+    .bail()
+    .isAlpha()
+    .withMessage("El nombre solo puede contener letras"),
     body("lastname")
     .not()
     .isEmpty()
     .withMessage("El apellido no puede estar vacío")
+    .bail()
+    .isAlpha()
+    .withMessage("El apellido solo puede contener letras")
     .bail({ level: 'request' }),
     body("username")
     .not()
     .isEmpty()
+    .withMessage("Ingresa un nombre de usuario de 6 a 30 caracteres")
+    .bail()
     .isLength({min: 6, max: 30})
     .withMessage("Ingresa un nombre de usuario de 6 a 30 caracteres")
     .custom((value, { req }) => {
@@ -68,6 +76,10 @@ const registerValidations = [
     })
     .withMessage("El email ingresado ya está registrado"),
     body("password")
+    .not()
+    .isEmpty()
+    .withMessage("La contraseña debe tener entre 6 y 30 caracteres")
+    .bail()
     .isLength({min: 6, max: 30})
     .withMessage("La contraseña debe tener entre 6 y 30 caracteres")
     .bail()
@@ -99,7 +111,7 @@ const loginValidations = [
         minNumbers: 1,
         minSymbols: 1,
     })
-    .withMessage("La contraseña debe tener al menos una minúscula, una mayúscula, un número y un símbolo(@,!,#...)")
+    .withMessage("La contraseña debe tener al menos una minúscula, una mayúscula, un número y un símbolo (@,!,#...)")
 ];
 
 router.get("/login", controller.getLoginView);

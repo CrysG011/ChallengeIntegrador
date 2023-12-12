@@ -10,7 +10,7 @@ const index = async (req, res) => {
     limit: 12
   });
 
-  res.render("layouts/layout", {productosRecientes, categorias});
+  res.render("layouts/layout", {productosRecientes, categorias, req});
 };
 
 module.exports = {

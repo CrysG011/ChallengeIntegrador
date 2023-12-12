@@ -5,8 +5,13 @@ const model = require("../../models/User")
 const modelCart = require("../../models/Cart")
 
 const getLoginView = (req, res) => {
-   res.render("login");
+   if (!req.session.userId){
+   res.render("login", {req});
+   } else {
+      res.send("Ya estás ingresado!")
+   }
 }
+
 const verifyLogin = async (req, res) => {
 
    const errors = validationResult(req);
@@ -15,6 +20,7 @@ const verifyLogin = async (req, res) => {
          return res.render("login", {
             values: req.body,
             errors: errors.array(),
+            req
          });
       }
    
@@ -29,11 +35,13 @@ const verifyLogin = async (req, res) => {
             res.render("login", {
                values: req.body,
                errors: [{msg: "El correo y/o la contraseña son incorrectos"}],
+               req
             });
          } else if (!(await bcryptjs.compare(req.body.password, user.password))) {
             res.render("login", {
                values: req.body,
                errors: [{msg: "El correo y/o la contraseña son incorrectos"}],
+               req
          });
          } else {
 
@@ -79,7 +87,7 @@ const verifyLogin = async (req, res) => {
 };
 
 const getRegisterView = (req, res) => {
-    res.render("register");
+    res.render("register", {req});
 };
  const verifyRegister = async (req, res) => {
    const errors = validationResult(req);
@@ -88,6 +96,7 @@ const getRegisterView = (req, res) => {
         return res.render("register", {
             values: req.body,
             errors: errors.array(),
+            req
         });
     }
    
