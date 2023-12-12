@@ -1318,6 +1318,13 @@ footer {
   gap: var(--spacing-8);
 }
 
+#searchInput {
+  width: 29rem;
+  height: 3rem;
+  border-radius: 6px;
+  border: 2px solid var(--dark-solid);
+}
+
 .search-icon {
   max-width: 3rem;
   height: auto;
@@ -1352,10 +1359,11 @@ footer {
 
 .plus-sign {
   width: 3rem;
-  justify-self: end;
+  height: 3rem;
+  text-align: center;
+  justify-self: center;
   background-color: var(--primary-solid);
-  font-weight: bold;
-  font-size: var(--font-large);
+  font-size: 3rem;
   color: var(--light-bg-solid);
 }
 
@@ -1521,6 +1529,11 @@ footer {
 }
 
 @media (max-width:480px) {
+  .destacado__card-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
   .mainlogin {
     margin-left: var(--spacing-36);
   }
@@ -1561,6 +1574,22 @@ footer {
 
   .check-remember {
     font-size: .3em;
+  }
+
+  .mainadmin {
+    padding-top: 11em;
+  }
+
+  .product-list__title,
+  .product-list__add-button {
+    font-size: var(--font-xsmall);
+  }
+
+  .product-list__tr,
+  .product-list__tbody {
+    font-size: 1rem;
+    color: #000;
+    gap: var(--spacing-8);
   }
 }
 

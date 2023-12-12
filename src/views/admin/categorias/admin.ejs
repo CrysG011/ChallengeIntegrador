@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <%- include("../../partials/header-admin") %>
         <main class="mainadmin container">
             <div class="search-bar">
@@ -18,10 +17,10 @@
             </div>
             <div class="product-list">
                 <a href="/admin/categories/create">
-                <div class="product-list__add">
-                    <h2 class="product-list__title">LISTADO DE CATEGORÍAS</h2>
-                    <button class="product-list__add-button">AGREGAR<span class="plus-sign">+</span></button>
-                </div>
+                    <div class="product-list__add">
+                        <h2 class="product-list__title">LISTADO DE CATEGORÍAS</h2>
+                        <button class="product-list__add-button">AGREGAR<span class="plus-sign">+</span></button>
+                    </div>
                 </a>
                 <table class="product-list__table">
                     <thead>
@@ -33,19 +32,30 @@
                     </thead>
                     <tbody>
 
-                        <% for (let i = 0; i < idCategorias.length; i++) { %>
+                        <% for (let i=0; i < idCategorias.length; i++) { %>
                             <tr class="product-list__tbody">
-                                <td class="product-list__id"><%= idCategorias[i] %></td>
-                                <td><%= nombresCategorias[i] %></td>
-                                <td><%= descripcionCategorias[i] %></td>
-                                <td><a href="/admin/categories/edit/<%= idCategorias[i] %>"> <img src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a></td>
+                                <td class="product-list__id">
+                                    <%= idCategorias[i] %>
+                                </td>
                                 <td>
-                                    <form class="form-delete" action="/admin/categories/delete/<%= idCategorias[i] %>?_method=DELETE" method="post">
-                                        <button type="submit"><img src="../../../../img/icons/delete_trash.svg" alt="ELIMINAR" class="eliminar"></button>
+                                    <%= nombresCategorias[i] %>
+                                </td>
+                                <td>
+                                    <%= descripcionCategorias[i] %>
+                                </td>
+                                <td><a href="/admin/categories/edit/<%= idCategorias[i] %>"> <img
+                                            src="../../../../img/icons/edit_pencil.svg" alt="EDITAR" class="editar"></a>
+                                </td>
+                                <td>
+                                    <form class="form-delete"
+                                        action="/admin/categories/delete/<%= idCategorias[i] %>?_method=DELETE"
+                                        method="post">
+                                        <button type="submit"><img src="../../../../img/icons/delete_trash.svg"
+                                                alt="ELIMINAR" class="eliminar"></button>
                                     </form>
-                                </td> 
+                                </td>
                             </tr>
-                        <% } %>
+                            <% } %>
 
                     </tbody>
                 </table>
@@ -54,17 +64,17 @@
         </main>
         <%- include("../../partials/footer-admin") %>
 
-        <script>
-            document.addEventListener("submit", (event) => {
-                if (event.target.classList.contains("form-delete")) {
-                  event.preventDefault();
+            <script>
+                document.addEventListener("submit", (event) => {
+                    if (event.target.classList.contains("form-delete")) {
+                        event.preventDefault();
 
-                  if (confirm("¿Eliminar elemento?")) {
-                    event.target.submit();
-                  }
-                }
-            });
-        </script>
+                        if (confirm("¿Eliminar elemento?")) {
+                            event.target.submit();
+                        }
+                    }
+                });
+            </script>
 </body>
 
 </html>
