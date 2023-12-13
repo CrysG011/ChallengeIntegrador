@@ -67,49 +67,49 @@
                         </a>
                     </article>
                     <% }) %>
+            </section>
+        </main>
+        <%- include("./partials/footer-shop") %>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const addToCartForm = document.getElementById('addToCartForm');
 
-                        <%- include("./partials/footer-shop") %>
+                    addToCartForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
 
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const addToCartForm = document.getElementById('addToCartForm');
+                        const quantityValue = parseInt(document.querySelector('.destacado__quantity-input').value);
+                        fetch('/shop/item/<%= producto.id %>/add', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ quantity: quantityValue })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    const mensajeElemento = document.createElement('div');
+                                    mensajeElemento.innerHTML = 'Añadido al carrito exitosamente';
 
-                                    addToCartForm.addEventListener('submit', function (e) {
-                                        e.preventDefault();
+                                    const contenedor = document.querySelector('.destacado');
+                                    contenedor.insertBefore(mensajeElemento, contenedor.firstChild);
 
-                                        const quantityValue = parseInt(document.querySelector('.destacado__quantity-input').value);
-                                        fetch('/shop/item/<%= producto.id %>/add', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify({ quantity: quantityValue })
-                                        })
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (data.success) {
-                                                    const mensajeElemento = document.createElement('div');
-                                                    mensajeElemento.innerHTML = 'Añadido al carrito exitosamente';
+                                    setTimeout(function () {
+                                        mensajeElemento.remove();
+                                    }, 4000);
 
-                                                    const contenedor = document.querySelector('.destacado');
-                                                    contenedor.insertBefore(mensajeElemento, contenedor.firstChild);
+                                } else {
+                                    console.error('Error al agregar el producto al carrito', data.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al agregar el producto al carrito', error);
+                            });
 
-                                                    setTimeout(function () {
-                                                        mensajeElemento.remove();
-                                                    }, 4000);
-
-                                                } else {
-                                                    console.error('Error al agregar el producto al carrito', data.error);
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error al agregar el producto al carrito', error);
-                                            });
-
-                                        addToCartForm.reset();
-                                    });
-                                });
-                            </script>
+                        addToCartForm.reset();
+                    });
+                });
+            </script>
 
 </body>
 
