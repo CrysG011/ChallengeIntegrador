@@ -1220,7 +1220,7 @@ footer {
 .quantity-input {
   grid-row: 1 / span 2;
   text-align: center;
-  max-width: 8em;
+  max-width: 4em;
 }
 
 .quantity-button {
@@ -1532,6 +1532,37 @@ footer {
   .destacado__card-item {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+
+  .destacado__img {
+    grid-row: 1;
+  }
+
+  .destacado__desc {
+    grid-column: 1;
+    grid-row: 2;
+    justify-items: center;
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+
+  .destacado__title {
+    font-size: var(--font-medium);
+  }
+
+  .destacado__p {
+    font-size: var(--font-small);
+  }
+
+  .destacado__price {
+    font-size: var(--font-small);
+    font-weight: 700;
+    justify-self: right;
+  }
+
+  .slider__title {
+    font-size: var(--font-xlarge);
   }
 
   .mainlogin {

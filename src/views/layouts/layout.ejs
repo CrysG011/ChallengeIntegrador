@@ -17,6 +17,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -69,70 +71,99 @@
                 </picture>
             </section>
 
-            <section class="slider container">
+            <section class="slider container glide">
                 <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
-                <div class="slider__item">
-                    <% for (let i=0; i < productosRecientes.length; i++) { %>
-                        <article class="card__item">
-                            <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
-                                <picture class="card-item__cover">
-                                    <span class="card-item__tag">Nuevo</span>
-                                    <% if (productosRecientes[i] && productosRecientes[i].id) { %>
-                                        <img class="card-item__img--front"
-                                            src="/uploads/<%= productosRecientes[i].id %>-1.webp"
-                                            alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
-                                        <img class="card-item__img--back"
-                                            src="/uploads/<%= productosRecientes[i].id %>-box.webp"
-                                            alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
-                                        <% } else { %>
-                                            <!-- item por defecto si no se encuentra productosRecientes[i] o sus atributos por un imprevisto -->
-                                            <img class="card-item__img--front" src="/uploads/default.webp"
-                                                alt="Imagen por defecto" />
-                                            <% } %>
-                                </picture>
-                                <div class="card-item__content">
-                                    <% if (productosRecientes[i] && productosRecientes[i].CategoryId) { %>
-                                        <p class="card-item__licence">
-                                            <%= ((categorias.find(categoria=> categoria.id ===
-                                                productosRecientes[i].CategoryId))?.category_name).toUpperCase() %>
-                                        </p>
-                                        <% } else { %>
-                                            <p class="card-item__licence">Sin Categoría</p>
-                                            <% } %>
-                                                <% if (productosRecientes[i] && productosRecientes[i].product_name) { %>
-                                                    <h4 class="card-item__name">
-                                                        <%= productosRecientes[i].product_name.toUpperCase() %>
-                                                    </h4>
-                                                    <% } else { %>
-                                                        <h4 class="card-item__name">Sin Nombre</h4>
-                                                        <% } %>
-                                                            <% if (productosRecientes[i] && productosRecientes[i].price)
-                                                                { %>
-                                                                <p class="card-item__price">$<%=
-                                                                        productosRecientes[i].price %>
-                                                                </p>
-                                                                <% } else { %>
-                                                                    <p class="card-item__price">Precio Desconocido</p>
-                                                                    <% } %>
-                                                                        <% if (productosRecientes[i] &&
-                                                                            productosRecientes[i].dues) { %>
-                                                                            <p class="card-item__promo">
-                                                                                <%= productosRecientes[i].dues.toUpperCase()
-                                                                                    %>
-                                                                            </p>
-                                                                            <% } else { %>
-                                                                                <p class="card-item__promo">Promoción
-                                                                                    Desconocida</p>
-                                                                                <% } %>
-                                </div>
-                            </a>
-                        </article>
-                        <% } %>
+                <div class="slider__item glide__track">
+                    <div class="glide__slides">
+                        <% for (let i=0; i < productosRecientes.length; i++) { %>
+                            <article class="card__item glide__slide">
+                                <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
+                                    <picture class="card-item__cover glide__slide">
+                                        <span class="card-item__tag">Nuevo</span>
+                                        <% if (productosRecientes[i] && productosRecientes[i].id) { %>
+                                            <img class="card-item__img--front"
+                                                src="/uploads/<%= productosRecientes[i].id %>-1.webp"
+                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
+                                            <img class="card-item__img--back"
+                                                src="/uploads/<%= productosRecientes[i].id %>-box.webp"
+                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
+                                            <% } else { %>
+                                                <!-- item por defecto si no se encuentra productosRecientes[i] o sus atributos por un imprevisto -->
+                                                <img class="card-item__img--front" src="/uploads/default.webp"
+                                                    alt="Imagen por defecto" />
+                                                <% } %>
+                                    </picture>
+                                    <div class="card-item__content">
+                                        <% if (productosRecientes[i] && productosRecientes[i].CategoryId) { %>
+                                            <p class="card-item__licence">
+                                                <%= ((categorias.find(categoria=> categoria.id ===
+                                                    productosRecientes[i].CategoryId))?.category_name).toUpperCase() %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="card-item__licence">Sin Categoría</p>
+                                                <% } %>
+                                                    <% if (productosRecientes[i] && productosRecientes[i].product_name)
+                                                        { %>
+                                                        <h4 class="card-item__name">
+                                                            <%= productosRecientes[i].product_name.toUpperCase() %>
+                                                        </h4>
+                                                        <% } else { %>
+                                                            <h4 class="card-item__name">Sin Nombre</h4>
+                                                            <% } %>
+                                                                <% if (productosRecientes[i] &&
+                                                                    productosRecientes[i].price) { %>
+                                                                    <p class="card-item__price">$<%=
+                                                                            productosRecientes[i].price %>
+                                                                    </p>
+                                                                    <% } else { %>
+                                                                        <p class="card-item__price">Precio Desconocido
+                                                                        </p>
+                                                                        <% } %>
+                                                                            <% if (productosRecientes[i] &&
+                                                                                productosRecientes[i].dues) { %>
+                                                                                <p class="card-item__promo">
+                                                                                    <%= productosRecientes[i].dues.toUpperCase()
+                                                                                        %>
+                                                                                </p>
+                                                                                <% } else { %>
+                                                                                    <p class="card-item__promo">
+                                                                                        Promoción
+                                                                                        Desconocida</p>
+                                                                                    <% } %>
+                                    </div>
+                                </a>
+                            </article>
+                            <% } %>
+                    </div>
+
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
+                            icon="vaadin:chevron-right-small" flip="horizontal"></iconify-icon></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
+                            icon="vaadin:chevron-right-small"></iconify-icon></button>
                 </div>
             </section>
         </main>
         <%- include("../partials/footer-shop.ejs") %>
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+            <script>
+                new Glide('.glide', {
+                    type: 'slider',
+                    startAt: 0,
+                    perView: 3,
+                    gap: 10,
+                    breakpoints: {
+                        980: {
+                            perView: 2
+                        },
+                        480: {
+                            perView: 1
+                        }
+                    }
+                }).mount();
+            </script>
 </body>
 
 </html>
