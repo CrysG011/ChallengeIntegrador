@@ -62,9 +62,6 @@ const getItemView = async (req, res) => {
 };
 
 const addToCart = async (req, res) => {
-
-  console.log("REQ BODY QTY: ", req.body.quantity)
-  
   try {
         const user = await modelUser.findByPk(req.session.userId);
         
@@ -106,16 +103,18 @@ const getCartView = async (req, res) => {
     let user;
     let alreadySentRender = false;
 
+
     if (req.session.userId){
     user = await modelUser.findByPk(req.session.userId);
     }
 
-    if (!user && !req.session.cart) {
+    if (!user && !req.session.cart || req.session.cart.items == 0) {
+      console.log("ENTRO AL !USER BLABLA")
         const categorias = await modelCategory.findAll()
       
         const productosRecientes = await model.findAll({
           order: [['createdAt', 'DESC']],
-          limit: 12
+          limit: 6
         });
       
         res.render("emptyCart", {productosRecientes, categorias, req});
@@ -170,11 +169,22 @@ const deleteCart = async (req, res) => {
 
   if(deleteGroup == "all"){
     try {
-      if(!req.session.userId && req.session.cart){
+      if(!req.session.userId && req.session.cart || !user && !req.session.cart.items){
         const item = (req.session.cart.items.findIndex((item) => (item.ProductId == req.params.id)))
           if (item != -1){
             req.session.cart.items.splice(item, 1);
-            res.redirect("/shop/cart")
+            if (req.session.cart.items.length === 0){
+              const categorias = await modelCategory.findAll()
+              const productosRecientes = await model.findAll({
+                order: [['createdAt', 'DESC']],
+                limit: 6
+              });
+            
+              res.render("emptyCart", {productosRecientes, categorias, req});
+
+            } else {
+              res.redirect("/shop/cart")
+            }
           } else {
             res.send("Ha ocurrido un error")
           }

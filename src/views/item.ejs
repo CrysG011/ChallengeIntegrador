@@ -70,6 +70,7 @@
             </section>
         </main>
         <%- include("./partials/footer-shop") %>
+
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const addToCartForm = document.getElementById('addToCartForm');
@@ -77,7 +78,7 @@
                     addToCartForm.addEventListener('submit', function (e) {
                         e.preventDefault();
 
-                        const quantityValue = parseInt(document.querySelector('.destacado__quantity-input').value);
+                        const quantityValue = parseInt(document.querySelector('.quantity-input').value);
                         fetch('/shop/item/<%= producto.id %>/add', {
                             method: 'POST',
                             headers: {
