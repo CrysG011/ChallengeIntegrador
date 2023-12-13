@@ -15,10 +15,8 @@ const isLoginCart = (req, res, next) => {
 
   const qty = parseInt(req.body.quantity)
 
-  console.log("el qty es: ", qty)
-
   if (!req.session.userId) {
-
+    //Anadir carrito en caso de que no exista
     if (!req.session.cart) {
       const cart = {
         items: []
@@ -30,6 +28,7 @@ const isLoginCart = (req, res, next) => {
         quantity: qty
       })
     } else {
+    //Usar carrito existente y sumar qty si existe el producto anadido  
         const item = (req.session.cart.items.findIndex((item) => (item.ProductId == req.params.id)))
         if (item != -1){
           req.session.cart.items[item].quantity = parseInt(req.session.cart.items[item].quantity) + parseInt(req.body.quantity);
