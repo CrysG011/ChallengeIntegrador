@@ -71,56 +71,68 @@
 
             <section class="slider container">
                 <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
-                <ul class="slider__items">
-                    <% for (let i = 0; i < productosRecientes.length; i++) { %>
-                        <li class="slider__item">
-                            <article class="card-item">
-                                <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
-                                    <picture class="card-item__cover">
-                                        <span class="card-item__tag">Nuevo</span>
-                                        <% if (productosRecientes[i] && productosRecientes[i].id) { %>
-                                            <img class="card-item__img--front" src="/uploads/<%= productosRecientes[i].id %>-1.webp"
-                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
-                                            <img class="card-item__img--back" src="/uploads/<%= productosRecientes[i].id %>-box.webp"
-                                                alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
+                <div class="slider__item">
+                    <% for (let i=0; i < productosRecientes.length; i++) { %>
+                        <article class="card__item">
+                            <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
+                                <picture class="card-item__cover">
+                                    <span class="card-item__tag">Nuevo</span>
+                                    <% if (productosRecientes[i] && productosRecientes[i].id) { %>
+                                        <img class="card-item__img--front"
+                                            src="/uploads/<%= productosRecientes[i].id %>-1.webp"
+                                            alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
+                                        <img class="card-item__img--back"
+                                            src="/uploads/<%= productosRecientes[i].id %>-box.webp"
+                                            alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
                                         <% } else { %>
                                             <!-- item por defecto si no se encuentra productosRecientes[i] o sus atributos por un imprevisto -->
                                             <img class="card-item__img--front" src="/uploads/default.webp"
                                                 alt="Imagen por defecto" />
-                                        <% } %>
-                                    </picture>
-                                    <div class="card-item__content">
-                                        <% if (productosRecientes[i] && productosRecientes[i].CategoryId) { %>
-                                            <p class="card-item__licence"><%= ((categorias.find(categoria => categoria.id === productosRecientes[i].CategoryId))?.category_name).toUpperCase() %></p>
+                                            <% } %>
+                                </picture>
+                                <div class="card-item__content">
+                                    <% if (productosRecientes[i] && productosRecientes[i].CategoryId) { %>
+                                        <p class="card-item__licence">
+                                            <%= ((categorias.find(categoria=> categoria.id ===
+                                                productosRecientes[i].CategoryId))?.category_name).toUpperCase() %>
+                                        </p>
                                         <% } else { %>
                                             <p class="card-item__licence">Sin Categoría</p>
-                                        <% } %>
-                                        <% if (productosRecientes[i] && productosRecientes[i].product_name) { %>
-                                            <h4 class="card-item__name"><%= productosRecientes[i].product_name.toUpperCase() %></h4>
-                                        <% } else { %>
-                                            <h4 class="card-item__name">Sin Nombre</h4>
-                                        <% } %>
-                                        <% if (productosRecientes[i] && productosRecientes[i].price) { %>
-                                            <p class="card-item__price">$<%= productosRecientes[i].price %></p>
-                                        <% } else { %>
-                                            <p class="card-item__price">Precio Desconocido</p>
-                                        <% } %>
-                                        <% if (productosRecientes[i] && productosRecientes[i].dues) { %>
-                                            <p class="card-item__promo"><%= productosRecientes[i].dues.toUpperCase() %></p>
-                                        <% } else { %>
-                                            <p class="card-item__promo">Promoción Desconocida</p>
-                                        <% } %>
-                                    </div>
-                                </a>
-                            </article>
-                        </li>
-                    <% } %>
-                </ul>
+                                            <% } %>
+                                                <% if (productosRecientes[i] && productosRecientes[i].product_name) { %>
+                                                    <h4 class="card-item__name">
+                                                        <%= productosRecientes[i].product_name.toUpperCase() %>
+                                                    </h4>
+                                                    <% } else { %>
+                                                        <h4 class="card-item__name">Sin Nombre</h4>
+                                                        <% } %>
+                                                            <% if (productosRecientes[i] && productosRecientes[i].price)
+                                                                { %>
+                                                                <p class="card-item__price">$<%=
+                                                                        productosRecientes[i].price %>
+                                                                </p>
+                                                                <% } else { %>
+                                                                    <p class="card-item__price">Precio Desconocido</p>
+                                                                    <% } %>
+                                                                        <% if (productosRecientes[i] &&
+                                                                            productosRecientes[i].dues) { %>
+                                                                            <p class="card-item__promo">
+                                                                                <%= productosRecientes[i].dues.toUpperCase()
+                                                                                    %>
+                                                                            </p>
+                                                                            <% } else { %>
+                                                                                <p class="card-item__promo">Promoción
+                                                                                    Desconocida</p>
+                                                                                <% } %>
+                                </div>
+                            </a>
+                        </article>
+                        <% } %>
+                </div>
             </section>
         </main>
         <%- include("../partials/footer-shop.ejs") %>
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
-
 
 </html>

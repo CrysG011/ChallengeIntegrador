@@ -1,0 +1,10 @@
+services:
+  - name: web
+    buildCommand: npm install
+    startCommand: npm start
+    env:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: "/"
+    github:
+      branch: main

@@ -10,59 +10,66 @@
 </head>
 
 <body>
-    <!-- <%- include("./partials/header-shop") %> -->
-        <main class="main">
+    <%- include("./partials/header-shop") %>
+        <main class="mainitem">
             <section class="destacado">
-                <article>
-                    <h3 class="destacado__h3"><%- (producto.product_name).toUpperCase() %></h3>
-                    <p class="destacado__desc">
-                        <%- producto.product_description %>
-                    </p>
-                    <p class="destacado__precio">$ <%- producto.price %></p>
-                    <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
-                        <div class="destacado__controls">
-                            <button class="destacado__quantity-button" data-action="decrease">-</button>
-                            <input name="quantity" class="destacado__quantity-input" type="number" value="1">
-                            <button class="destacado__quantity-button" data-action="increase">+</button>
-                            <button type="submit" class="destacado__add-to-cart">Agregar al carrito</button>
+                <article class="destacado__card-item">
+                    <picture class="destacado__img collection__cover">
+                        <img class="card-item__img--front" src="/uploads/<%=producto.id%>-1.webp"
+                            alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
+                    </picture>
+                    <div class="destacado__desc">
+                        <h3 class="destacado__title"><%- (producto.product_name).toUpperCase() %></h3>
+                        <p class="destacado__p">
+                            <%- producto.product_description %>
+                        </p>
+                        <p class="destacado__price">$ <%- producto.price %></p>
+                        <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
+                            <div class="destacado__controls">
+                                <div class="controls-quantity">
+                                    <input name="quantity" class="quantity-input" type="number" value="1">
+                                    <button class="quantity-button" data-action="decrease">-</button>
+                                    <button class="quantity-button" data-action="increase">+</button>
+                                </div>
+                                <button type="submit" class="btn-add btn-ingresar">Agregar al carrito</button>
+                            </div>
+                        </form>
+                        <div class="destacado__pagos">
+                            <a href="#" class="destacado__payment-link">Ver método de pago </a>
+                            <p><%- (producto.dues).toUpperCase() %></p>
                         </div>
-                    </form>
-                    <a href="#" class="destacado__payment-link">Ver método de pago </a>
-                    <p><%- (producto.dues).toUpperCase() %></p>
-                </article>
-                <picture>
-                    <img src="/uploads/<%=producto.id%>-1.webp"
-                        alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
-                </picture>
-            </section>
+                    </div>
 
-            <h4>PRODUCTOS RELACIONADOS</h4>
-            <section class="news">
+                </article>
+            </section>
+            <h4 class="slider__title">PRODUCTOS RELACIONADOS</h4>
+            <section class="slider__item">
                 <%productosRelacionados.forEach(producto=> { %>
-                    <article class="news__card">
+                    <article class="card__item">
                         <a href="./<%=producto.id%>">
-                            <picture>
-                                <img src="/uploads/<%=producto.id%>-1.webp"
+                            <picture class="card-item__cover">
+                                <img class="card-item__img--front" src="/uploads/<%=producto.id%>-1.webp"
                                     alt="<%= (producto.product_name).toUpperCase() %>" />
                             </picture>
-                            <div>
-                                <p>
+                            <div class="card-item__content">
+                                <p class="card-item__licence">
                                     <%= (categoria.category_name).toUpperCase() %>
                                 </p>
-                                <h4>
+                                <h4 class="card-item__name">
                                     <%= (producto.product_name).toUpperCase() %>
                                 </h4>
-                                <p>$ <%= producto.product_price %>
+                                <p class="card-item__price">$ <%= producto.product_price %>
                                 </p>
-                                <p>
+                                <p class="card-item__promo">
                                     <%= producto.dues %>
                                 </p>
                             </div>
                         </a>
                     </article>
                     <% }) %>
-
-        <%- include("./partials/footer-shop") %>
+            </section>
+        </main>
+    <%- include("./partials/footer-shop") %>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
