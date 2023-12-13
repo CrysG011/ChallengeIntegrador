@@ -78,7 +78,7 @@
         addToCartForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const quantityValue = parseInt(document.querySelector('.destacado__quantity-input').value);
+            const quantityValue = parseInt(document.querySelector('.quantity-input').value);
             fetch('/shop/item/<%= producto.id %>/add', {
                 method: 'POST',
                 headers: {
