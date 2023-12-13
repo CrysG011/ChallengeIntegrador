@@ -53,10 +53,11 @@
                     <label for="descuento">Descuento:</label>
                     <input class="create-input log-input" type="text" id="descuento" name="discount" placeholder="0%" value="<%=producto.discount%>">
                     <label for="cuotas">Cuotas:</label>
-                    <select id="cuotas" name="cuotas">
-                        <option value="opcion1" <%="3 Cuotas sin interés" == producto.dues ? "selected" : ""%>>3 Cuotas sin interés</option>
-                        <option value="opcion2" <%="6 Cuotas" == producto.dues ? "selected" : ""%>>6 Cuotas</option>
-                        <option value="opcion3" <%="12 Cuotas" == producto.dues ? "selected" : ""%>>12 Cuotas</option>
+                    <select id="cuotas" name="dues">
+                        <option value="Pago Completo" <%="Pago Completo" == producto.dues ? "selected" : ""%>>Pago Completo</option>
+                        <option value="3 Cuotas sin interés" <%="3 Cuotas sin interés" == producto.dues ? "selected" : ""%>>3 Cuotas sin interés</option>
+                        <option value="6 Cuotas" <%="6 Cuotas" == producto.dues ? "selected" : ""%>>6 Cuotas</option>
+                        <option value="12 Cuotas" <%="12 Cuotas" == producto.dues ? "selected" : ""%>>12 Cuotas</option>
                     </select>
                 </div>
                 <div class="create-row">
