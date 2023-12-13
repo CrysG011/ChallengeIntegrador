@@ -15,6 +15,8 @@ const isLoginCart = (req, res, next) => {
 
   const qty = parseInt(req.body.quantity)
 
+  console.log("el qty es: ", qty)
+
   if (!req.session.userId) {
 
     if (!req.session.cart) {
@@ -38,8 +40,8 @@ const isLoginCart = (req, res, next) => {
           })
           }
       }
-    // que aparezca cartelito de "producto añadido al carrito"
-    return res.send("producto añadido al carrito fantasma");
+
+    next();
 
   } else {
   next();
@@ -50,7 +52,7 @@ router.get("/", shopController.getShopView);
 
 router.get("/item/:id", shopController.getItemView);
 
-router.post("/item/:id/add", isLoginCart, shopController.addToCart);
+router.post("/item/:id/add", express.json(), isLoginCart, shopController.addToCart);
 
 router.get("/cart", shopController.getCartView);
 
