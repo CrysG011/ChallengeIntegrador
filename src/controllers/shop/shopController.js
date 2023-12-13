@@ -62,36 +62,37 @@ const getItemView = async (req, res) => {
 };
 
 const addToCart = async (req, res) => {
+
+  console.log("REQ BODY QTY: ", req.body.quantity)
+  
   try {
         const user = await modelUser.findByPk(req.session.userId);
         
-        if (!user) {
-          return res.status(400).send('Tu usuario no se encuentra registrado');
+        if (!user && req.session.cart) {
+          console.log("agregar al carrito fantasma")
         } else {
-          const existingCartEntry = await modelCart.findOne({
-            where: {
-              userId: user.id,
-              productId: req.params.id,
-            },
-          });
-      
-          if (existingCartEntry) {
-            existingCartEntry.quantity += +req.body.quantity;
-            await existingCartEntry.save();
-          } else {
-          const cart = await modelCart.create(
-            {
-              quantity: req.body.quantity,
-              UserId: user.id,
-              ProductId: req.params.id,
+            const existingCartEntry = await modelCart.findOne({
+              where: {
+                userId: user.id,
+                productId: req.params.id,
+              },
+            });
+        
+            if (existingCartEntry) {
+              existingCartEntry.quantity += +req.body.quantity;
+              await existingCartEntry.save();
+            } else {
+            const cart = await modelCart.create(
+              {
+                quantity: req.body.quantity,
+                UserId: user.id,
+                ProductId: req.params.id,
+              }
+              );
             }
-            );
-           }
-    }
-    
-    // estaría bueno que fuera el carrito desplegable o que aparezca un cartel temporal
-    // que diga "producto añadido al carrito"
-    res.send("producto añadido al carrito")
+        }
+
+    res.json({ success: true });
 
   } catch (error) {
     console.log(error);

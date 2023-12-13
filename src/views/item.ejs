@@ -62,7 +62,48 @@
                     </article>
                     <% }) %>
 
-                        <%- include("./partials/footer-shop") %>
+        <%- include("./partials/footer-shop") %>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addToCartForm = document.getElementById('addToCartForm');
+
+        addToCartForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const quantityValue = parseInt(document.querySelector('.destacado__quantity-input').value);
+            fetch('/shop/item/<%= producto.id %>/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ quantity: quantityValue })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const mensajeElemento = document.createElement('div');
+                    mensajeElemento.innerHTML = 'Añadido al carrito exitosamente';
+
+                    const contenedor = document.querySelector('.destacado');
+                    contenedor.insertBefore(mensajeElemento, contenedor.firstChild);
+
+                    setTimeout(function () {
+                        mensajeElemento.remove();
+                    }, 4000);
+
+                } else {
+                    console.error('Error al agregar el producto al carrito', data.error);
+                }})
+            .catch(error => {
+                console.error('Error al agregar el producto al carrito', error);
+            });
+
+            addToCartForm.reset();
+        });
+    });
+    </script>
+    
 </body>
 
 </html>
