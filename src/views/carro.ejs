@@ -40,16 +40,17 @@
                         <button class="increment">+</button>
                         <button class="decrement">-</button>
                     </div>
-                    <p class="carro__card-total">$ <%= productos.find(producto=> producto.id ==
-                            productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
-
-                    <form class="form-delete" action="/shop/cart/delete/<%=productos[i].id%>?_method=DELETE" method="post">
-                        <input type="hidden" name="deleteType" value="all" />
-                        <button class="carro__card-cancel" alt="ELIMINAR">x</button>
-                    </form>
-
+                    <div class="carro__card-total">
+                        <p class="">$ <%= productos.find(producto=> producto.id ==
+                                productsInCart[i].ProductId).price * productsInCart[i].quantity %></p>
+                        <form class="form-delete" action="/shop/cart/delete/<%=productos[i].id%>?_method=DELETE"
+                            method="post">
+                            <input type="hidden" name="deleteType" value="all" />
+                            <button class="carro__card-cancel" alt="ELIMINAR">x</button>
+                        </form>
+                    </div>
                 </article>
-            <% } %>
+                <% } %>
                     <section class="carro__resumen">
                         <h2 class="carro__resumen-title">RESUMEN</h2>
                         <div class="carro__resumen-items">
@@ -82,17 +83,17 @@
         </main>
         <%- include("./partials/footer-shop") %>
 
-        <script>
-            document.addEventListener("submit", (event) => {
-                if (event.target.classList.contains("form-delete")) {
-                  event.preventDefault();
+            <script>
+                document.addEventListener("submit", (event) => {
+                    if (event.target.classList.contains("form-delete")) {
+                        event.preventDefault();
 
-                  if (confirm("¿Eliminar elemento?")) {
-                    event.target.submit();
-                  }
-                }
-            });
-        </script>
+                        if (confirm("¿Eliminar elemento?")) {
+                            event.target.submit();
+                        }
+                    }
+                });
+            </script>
 </body>
 
 </html>

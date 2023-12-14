@@ -17,8 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&family=Quicksand:wght@300;500;700&family=Raleway:wght@500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -71,14 +70,14 @@
                 </picture>
             </section>
 
-            <section class="slider container glide">
+            <section class="swiper slider container">
                 <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
-                <div class="slider__item glide__track">
-                    <div class="glide__slides">
+                <div class="swiper-items">
+                    <div class="swiper-wrapper slider__item">
                         <% for (let i=0; i < productosRecientes.length; i++) { %>
-                            <article class="card__item glide__slide">
+                            <article class="swiper-slide card__item">
                                 <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
-                                    <picture class="card-item__cover glide__slide">
+                                    <picture class="card-item__cover">
                                         <span class="card-item__tag">Nuevo</span>
                                         <% if (productosRecientes[i] && productosRecientes[i].id) { %>
                                             <img class="card-item__img--front"
@@ -135,34 +134,29 @@
                             </article>
                             <% } %>
                     </div>
-
-                </div>
-                <div class="glide__arrows" data-glide-el="controls">
-                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
-                            icon="vaadin:chevron-right-small" flip="horizontal"></iconify-icon></button>
-                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
-                            icon="vaadin:chevron-right-small"></iconify-icon></button>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </section>
         </main>
         <%- include("../partials/footer-shop.ejs") %>
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
             <script>
-                new Glide('.glide', {
-                    type: 'slider',
-                    startAt: 0,
-                    perView: 3,
-                    gap: 10,
+                const swiper = new Swiper('.swiper', {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
                     breakpoints: {
-                        980: {
-                            perView: 2
-                        },
                         480: {
-                            perView: 1
+                            slidesPerView: 1,
+                            spaceBetween: 30
+                        },
+                        980: {
+                            slidesPerView: 2,
+                            spaceBetween: 40
                         }
                     }
-                }).mount();
+                })
             </script>
 </body>
 

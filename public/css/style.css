@@ -279,8 +279,6 @@ footer {
     justify-content: center;
     gap: 0;
     background: var(--dark-bg-solid);
-    background: -webkit-linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-500));
-    background: linear-gradient(to bottom, var(--dark-bg-solid), var(--dark-500));
     width: 66%;
     top: 10rem;
     border-radius: 50%;
@@ -308,13 +306,24 @@ footer {
   }
 
   .navbar__item {
-    background-color: var(--dark-bg-solid);
     padding: var(--spacing-12);
     border-radius: .3rem;
     -webkit-border-radius: .3rem;
     -moz-border-radius: .3rem;
     -ms-border-radius: .3rem;
     -o-border-radius: .3rem;
+  }
+
+  .submenu {
+    max-width: 11rem;
+    margin-left: 3em;
+    background-color: var(--dark-500);
+  }
+
+  .submenu__link {
+    text-align: right;
+    font-size: var(--font-xsmall);
+    background-color: var(--dark-bg-solid);
   }
 }
 
@@ -453,6 +462,12 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+}
+
+.swiper-items {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .card__item {
@@ -794,7 +809,7 @@ footer {
 
 .carro__card {
   display: grid;
-  grid-template-columns: 50% 15% 35%;
+  grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: var(--spacing-36);
   align-items: center;
@@ -841,6 +856,7 @@ footer {
   grid-column: 1;
   text-align: center;
   height: 100%;
+  max-width: 6em;
 }
 
 .increment {
@@ -1304,6 +1320,24 @@ footer {
   .slider__items {
     flex-flow: column wrap;
   }
+
+  .carro__title,
+  .carro__resumen-title {
+    font-size: var(--font-large);
+  }
+
+  .carro__card-content {
+    flex-direction: column;
+  }
+
+  .carro__card-desc {
+    justify-content: center;
+  }
+
+  .card-item__title {
+    font-size: var(--font-medium);
+  }
+
 }
 
 .mainadmin {
