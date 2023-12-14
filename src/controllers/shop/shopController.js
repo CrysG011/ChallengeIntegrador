@@ -178,8 +178,38 @@ const getCartView = async (req, res) => {
   }
 };
 
-const CreatePurchase = (req, res) => {
-  res.send("Confirmar compra");
+const CreatePurchase = async (req, res) => {
+  
+console.log(req.body)
+console.log(req.body.productIds)
+console.log(req.body.productQtys)
+
+const productIds = req.body.productIds;
+const productQtys = req.body.productQtys;
+
+try {
+
+  // -> procesar pago con tercero
+  // <- confirmacion de pago realizado
+  
+  for (i=0; i<productIds.length; i++){
+    let producto = await model.findByPk(productIds[i]);
+    producto.stock = producto.stock - productQtys[i];
+    await producto.save();
+  }
+    
+  //en realidad debería guardarlo en una db de facturacion o ventas:
+  let soldCarts = await modelCart.destroy({
+    where: {
+      UserId: req.session.userId
+    }
+  })
+    
+    res.send("Confirmar compra");
+  
+} catch (error) {
+  
+}
 };
 
 const deleteCart = async (req, res) => {

@@ -24,22 +24,27 @@
                             <%- producto.product_description %>
                         </p>
                         <p class="destacado__price">$ <%- producto.price %></p>
-                        <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
-                            <div class="destacado__controls">
-                                <div class="controls-quantity">
-                                    <input name="quantity" class="quantity-input" type="number" value="1">
-                                    <button class="quantity-button" data-action="decrease">-</button>
-                                    <button class="quantity-button" data-action="increase">+</button>
-                                </div>
-                                <button type="submit" class="btn-add btn-ingresar">Agregar al carrito</button>
-                            </div>
-                        </form>
-                        <div class="destacado__pagos">
-                            <a href="#" class="destacado__payment-link">Ver método de pago </a>
-                            <p><%- (producto.dues).toUpperCase() %></p>
-                        </div>
-                    </div>
 
+                        <% if (producto.stock > 0) { %>
+                            <form id="addToCartForm" action="/shop/item/<%- producto.id %>/add" method="post">
+                                <div class="destacado__controls">
+                                    <div class="controls-quantity">
+                                        <input name="quantity" class="quantity-input" type="number" value="1" min="1" max="<%- producto.stock %>">
+                                        <button type="button" class="quantity-button" data-action="increase">+</button>
+                                        <button type="button" class="quantity-button" data-action="decrease">-</button>
+                                    </div>
+                                    <button type="submit" class="btn-add btn-ingresar">Agregar al carrito</button>
+                                </div>
+                            </form>
+                            <p>Disponible en stock: <%- producto.stock %></p>
+                            <div class="destacado__pagos">
+                                <a href="#" class="destacado__payment-link">Ver método de pago</a>
+                                <p><%- (producto.dues).toUpperCase() %></p>
+                            </div>
+                        <% } else {%>
+                            <p>SIN STOCK DISPONIBLE</p>
+                        <% } %>
+                    </div>
                 </article>
             </section>
             <h4 class="slider__title">PRODUCTOS RELACIONADOS</h4>
@@ -58,7 +63,7 @@
                                 <h4 class="card-item__name">
                                     <%= (producto.product_name).toUpperCase() %>
                                 </h4>
-                                <p class="card-item__price">$ <%= producto.product_price %>
+                                <p class="card-item__price">$ <%= producto.price %>
                                 </p>
                                 <p class="card-item__promo">
                                     <%= producto.dues %>
@@ -73,6 +78,34 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+        //Manejar increase y decrease de qty
+        const qtyInput = document.querySelector('.quantity-input');
+        const increaseBtn = document.querySelector('[data-action="increase"]');
+        const decreaseBtn = document.querySelector('[data-action="decrease"]');
+
+        console.log("decrease y encrease: ", decreaseBtn, increaseBtn)
+
+        increaseBtn.addEventListener('click', function () {
+            incrementQty();
+        });
+
+        decreaseBtn.addEventListener('click', function () {
+            decrementQty();
+        });
+
+        function incrementQty() {
+            const currentValue = parseInt(qtyInput.value);
+            qtyInput.value = currentValue + 1;
+        }
+
+        function decrementQty() {
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue > 0) {
+                qtyInput.value = currentValue - 1;
+            }
+        }
+    ;
+        //Manejar cartel dinamico de producto anadido al carrito
         const addToCartForm = document.getElementById('addToCartForm');
 
         addToCartForm.addEventListener('submit', function (e) {
