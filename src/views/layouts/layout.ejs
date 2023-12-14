@@ -70,11 +70,9 @@
                 </picture>
             </section>
 
-            <section class="swiper slider container">
-                <h2 class="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
-                <div class="swiper-items">
-                    <div class="swiper-wrapper slider__item">
-                        <% for (let i=0; i < productosRecientes.length; i++) { %>
+            <section class="swiper-container">
+                <div class="swiper-wrapper">
+                    <% for (let i=0; i < productosRecientes.length; i++) {%>
                             <article class="swiper-slide card__item">
                                 <a class="card-item__link" href="./shop/item/<%= productosRecientes[i].id %>">
                                     <picture class="card-item__cover">
@@ -133,18 +131,17 @@
                                 </a>
                             </article>
                             <% } %>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </section>
-        </main>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                </section>
+            </main>
         <%- include("../partials/footer-shop.ejs") %>
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
             <script>
-                const swiper = new Swiper('.swiper', {
-                    slidesPerView: 3,
+                const swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 4,
                     spaceBetween: 10,
                     breakpoints: {
                         480: {
@@ -152,7 +149,7 @@
                             spaceBetween: 30
                         },
                         980: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                             spaceBetween: 40
                         }
                     }
