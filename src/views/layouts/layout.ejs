@@ -70,7 +70,8 @@
                 </picture>
             </section>
 
-            <section class="swiper-container">
+            <section class="swiper-container" style="max-width: 100%; overflow: hidden; padding: 10%;">
+                <!-- ULTIMOS LANZAMIENTOS -->
                 <div class="swiper-wrapper">
                     <% for (let i=0; i < productosRecientes.length; i++) {%>
                             <article class="swiper-slide card__item">
@@ -144,11 +145,15 @@
                     slidesPerView: 4,
                     spaceBetween: 10,
                     breakpoints: {
-                        480: {
-                            slidesPerView: 1,
-                            spaceBetween: 30
+                        0: {
+                            slidesPerView: 2,
+                            spaceBetween: 50
                         },
-                        980: {
+                        480: {
+                            slidesPerView: 2,
+                            spaceBetween: 50
+                        },
+                        780: {
                             slidesPerView: 3,
                             spaceBetween: 40
                         }
