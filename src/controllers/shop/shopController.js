@@ -5,6 +5,17 @@ const modelCart = require("../../models/Cart");
 const modelUser = require("../../models/User");
 const modelCategory = require("../../models/Category");
 
+// ERR: Cannot set headers after they are sent to the client
+// async function renderEmptyCart(req, res) {
+//   const categorias = await modelCategory.findAll()
+      
+//                 const productosRecientes = await model.findAll({
+//                   order: [['createdAt', 'DESC']],
+//                   limit: 6
+//                 });
+//                 res.render("emptyCart", {productosRecientes, categorias, req});
+// }
+
 const getShopView = async (req, res) => {
 
   try {
@@ -108,28 +119,27 @@ const getCartView = async (req, res) => {
     user = await modelUser.findByPk(req.session.userId);
     }
 
-    if (!user && !req.session.cart || req.session.cart.items == 0) {
-      console.log("ENTRO AL !USER BLABLA")
+    if (!user && !req.session.cart || !user && req.session.cart.items == 0) {
+       //Funciona, se puede simplificar MUCHO si anda renderEmptyCart() pero de momomento no pude.
         const categorias = await modelCategory.findAll()
-      
         const productosRecientes = await model.findAll({
           order: [['createdAt', 'DESC']],
           limit: 6
         });
-      
         res.render("emptyCart", {productosRecientes, categorias, req});
         alreadySentRender = true;
     } else {
+
       let productsTotalQty = 0;
       let subTotalPrice = 0;
       const productos = []
       let envioPrice = 0;
       let productsInCart
+
         if (!user && req.session.cart) {
           for (const item of req.session.cart.items) {
             productsInCart = req.session.cart.items
             productsTotalQty += item.quantity;
-
             const producto = await model.findByPk(item.ProductId);    
             if (producto) {
               productos.push(producto);
@@ -141,7 +151,16 @@ const getCartView = async (req, res) => {
                 where: {
                   UserId: user.id,
                 }});
-        
+              if(productsInCart == 0){
+                //Funciona, se puede simplificar MUCHO si anda renderEmptyCart() pero de momomento no pude.
+                const categorias = await modelCategory.findAll()
+                const productosRecientes = await model.findAll({
+                  order: [['createdAt', 'DESC']],
+                  limit: 6
+                });
+                res.render("emptyCart", {productosRecientes, categorias, req});
+              }
+
               for (i=0; i<productsInCart.length; i++) {
                 const producto = await model.findByPk(productsInCart[i].ProductId);
                 if (producto){
@@ -159,8 +178,38 @@ const getCartView = async (req, res) => {
   }
 };
 
-const CreatePurchase = (req, res) => {
-  res.send("Confirmar compra");
+const CreatePurchase = async (req, res) => {
+  
+console.log(req.body)
+console.log(req.body.productIds)
+console.log(req.body.productQtys)
+
+const productIds = req.body.productIds;
+const productQtys = req.body.productQtys;
+
+try {
+
+  // -> procesar pago con tercero
+  // <- confirmacion de pago realizado
+  
+  for (i=0; i<productIds.length; i++){
+    let producto = await model.findByPk(productIds[i]);
+    producto.stock = producto.stock - productQtys[i];
+    await producto.save();
+  }
+    
+  //en realidad debería guardarlo en una db de facturacion o ventas:
+  let soldCarts = await modelCart.destroy({
+    where: {
+      UserId: req.session.userId
+    }
+  })
+    
+    res.send("Confirmar compra");
+  
+} catch (error) {
+  
+}
 };
 
 const deleteCart = async (req, res) => {
@@ -169,7 +218,8 @@ const deleteCart = async (req, res) => {
 
   if(deleteGroup == "all"){
     try {
-      if(!req.session.userId && req.session.cart || !user && !req.session.cart.items){
+      user = await modelUser.findByPk(req.session.userId);
+      if(!user && req.session.cart || !user && !req.session.cart.items){
         const item = (req.session.cart.items.findIndex((item) => (item.ProductId == req.params.id)))
           if (item != -1){
             req.session.cart.items.splice(item, 1);
@@ -180,7 +230,7 @@ const deleteCart = async (req, res) => {
                 limit: 6
               });
             
-              res.render("emptyCart", {productosRecientes, categorias, req});
+              res.redirect("/shop/cart")
 
             } else {
               res.redirect("/shop/cart")
@@ -193,7 +243,7 @@ const deleteCart = async (req, res) => {
             where: {
                 UserId: req.session.userId,
                 ProductId: req.params.id
-            }})
+            }})      
         res.redirect("/shop/cart")
       }  
     } catch (error) {

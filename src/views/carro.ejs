@@ -31,6 +31,8 @@
                             </h4>
                             <p class="card-item__category">STAR WARS</p>
                             <p class="card-item__price">precio: <%= productos[i].price %>
+                            <input type="hidden" name="productIds" value="<%= productos[i].id %>">
+                            <input type="hidden" name="productQtys" value="<%= productsInCart[i].quantity %>">
                             </p>
                         </div>
                     </div>
@@ -78,6 +80,10 @@
 
                         <form action="/shop/cart" method="post">
                             <button type="submit" class="ir-a-pagar"><span>IR A PAGAR</span></button>
+                            <% for (let i = 0; i < productsInCart.length; i++) { %>
+                                <input type="hidden" name="productIds" value="<%= productos[i].id %>">
+                                <input type="hidden" name="productQtys" value="<%= productsInCart[i].quantity %>">
+                            <% } %>
                         </form>
                     </section>
         </main>
