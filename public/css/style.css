@@ -830,6 +830,7 @@ footer {
   text-align: center;
   height: 100%;
   max-width: 6em;
+  border: 0.02em solid var(--secondary-300);
 }
 
 .increment {
@@ -838,6 +839,8 @@ footer {
   background-color: var(--primary-900);
   color: var(--ligth-font-solid);
   padding: var(--spacing-8);
+  border: none;
+  font-weight: 900;
 }
 
 .decrement {
@@ -846,6 +849,8 @@ footer {
   background-color: var(--primary-900);
   color: var(--ligth-font-solid);
   padding: var(--spacing-8);
+  border: none;
+  font-weight: 900;
 }
 
 .carro__card-total {
@@ -1069,10 +1074,6 @@ footer {
     }
   }
 
-  .carro {
-    padding-top: 10rem;
-  }
-
   .carro__col {
     display: none;
   }
@@ -1291,6 +1292,10 @@ footer {
 
   .slider__items {
     flex-flow: column wrap;
+  }
+
+  .carro {
+    padding-top: 15rem;
   }
 
   .carro__title,
@@ -1713,17 +1718,22 @@ footer {
 
 .create-grid {
   display: grid;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(8, auto);
   grid-gap: var(--spacing-24);
   padding-top: 15em;
-  width: fit-content;
 }
 
 .create-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-12);
+  gap: var(--spacing-24);
   font-size: var(--font-medium);
+}
+
+.create-row__labelimg {
+  font-size: .6em;
+  text-decoration: underline;
 }
 
 .create-row select {
@@ -1732,7 +1742,7 @@ footer {
 }
 
 .create-row img {
-  max-width: 10vw;
+  max-width: 20vw;
   height: auto;
   padding: var(--spacing-8);
   border-bottom: 2px solid var(--primary-solid);
@@ -1747,6 +1757,7 @@ footer {
 }
 
 .desc-input {
+  display: flex;
   width: 100%;
   min-height: 20vh;
   border: 0.5px solid var(--dark-300);
@@ -1754,7 +1765,7 @@ footer {
 
 .img-edit {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   align-items: center;
 }
 
@@ -1791,6 +1802,10 @@ footer {
   .mainlogin__subtitle {
     font-size: var(--font-medium);
     padding-top: var(--spacing-8);
+  }
+
+  .create-row {
+    flex-direction: column;
   }
 }
 

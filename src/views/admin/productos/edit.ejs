@@ -10,76 +10,86 @@
 
 <body>
     <%- include("../../partials/header-admin") %>
-        <form class="container" action="/admin/edit/<%- producto.id%>?_method=PUT" method="post" enctype="multipart/form-data">
+        <form class="container" action="/admin/edit/<%- producto.id%>?_method=PUT" method="post"
+            enctype="multipart/form-data">
             <div class="create-grid">
                 <div class="create-row">
                     <h1 class="create-title">EDITAR ITEM</h1>
                 </div>
                 <%- include("../../partials/errors") %>
-                <div class="create-row">
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="CategoryId">
-                        <option value="opcion1"> - Seleccionar - </option>
-                        <%categoriasDb.forEach(category => { %>
-                        <option value="<%=category.id %>" <%=category.id == producto.CategoryId ? "selected" : ""%>> <%= category.category_name %></option>
-                        <% }) %>
-                    </select>
-                    <label for="licencia">Licencia:</label>
-                    <select id="licencia" name="licencia">
-                        <option value="opcion1">Seleccionar</option>
-                        <option value="opcion2">Opción 1</option>
-                        <option value="opcion3">Opción 2</option>
-                    </select>
-                </div>
-                <div class="create-row">
-                    <label for="nombre">Nombre del producto:</label>
-                    <input class="log-input" type="text" id="nombre" name="product_name" placeholder="Inserta el nombre del producto" value="<%- producto.product_name%>">
-                </div>
-                <div class="create-row">
-                    <input class="desc-input" type="text" id="descripcion" name="product_description"
-                        placeholder="Inserta la descripción del producto." value="<%- producto.product_description%>">
-                </div>
-                <div class="create-row">
-                    <label for="sku">SKU:</label>
-                    <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="Insertar SKU" value="<%- producto.sku%>">
-                    <label for="precio">Precio:</label>
-                    <input class="create-input log-input" type="text" id="precio" name="price"
-                        placeholder="Insertar precio" value="<%- producto.price%>">
-                    <label for="stock">Stock:</label>
-                    <input class="create-input log-input" type="text" id="stock" name="stock" placeholder="Insertar stock" value="<%- producto.stock%>">
-                </div>
-                <div class="create-row">
-                    <!-- ToDo: añadir descuento y cuotas desde la db-->
-                    <label for="descuento">Descuento:</label>
-                    <input class="create-input log-input" type="text" id="descuento" name="discount" placeholder="0%" value="<%=producto.discount%>">
-                    <label for="cuotas">Cuotas:</label>
-                    <select id="cuotas" name="dues">
-                        <option value="Pago Completo" <%="Pago Completo" == producto.dues ? "selected" : ""%>>Pago Completo</option>
-                        <option value="3 Cuotas sin interés" <%="3 Cuotas sin interés" == producto.dues ? "selected" : ""%>>3 Cuotas sin interés</option>
-                        <option value="6 Cuotas" <%="6 Cuotas" == producto.dues ? "selected" : ""%>>6 Cuotas</option>
-                        <option value="12 Cuotas" <%="12 Cuotas" == producto.dues ? "selected" : ""%>>12 Cuotas</option>
-                    </select>
-                </div>
-                <div class="create-row">
-                    <label for="imagenes">Imagen de frente:</label>
-                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
-                    <label for="imagenes">Imagen de dorso:</label>
-                    <input type="file" id="imagenes" name="imagenes" accept="image/*">
-                </div>
-                <picture class="create-row">
-                    <figure class="img-edit">
-                        <img src="/uploads/<%=producto.id%>-1.webp"
-                            alt="Imagen del frente del producto">
-                        <figcaption>Frente</figcaption>
-                    </figure>
-                    <figure class="img-edit">
-                        <img src="/uploads/<%=producto.id%>-box.webp" alt="Imagen del dorso del producto">
-                        <figcaption>Dorso</figcaption>
-                    </figure>
-                </picture>
-                <div class="create-row">
-                    <button class="btn-ingresar" type="submit" id="agregar">Modificar Producto</button>
-                </div>
+                    <div class="create-row">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" name="CategoryId">
+                            <option value="opcion1"> - Seleccionar - </option>
+                            <%categoriasDb.forEach(category=> { %>
+                                <option value="<%=category.id %>" <%=category.id==producto.CategoryId ? "selected" : ""
+                                    %>> <%= category.category_name %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <label for="licencia">Licencia:</label>
+                        <select id="licencia" name="licencia">
+                            <option value="opcion1">Seleccionar</option>
+                            <option value="opcion2">Opción 1</option>
+                            <option value="opcion3">Opción 2</option>
+                        </select>
+                    </div>
+                    <div class="create-row">
+                        <label for="nombre">Nombre del producto:</label>
+                        <input class="log-input" type="text" id="nombre" name="product_name"
+                            placeholder="Inserta el nombre del producto" value="<%- producto.product_name%>">
+                    </div>
+                    <div class="create-row">
+                        <input class="desc-input" type="text" id="descripcion" name="product_description"
+                            placeholder="Inserta la descripción del producto."
+                            value="<%- producto.product_description%>">
+                    </div>
+                    <div class="create-row">
+                        <label for="sku">SKU:</label>
+                        <input class="create-input log-input" type="text" id="sku" name="sku" placeholder="Insertar SKU"
+                            value="<%- producto.sku%>">
+                        <label for="precio">Precio:</label>
+                        <input class="create-input log-input" type="text" id="precio" name="price"
+                            placeholder="Insertar precio" value="<%- producto.price%>">
+                        <label for="stock">Stock:</label>
+                        <input class="create-input log-input" type="text" id="stock" name="stock"
+                            placeholder="Insertar stock" value="<%- producto.stock%>">
+                    </div>
+                    <div class="create-row">
+                        <!-- ToDo: añadir descuento y cuotas desde la db-->
+                        <label for="descuento">Descuento:</label>
+                        <input class="create-input log-input" type="text" id="descuento" name="discount"
+                            placeholder="0%" value="<%=producto.discount%>">
+                        <label for="cuotas">Cuotas:</label>
+                        <select id="cuotas" name="dues">
+                            <option value="Pago Completo" <%="Pago Completo"==producto.dues ? "selected" : "" %>>Pago
+                                Completo</option>
+                            <option value="3 Cuotas sin interés" <%="3 Cuotas sin interés"==producto.dues ? "selected"
+                                : "" %>>3 Cuotas sin interés</option>
+                            <option value="6 Cuotas" <%="6 Cuotas"==producto.dues ? "selected" : "" %>>6 Cuotas</option>
+                            <option value="12 Cuotas" <%="12 Cuotas"==producto.dues ? "selected" : "" %>>12 Cuotas
+                            </option>
+                        </select>
+                    </div>
+                    <div class="create-row">
+                        <label for="imagenes" class="create-row__labelimg">Imagen de frente:</label>
+                        <input type="file" id="imagenes" name="imagenes" accept="image/*">
+                        <label for="imagenes" class="create-row__labelimg">Imagen de dorso:</label>
+                        <input type="file" id="imagenes" name="imagenes" accept="image/*">
+                    </div>
+                    <picture class="create-row">
+                        <figure class="img-edit">
+                            <img src="/uploads/<%=producto.id%>-1.webp" alt="Imagen del frente del producto">
+                            <figcaption>Frente</figcaption>
+                        </figure>
+                        <figure class="img-edit">
+                            <img src="/uploads/<%=producto.id%>-box.webp" alt="Imagen del dorso del producto">
+                            <figcaption>Dorso</figcaption>
+                        </figure>
+                    </picture>
+                    <div class="create-row">
+                        <button class="btn-ingresar" type="submit" id="agregar">Modificar Producto</button>
+                    </div>
             </div>
         </form>
         <%- include("../../partials/footer-admin") %>

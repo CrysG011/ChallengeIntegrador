@@ -10,34 +10,37 @@
 
 <body>
     <%- include("../../partials/header-admin") %>
-        <form class="container contact-row" action="/admin/categories/edit/<%- category.id%>?_method=PUT" method="post"
+        <form class="mainadmin container" action="/admin/categories/edit/<%- category.id%>?_method=PUT" method="post"
             enctype="multipart/form-data">
             <div class="create-grid">
                 <div class="create-row">
                     <h1 class="create-title">EDITAR CATEGORÍA</h1>
-                </div><%- include("../../partials/errors") %>
-                    <label for="nombre">Nombre de la categoría:</label>
-                    <input class="log-input" type="text" id="nombre" name="category_name"
-                        placeholder="Inserta el nombre de la categoría" value="<%- category.category_name%>">
-            </div>
-            <div class="create-row">
-                <input class="desc-input" type="text" id="descripcion" name="category_description"
-                    placeholder="Inserta la descripción de la categoría" value="<%- category.category_description%>">
-            </div>
-            <div class="create-row">
-                <label for="imagenes">Imagen de la categoría:</label>
-                <input type="file" id="imagenes" name="imagen" accept="image/*">
-            </div>
-            <picture class="create-row">
-                <figure class="img-edit">
-                    <img src="/img/naruto/kakashi-hatake.png"
-                        alt="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden">
-                    <figcaption>Frente</figcaption>
-                </figure>
-            </picture>
-            <div class="create-row">
-                <button class="btn-ingresar" type="submit" id="agregar">Modificar Categoría</button>
-            </div>
+                </div>
+                <%- include("../../partials/errors") %>
+                    <div class="create-row">
+                        <label for="nombre">Nombre de la categoría:</label>
+                        <input class="log-input" type="text" id="nombre" name="category_name"
+                            placeholder="Inserta el nombre de la categoría" value="<%- category.category_name%>">
+                    </div>
+                    <div class="create-row">
+                        <input class="desc-input" type="text" id="descripcion" name="category_description"
+                            placeholder="Inserta la descripción de la categoría"
+                            value="<%- category.category_description%>">
+                    </div>
+                    <div class="create-row">
+                        <label for="imagenes">Imagen de la categoría:</label>
+                        <input type="file" id="imagenes" name="imagen" accept="image/*">
+                    </div>
+                    <picture class="create-row">
+                        <figure class="img-edit">
+                            <img src="/img/naruto/kakashi-hatake.png"
+                                alt="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden">
+                            <figcaption>Frente</figcaption>
+                        </figure>
+                    </picture>
+                    <div class="create-row">
+                        <button class="btn-ingresar" type="submit" id="agregar">Modificar Categoría</button>
+                    </div>
             </div>
         </form>
         <%- include("../../partials/footer-admin") %>
