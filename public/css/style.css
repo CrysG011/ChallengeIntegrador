@@ -456,6 +456,7 @@ footer {
   display: flex;
   font-family: var(--font-raleway-family);
   font-size: var(--font-jumbo);
+  margin-bottom: 5rem;
 }
 
 .slider__item {
@@ -1103,7 +1104,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-12);
-  padding-top: 20em;
+  padding-top: 13em;
 }
 
 .contact {
@@ -1145,7 +1146,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 15em;
+  padding: 15em 0 7em 0;
 }
 
 .destacado__card-item {
@@ -1208,7 +1209,6 @@ footer {
 .quantity-input {
   grid-row: 1 / span 2;
   text-align: center;
-  max-width: 4em;
 }
 
 .quantity-button {
@@ -1598,6 +1598,7 @@ footer {
   .destacado__payment-link {
     text-align: center;
     border: 3px solid var(--secondary-900);
+    padding: .3em;
   }
 
   .destacado__pagos p {
@@ -1704,6 +1705,10 @@ footer {
     color: #000;
     gap: var(--spacing-8);
   }
+
+  .product-list__tr {
+    gap: var(--spacing-28);
+  }
 }
 
 .create-grid {
@@ -1770,6 +1775,7 @@ footer {
   flex-flow: column nowrap;
   align-items: center;
   gap: var(--spacing-12);
+  color: var(--dark-solid);
 }
 
 .contact-row {
@@ -1778,10 +1784,6 @@ footer {
 }
 
 @media (max-width: 780px) {
-  .main-contact {
-    padding-top: 10em;
-  }
-
   .mainlogin__title {
     font-size: var(--font-large);
   }

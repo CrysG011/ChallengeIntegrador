@@ -70,7 +70,7 @@
             </section>
 
             <section
-                class="container swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
+                class="container swiffy-slider slider-item-show3 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
                 <h2 class="slider__title">ULTIMOS LANZAMIENTOS</h2>
                 <div class="slider-container py-4">
                     <% for (let i=0; i < productosRecientes.length; i++) {%>
@@ -81,10 +81,10 @@
                                     <span class="card-item__tag">Nuevo</span>
                                     <% if (productosRecientes[i] && productosRecientes[i].id) { %>
                                         <img class="card-item__img--front"
-                                            src="/uploads/<%= productosRecientes[i].id %>-1.webp"
+                                            src="/uploads/<%= productosRecientes[i].id %>-1.webp" loading="lazy"
                                             alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>" />
                                         <img class="card-item__img--back"
-                                            src="/uploads/<%= productosRecientes[i].id %>-box.webp"
+                                            src="/uploads/<%= productosRecientes[i].id %>-box.webp" loading="lazy"
                                             alt="Figura coleccionable <%= productosRecientes[i].product_name.toUpperCase() %>">
                                         <% } else { %>
                                             <!-- item por defecto si no se encuentra productosRecientes[i] o sus atributos por un imprevisto -->

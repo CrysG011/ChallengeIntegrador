@@ -19,6 +19,9 @@
                             alt="Figura coleccionable Funko de <%=producto.product_name%> de la serie <%=categoria.category_name%>" />
                     </picture>
                     <div class="destacado__desc">
+                        <p class="card-item__licence">
+                            <%- (categoria.category_name).toUpperCase() %>
+                        </p>
                         <h3 class="destacado__title"><%- (producto.product_name).toUpperCase() %></h3>
                         <p class="destacado__p">
                             <%- producto.product_description %>
