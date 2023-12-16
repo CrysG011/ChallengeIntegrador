@@ -4,7 +4,7 @@
 
 ![Portada del sitio](./FunkosPortada.png)
 
-[VER el sitio en Render](https://funkoshop-lm-cg.onrender.com/shop)
+[VER el sitio en Render](https://funkoshop-lm-cg.onrender.com)
 
 Comparamos tiempos de implementación, escalabilidad, configuración personalizada y rendimiento: Render vs Vercel.
 Automatización simplificada de pruebas con Selenium IDE.
