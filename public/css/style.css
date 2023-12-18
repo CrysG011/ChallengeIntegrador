@@ -476,26 +476,26 @@ footer {
   transition: transform 0.5s ease;
 }
 
-.card-item__cover {
-  display: flex;
-  position: relative;
-  overflow: hidden;
-}
-
 .card-item__tag {
+  display: flex;
+  justify-self: flex-end;
   font-size: var(--font-xsmall);
   text-transform: uppercase;
   background-color: var(--primary-solid);
   color: var(--ligth-font-solid);
   padding: var(--spacing-8) var(--spacing-16);
-  position: absolute;
-  right: 0;
+  height: fit-content;
+  width: fit-content;
+}
+
+.card-item__cover {
+  display: flex;
 }
 
 .card-item__img--back {
   display: none;
-  -webkit-animation: flip-scale-up-ver 0.5s linear both;
-  animation: flip-scale-up-ver 0.5s linear both;
+  -webkit-animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
 .card-item__cover:hover .card-item__img--back {
@@ -506,43 +506,38 @@ footer {
   display: none;
 }
 
-@-webkit-keyframes flip-scale-up-ver {
+@-webkit-keyframes flip-vertical-right {
   0% {
-    -webkit-transform: scale(1) rotateY(0);
-    transform: scale(1) rotateY(0);
-  }
-
-  50% {
-    -webkit-transform: scale(2.5) rotateY(90deg);
-    transform: scale(2.5) rotateY(90deg);
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
   }
 
   100% {
-    -webkit-transform: scale(1) rotateY(180deg);
-    transform: scale(1) rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
   }
 }
 
-@keyframes flip-scale-up-ver {
+@keyframes flip-vertical-right {
   0% {
-    -webkit-transform: scale(1) rotateY(0);
-    transform: scale(1) rotateY(0);
-  }
-
-  50% {
-    -webkit-transform: scale(2.5) rotateY(90deg);
-    transform: scale(2.5) rotateY(90deg);
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
   }
 
   100% {
-    -webkit-transform: scale(1) rotateY(180deg);
-    transform: scale(1) rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
   }
+}
+
+.card-item__link {
+  cursor: pointer;
 }
 
 .card-item__content {
   display: flex;
   flex-direction: column;
+  align-content: end;
   padding: var(--spacing-16);
   gap: var(--spacing-12);
 }
@@ -591,6 +586,7 @@ footer {
 
 .main-shop {
   display: grid;
+  gap: 3em;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: auto;
   padding-top: 20rem;

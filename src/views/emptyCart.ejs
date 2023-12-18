@@ -20,15 +20,15 @@
             <h2 class="mainlogin__title">Tu carrito se encuentra vacío... Pero puedes llenarlo con los siguientes
                 productos!</h2>
             <div
-                class="swiffy-slider slider-item-show3 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
+                class="swiffy-slider slider-item-show3 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-slow slider-item-first-visible">
                 <h3 class="slider__title">ÚLTIMOS LANZAMIENTOS</h3>
                 <div class="slider-container py-4">
                     <% for (let i=0; i < productosRecientes.length; i++) {%>
                         <article class="slide-visible">
                             <a class="card-item__link card shadow h-100"
                                 href="./shop/item/<%= productosRecientes[i].id %>">
+                                <span class="card-item__tag">Nuevo</span>
                                 <picture class="ratio ratio-16x9 card-item__cover">
-                                    <span class="card-item__tag">Nuevo</span>
                                     <% if (productosRecientes[i] && productosRecientes[i].id) { %>
                                         <img class="card-item__img--front"
                                             src="/uploads/<%= productosRecientes[i].id %>-1.webp" loading="lazy"

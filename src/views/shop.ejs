@@ -72,8 +72,9 @@
             <article class="card__item">
               <% if (productos[i] && productos[i].id) { %>
                 <a class="card-item__link" href="shop/item/<%=productos[i].id%>">
+                  <span class="card-item__tag">Nuevo</span>
                   <picture class="card-item__cover">
-                    <span class="card-item__tag">Nuevo</span>
+
                     <img class="card-item__img--front" src="/uploads/<%=productos[i].id%>-1.webp"
                       alt="Figura coleccionable <%=productos[i].product_name%>" />
                     <img class="card-item__img--back" src="/uploads/<%=productos[i].id%>-box.webp"
@@ -119,7 +120,6 @@
             </article>
             <% } %>
         </div>
-
         <div class="pagination">
           <ul class="pagination__ul">
             <a href="#">

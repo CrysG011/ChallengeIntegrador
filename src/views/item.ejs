@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ITEM</title>
     <link rel="icon" type="image/svg+xml" href="/img/branding/isotype.svg">
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -52,32 +54,47 @@
                 </article>
             </section>
             <h4 class="slider__title">PRODUCTOS RELACIONADOS</h4>
-            <section class="slider__item">
-                <%productosRelacionados.forEach(producto=> { %>
-                    <article class="card__item">
-                        <a href="./<%=producto.id%>">
-                            <picture class="card-item__cover">
-                                <img class="card-item__img--front" src="/uploads/<%=producto.id%>-1.webp"
-                                    alt="<%= (producto.product_name).toUpperCase() %>" />
-                                <img class="card-item__img--back" src="/uploads/<%=producto.id%>-box.webp"
-                                    alt="<%= (producto.product_name).toUpperCase() %>" />
-                            </picture>
-                            <div class="card-item__content">
-                                <p class="card-item__licence">
-                                    <%= (categoria.category_name).toUpperCase() %>
-                                </p>
-                                <h4 class="card-item__name">
-                                    <%= (producto.product_name).toUpperCase() %>
-                                </h4>
-                                <p class="card-item__price">$ <%= producto.price %>
-                                </p>
-                                <p class="card-item__promo">
-                                    <%= producto.dues %>
-                                </p>
+            <section
+                class="container swiffy-slider slider-item-show3 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-slow slider-item-first-visible">
+                <div class="slider-container">
+                    <%productosRelacionados.forEach(producto=> { %>
+                        <article class="slider-visible">
+                            <div class="card shadow h-100">
+                                <span class="card-item__tag">Nuevo</span>
+                                <picture class="ratio card-item__cover">
+                                    <img class="card-item__img--front" src="/uploads/<%=producto.id%>-1.webp"
+                                        alt="<%= (producto.product_name).toUpperCase() %>" />
+                                    <img class="card-item__img--back" src="/uploads/<%=producto.id%>-box.webp"
+                                        alt="<%= (producto.product_name).toUpperCase() %>" />
+                                </picture>
+                                <a href="./<%=producto.id%>">
+                                    <div class="card-item__content">
+                                        <p class="card-item__licence">
+                                            <%= (categoria.category_name).toUpperCase() %>
+                                        </p>
+                                        <h4 class="card-item__name">
+                                            <%= (producto.product_name).toUpperCase() %>
+                                        </h4>
+                                        <p class="card-item__price">$ <%= producto.price %>
+                                        </p>
+                                        <p class="card-item__promo">
+                                            <%= producto.dues %>
+                                        </p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </article>
-                    <% }) %>
+                        </article>
+                        <% }) %>
+                </div>
+                <button type="button" class="slider-nav" aria-label="Go left"></button>
+                <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+                <div class="slider-indicators">
+                    <button class="active" aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide"></button>
+                </div>
             </section>
         </main>
         <%- include("./partials/footer-shop") %>
@@ -150,6 +167,8 @@
                     });
                 });
             </script>
+            <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
+                crossorigin="anonymous" defer></script>
 
 </body>
 
