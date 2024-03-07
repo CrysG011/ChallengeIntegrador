@@ -478,7 +478,7 @@ footer {
 
 .card-item__tag {
   display: flex;
-  justify-self: flex-end;
+  justify-self: end;
   font-size: var(--font-xsmall);
   text-transform: uppercase;
   background-color: var(--primary-solid);
@@ -607,6 +607,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 90% 10%;
+  align-items: start;
 }
 
 .search-sort-price-filter-form {

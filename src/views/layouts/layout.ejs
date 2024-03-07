@@ -71,11 +71,11 @@
             <section
                 class="container swiffy-slider slider-item-show3 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-slow slider-item-first-visible">
                 <h2 class="slider__title">ULTIMOS LANZAMIENTOS</h2>
-                <div class="slider-container">
+                <div class="slider-container py-4">
                     <% for (let i=0; i < productosRecientes.length; i++) {%>
                         <article class="slide-visible">
+                            <span class="card-item__tag">Nuevo</span>
                             <div class="card shadow h-100">
-                                <span class="card-item__tag">Nuevo</span>
                                 <picture class="ratio card-item__cover">
                                     <% if (productosRecientes[i] && productosRecientes[i].id) { %>
                                         <img class="card-img-top card-item__img--front"
