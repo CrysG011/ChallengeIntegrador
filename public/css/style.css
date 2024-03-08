@@ -773,6 +773,7 @@ footer {
   align-items: center;
   gap: var(--spacing-20);
   text-wrap: balance;
+  padding-top: var(--spacing-20);
 }
 
 .carro__title {
