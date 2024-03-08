@@ -766,6 +766,14 @@ footer {
   font-family: var(--font-inter-family);
 }
 
+.carro__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-20);
+  text-wrap: balance;
+}
+
 .carro__title {
   display: flex;
   font-size: var(--font-jumbo);
@@ -1804,6 +1812,7 @@ footer {
 .contact-row {
   display: flex;
   align-items: start;
+  gap: var(--spacing-12);
 }
 
 @media (max-width: 780px) {

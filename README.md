@@ -7,6 +7,10 @@
 [VER el sitio en Render](https://funkoshop-lm-cg.onrender.com)
 
 Comparamos tiempos de implementación, escalabilidad, configuración personalizada y rendimiento: Render vs Vercel.
+
+> [!IMPORTANT]
+> Render presenta tiempos de carga inicial más lentos en comparación con Vercel, pero ofrece una mayor estabilidad, ya que Vercel experimenta frecuentes crashes del servidor, lo que requiere que los usuarios actualicen la página con regularidad para restaurar la funcionalidad.
+
 Automatización simplificada de pruebas con Selenium IDE.
 
 [Sitio en Vercel](https://challenge-integrador-beige.vercel.app)
