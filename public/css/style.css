@@ -1,6 +1,18 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  src: url('../fonts/Inter-VariableFont_slnt\,wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway-VariableFont_wght.ttf') format('ttf');
+}
+
 :root {
-  --font-inter-family: "Inter", sans-serif;
-  --font-raleway-family: "Raleway", sans-serif;
+  --font-inter-family: 'Inter', sans-serif;
+  --font-raleway-family: 'Raleway', sans-serif;
 
   --primary-solid: #ff3333;
   --primary-900: rgba(255, 51, 51, 0.9);
@@ -607,7 +619,6 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 90% 10%;
-  align-items: start;
 }
 
 .search-sort-price-filter-form {
@@ -1772,10 +1783,14 @@ footer {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  text-align: center;
   gap: var(--spacing-24);
   font-size: var(--font-small);
   padding-top: var(--spacing-20);
+}
+
+.contact-intro {
+  text-wrap: pretty;
+  font-size: inherit;
 }
 
 .contact-form {
