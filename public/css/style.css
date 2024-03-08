@@ -768,6 +768,7 @@ footer {
 
 .carro__empty {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-20);
@@ -1805,6 +1806,7 @@ footer {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-12);
   color: var(--dark-solid);
 }
@@ -1813,6 +1815,29 @@ footer {
   display: flex;
   align-items: start;
   gap: var(--spacing-12);
+}
+
+.contact-design {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 0px 30px 0px var(--dark-bg-solid);
+  border-radius: var(--spacing-8);
+  -webkit-border-radius: var(--spacing-8);
+  -moz-border-radius: var(--spacing-8);
+  -ms-border-radius: var(--spacing-8);
+  -o-border-radius: var(--spacing-8);
+}
+
+.contact-design figcaption {
+  background-color: var(--light-bg-solid);
+  border-radius: var(--spacing-8);
+  -webkit-border-radius: var(--spacing-8);
+  -moz-border-radius: var(--spacing-8);
+  -ms-border-radius: var(--spacing-8);
+  -o-border-radius: var(--spacing-8);
 }
 
 @media (max-width: 780px) {

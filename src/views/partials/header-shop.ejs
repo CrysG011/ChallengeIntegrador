@@ -7,7 +7,7 @@
         </picture>
         <label for="menu" class="navbar__label">
             <img src="../../img/icons/menu.svg" alt="MenuIcon">
-            <img src="../../img/icons/x-button.svg" class="close" alt="CloseIcon">
+            <img src="../../img/icons/x-button.svg" class="close" loading="lazy" alt="CloseIcon">
         </label>
         <input type="checkbox" id="menu" class="navbar__input">
         <ul class="navbar__menu">
@@ -34,17 +34,18 @@
                 <li class="navbar__item">
                     <a class="navbar__link" action="/auth/logout" method="get" href="/auth/logout">LOGOUT</a>
                 </li>
-            <% } else { %>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/auth/login">
-                        LOGIN
-                    </a>
-                </li>
-            <% } %>
-            
-            <li class="navbar__item">
-                <a class="navbar__carro" href="/shop/cart"><img src="../../img/icons/cart-icon.svg" alt="CARRITO" /></a>
-            </li>
+                <% } else { %>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/auth/login">
+                            LOGIN
+                        </a>
+                    </li>
+                    <% } %>
+
+                        <li class="navbar__item">
+                            <a class="navbar__carro" href="/shop/cart"><img src="../../img/icons/cart-icon.svg"
+                                    alt="CARRITO" /></a>
+                        </li>
         </ul>
 
     </nav>

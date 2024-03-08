@@ -15,6 +15,9 @@ Automatización simplificada de pruebas con Selenium IDE.
 
 [Sitio en Vercel](https://challenge-integrador-beige.vercel.app)
 
+> [!NOTE]
+> En la página de "Contacto" se encuentra el diseño en Figma.
+
 #### Tecnologías utilizadas
 
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat-square)
