@@ -773,7 +773,7 @@ footer {
   align-items: center;
   gap: var(--spacing-20);
   text-wrap: balance;
-  padding-top: var(--spacing-20);
+  padding-top: 13em;
 }
 
 .carro__title {
@@ -1834,11 +1834,11 @@ footer {
 
 .contact-design figcaption {
   background-color: var(--light-bg-solid);
-  border-radius: var(--spacing-8);
-  -webkit-border-radius: var(--spacing-8);
-  -moz-border-radius: var(--spacing-8);
-  -ms-border-radius: var(--spacing-8);
-  -o-border-radius: var(--spacing-8);
+  padding: var(--spacing-8);
+  font-family: var(--font-raleway-family);
+  font-weight: 900;
+  color: var(--primary-solid);
+  justify-self: center;
 }
 
 @media (max-width: 780px) {
