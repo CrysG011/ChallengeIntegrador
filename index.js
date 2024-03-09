@@ -45,8 +45,8 @@ const helmet = require('helmet');
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],
+    scriptSrc: ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+    styleSrc: ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
     imgSrc: ["'self'"],
     connectSrc: ["'self'", "https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css", "https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"], 
     fontSrc: ["'self'"],
