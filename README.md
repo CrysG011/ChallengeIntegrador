@@ -20,6 +20,7 @@ Automatización simplificada de pruebas con Selenium IDE.
 
 #### Tecnologías utilizadas
 
+![Testing](./ZAP.webp)
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat-square)
 ![Express.js](https://img.shields.io/badge/-Express.js-000000?logo=express&logoColor=white&style=flat-square)
 ![phpMyAdmin](https://img.shields.io/badge/-phpMyAdmin-4479A1?logo=php&logoColor=white&style=flat-square)
