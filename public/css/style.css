@@ -506,8 +506,8 @@ footer {
 
 .card-item__img--back {
   display: none;
-  -webkit-animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-  animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  -webkit-animation: flip-vertical-right 0.s6 cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: flip-vertical-right 0.s6 cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
 .card-item__cover:hover .card-item__img--back {
@@ -525,8 +525,8 @@ footer {
   }
 
   100% {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
 
@@ -537,10 +537,11 @@ footer {
   }
 
   100% {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
+
 
 .card-item__link {
   cursor: pointer;
@@ -1001,14 +1002,14 @@ footer {
 
 @keyframes ring {
   0% {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     opacity: 1;
   }
 
   100% {
-    width: 300px;
-    height: 300px;
+    width: 18.75rem;
+    height: 18.75rem;
     opacity: 0;
   }
 }
@@ -1019,10 +1020,10 @@ footer {
   }
 
   .hero__title {
-    letter-spacing: 5px;
+    letter-spacing: 0.3125rem;
     text-align: center;
     animation: move linear 2000ms infinite;
-    margin: 90px 0 12px;
+    margin: 5.625rem 0 0.75rem;
   }
 
   .hero__text {
