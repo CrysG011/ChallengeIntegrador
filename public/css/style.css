@@ -550,9 +550,9 @@ footer {
   cursor: pointer;
 }
 
-.card-item__link:hover {
+.card-item__link:hover .card-item__content:hover {
   background: rgb(255, 51, 51);
-  background: linear-gradient(90deg, rgba(255, 51, 51, 0.6250875350140056) 0%, rgba(255, 242, 242, 1) 13%, rgba(16, 132, 133, 0.5382528011204482) 100%);
+  background: linear-gradient(90deg, rgba(255, 51, 51, 0.6250875350140056) 0%, rgba(255, 242, 242, 1) 30%, rgba(16, 132, 133, 0.28335084033613445) 100%);
 }
 
 .card-item__content {
@@ -1164,20 +1164,22 @@ footer {
 
 .mainitem {
   display: grid;
+  max-width: 100vw;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
-  width: 100%;
 }
 
 .destacado {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   padding: 15em 0 7em 0;
 }
 
 .destacado__card-item {
   display: grid;
+  width: inherit;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
