@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ITEM</title>
-    <link rel="icon" type="image/svg+xml" href="/img/branding/isotype.svg">
+    <link rel="icon" href="/isotype.ico">
     <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.min.css">
@@ -13,7 +13,7 @@
 
 <body>
     <%- include("./partials/header-shop") %>
-        <main class="mainitem">
+        <main class="mainitem container">
             <section class="destacado">
                 <article class="destacado__card-item">
                     <picture class="destacado__img collection__cover">
@@ -98,7 +98,6 @@
             </section>
         </main>
         <%- include("./partials/footer-shop") %>
-
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     //Manejar increase y decrease de qty
@@ -169,7 +168,6 @@
             </script>
             <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
                 crossorigin="anonymous" defer></script>
-
 </body>
 
 </html>

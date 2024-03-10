@@ -550,6 +550,11 @@ footer {
   cursor: pointer;
 }
 
+.card-item__link:hover {
+  background: rgb(255, 51, 51);
+  background: linear-gradient(90deg, rgba(255, 51, 51, 0.6250875350140056) 0%, rgba(255, 242, 242, 1) 13%, rgba(16, 132, 133, 0.5382528011204482) 100%);
+}
+
 .card-item__content {
   display: flex;
   flex-direction: column;
@@ -1161,8 +1166,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
-  margin: 0 auto;
-  max-width: 90%;
+  width: 100%;
 }
 
 .destacado {
