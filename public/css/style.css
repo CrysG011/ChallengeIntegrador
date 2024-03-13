@@ -505,6 +505,8 @@ footer {
 
 .card-item__cover {
   display: flex;
+  width: 100%;
+  height: auto;
 }
 
 @keyframes flipUp-360 {
@@ -527,8 +529,15 @@ footer {
   }
 }
 
+.card-item__img--front {
+  width: 100%;
+  height: auto;
+}
+
 .card-item__img--back {
   display: none;
+  width: 100%;
+  height: auto;
   transition: transform .5s, color .1s;
   -webkit-transition: transform .5s, color .1s;
   -moz-transition: transform .5s, color .1s;
@@ -1160,12 +1169,6 @@ footer {
   align-items: center;
   width: 100%;
   padding: var(--spacing-12);
-}
-
-.mainitem {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, auto);
 }
 
 .destacado {
